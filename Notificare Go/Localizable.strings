@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Notificare Go
+
+  Created by Helder Pinhal on 21/02/2022.
+  
+*/
+
+"home_title" = "Home";
+"home_welcome_user" = "Welcome\n%@";
+"home_top_products" = "Top products";
+"home_top_products_browse_more_button" = "Browse more";
+"home_scan_title" = "Scan for a product";
+"home_scan_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar neque facilisis laoreet.";
+"home_scan_button" = "Scan";
+"home_nearby_title" = "Nearby stores";
+"home_nearby_alert_permissions_title" = "Missing permissions";
+"home_nearby_alert_permissions_message" = "In order to show your nearby stored we need access to your precise location.";
+"home_nearby_alert_permissions_button" = "Request access";
