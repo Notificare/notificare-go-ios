@@ -10,6 +10,28 @@
 		F245855E27C40B8600AA93A2 /* TopProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F245855D27C40B8600AA93A2 /* TopProductsView.swift */; };
 		F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F245855F27C40C1E00AA93A2 /* Localizable.strings */; };
 		F245856327C40CAA00AA93A2 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F245856227C40CAA00AA93A2 /* ProductCardView.swift */; };
+		F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */; };
+		F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */; };
+		F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */; };
+		F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */; };
+		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
+		F284C0BD27CF77FD00E6986B /* NotificareServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BB27CF77EF00E6986B /* NotificareServices.plist */; };
+		F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BE27CF781400E6986B /* NotificareOptions.plist */; };
+		F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C127CF7F5400E6986B /* InboxView.swift */; };
+		F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */; };
+		F284C0C627CF850000E6986B /* SettingsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */; };
+		F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C927CF8A5600E6986B /* BadgeView.swift */; };
+		F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0CD27CF907600E6986B /* DetermineSize.swift */; };
+		F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081027D648FA00EE90CC /* NotificareAssetsKit */; };
+		F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081227D648FA00EE90CC /* NotificareGeoKit */; };
+		F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081427D648FA00EE90CC /* NotificareInboxKit */; };
+		F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081627D648FA00EE90CC /* NotificareKit */; };
+		F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */; };
+		F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */; };
+		F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081C27D648FA00EE90CC /* NotificarePushKit */; };
+		F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081E27D648FA00EE90CC /* NotificarePushUIKit */; };
+		F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B082027D648FA00EE90CC /* NotificareScannablesKit */; };
+		F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */; };
 		F29B871F27C4EC2B00460D85 /* AlertBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B871E27C4EC2B00460D85 /* AlertBlock.swift */; };
 		F29B872527C4F26F00460D85 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B872427C4F26F00460D85 /* MainView.swift */; };
 		F29B872827C4F31F00460D85 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B872727C4F31F00460D85 /* IntroView.swift */; };
@@ -22,8 +44,8 @@
 		F29B873C27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B873B27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift */; };
 		F29B873E27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B873D27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift */; };
 		F29B874127C4FC4200460D85 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B874027C4FC4200460D85 /* String+Localization.swift */; };
+		F29B874627C5381700460D85 /* MainView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B874527C5381700460D85 /* MainView+ViewModel.swift */; };
 		F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */; };
-		F2F0010527BFE83D00753D89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010427BFE83D00753D89 /* ContentView.swift */; };
 		F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010627BFE83E00753D89 /* Assets.xcassets */; };
 		F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */; };
 		F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011227BFEE3100753D89 /* HomeView.swift */; };
@@ -35,6 +57,21 @@
 		F245855D27C40B8600AA93A2 /* TopProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProductsView.swift; sourceTree = "<group>"; };
 		F245855F27C40C1E00AA93A2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F245856227C40CAA00AA93A2 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
+		F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxItemView.swift; sourceTree = "<group>"; };
+		F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
+		F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notificare+Utilities.swift"; sourceTree = "<group>"; };
+		F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Custom.swift"; sourceTree = "<group>"; };
+		F25E4EF627D23DC700BEFCF5 /* Notificare-Go-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Notificare-Go-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notificare Go.entitlements"; sourceTree = "<group>"; };
+		F284C0BB27CF77EF00E6986B /* NotificareServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareServices.plist; sourceTree = "<group>"; };
+		F284C0BE27CF781400E6986B /* NotificareOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
+		F284C0C127CF7F5400E6986B /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InboxView+ViewModel.swift"; sourceTree = "<group>"; };
+		F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+ViewModel.swift"; sourceTree = "<group>"; };
+		F284C0C927CF8A5600E6986B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		F284C0CD27CF907600E6986B /* DetermineSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetermineSize.swift; sourceTree = "<group>"; };
+		F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Notifications.swift"; sourceTree = "<group>"; };
 		F29B871E27C4EC2B00460D85 /* AlertBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBlock.swift; sourceTree = "<group>"; };
 		F29B872427C4F26F00460D85 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F29B872727C4F31F00460D85 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -47,9 +84,9 @@
 		F29B873B27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncImageCompat+ImageLoader.swift"; sourceTree = "<group>"; };
 		F29B873D27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncImageCompat+ImageCache.swift"; sourceTree = "<group>"; };
 		F29B874027C4FC4200460D85 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		F29B874527C5381700460D85 /* MainView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+ViewModel.swift"; sourceTree = "<group>"; };
 		F2F000FF27BFE83D00753D89 /* Notificare Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notificare Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificareGoApp.swift; sourceTree = "<group>"; };
-		F2F0010427BFE83D00753D89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2F0010627BFE83E00753D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2F0011227BFEE3100753D89 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -62,6 +99,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */,
+				F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */,
+				F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */,
+				F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */,
+				F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */,
+				F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */,
+				F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */,
+				F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */,
+				F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +131,9 @@
 				F245856127C40C9400AA93A2 /* ProductCardView */,
 				F245855C27C40B5D00AA93A2 /* TopProductsView */,
 				F29B873627C4F4E900460D85 /* ButtonStyles.swift */,
+				F284C0C927CF8A5600E6986B /* BadgeView.swift */,
+				F284C0CD27CF907600E6986B /* DetermineSize.swift */,
+				F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -103,6 +152,15 @@
 				F245856227C40CAA00AA93A2 /* ProductCardView.swift */,
 			);
 			path = ProductCardView;
+			sourceTree = "<group>";
+		};
+		F284C0C027CF7F3D00E6986B /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				F284C0C127CF7F5400E6986B /* InboxView.swift */,
+				F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */,
+			);
+			path = Inbox;
 			sourceTree = "<group>";
 		};
 		F29B871D27C4EB0C00460D85 /* AlertBlock */ = {
@@ -125,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F29B872427C4F26F00460D85 /* MainView.swift */,
+				F29B874527C5381700460D85 /* MainView+ViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -141,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F0011627BFEE5300753D89 /* SettingsView.swift */,
+				F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -198,7 +258,11 @@
 		F29B873F27C4FC3700460D85 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */,
+				F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */,
+				F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */,
 				F29B874027C4FC4200460D85 /* String+Localization.swift */,
+				F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -222,12 +286,16 @@
 		F2F0010127BFE83D00753D89 /* Notificare Go */ = {
 			isa = PBXGroup;
 			children = (
+				F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */,
+				F25E4EF627D23DC700BEFCF5 /* Notificare-Go-Info.plist */,
 				F29B873F27C4FC3700460D85 /* Core */,
 				F245855A27C40B4F00AA93A2 /* UI */,
 				F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */,
-				F2F0010427BFE83D00753D89 /* ContentView.swift */,
+				F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */,
 				F2F0010627BFE83E00753D89 /* Assets.xcassets */,
 				F245855F27C40C1E00AA93A2 /* Localizable.strings */,
+				F284C0BB27CF77EF00E6986B /* NotificareServices.plist */,
+				F284C0BE27CF781400E6986B /* NotificareOptions.plist */,
 				F2F0010827BFE83E00753D89 /* Preview Content */,
 			);
 			path = "Notificare Go";
@@ -247,6 +315,7 @@
 				F29B872927C4F33200460D85 /* AppScanner */,
 				F29B872027C4F12000460D85 /* Cart */,
 				F29B872227C4F12A00460D85 /* Home */,
+				F284C0C027CF7F3D00E6986B /* Inbox */,
 				F29B872627C4F31600460D85 /* Intro */,
 				F29B872127C4F12600460D85 /* Main */,
 				F29B873227C4F3A300460D85 /* ProductDetails */,
@@ -273,6 +342,17 @@
 			dependencies = (
 			);
 			name = "Notificare Go";
+			packageProductDependencies = (
+				F29B081027D648FA00EE90CC /* NotificareAssetsKit */,
+				F29B081227D648FA00EE90CC /* NotificareGeoKit */,
+				F29B081427D648FA00EE90CC /* NotificareInboxKit */,
+				F29B081627D648FA00EE90CC /* NotificareKit */,
+				F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */,
+				F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */,
+				F29B081C27D648FA00EE90CC /* NotificarePushKit */,
+				F29B081E27D648FA00EE90CC /* NotificarePushUIKit */,
+				F29B082027D648FA00EE90CC /* NotificareScannablesKit */,
+			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
 			productType = "com.apple.product-type.application";
@@ -301,6 +381,9 @@
 				Base,
 			);
 			mainGroup = F2F000F627BFE83D00753D89;
+			packageReferences = (
+				F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */,
+			);
 			productRefGroup = F2F0010027BFE83D00753D89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -317,7 +400,9 @@
 			files = (
 				F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */,
 				F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */,
+				F284C0BD27CF77FD00E6986B /* NotificareServices.plist in Resources */,
 				F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */,
+				F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,22 +413,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */,
+				F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */,
 				F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */,
 				F29B872527C4F26F00460D85 /* MainView.swift in Sources */,
+				F29B874627C5381700460D85 /* MainView+ViewModel.swift in Sources */,
 				F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */,
 				F29B873E27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift in Sources */,
 				F29B873C27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift in Sources */,
 				F245855E27C40B8600AA93A2 /* TopProductsView.swift in Sources */,
-				F2F0010527BFE83D00753D89 /* ContentView.swift in Sources */,
 				F29B873127C4F39F00460D85 /* StoreView.swift in Sources */,
 				F29B873A27C4F56A00460D85 /* AsyncImageCompat.swift in Sources */,
+				F284C0C627CF850000E6986B /* SettingsView+ViewModel.swift in Sources */,
+				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
+				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
+				F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */,
+				F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */,
 				F29B873427C4F3B900460D85 /* ProductDetails.swift in Sources */,
 				F29B872B27C4F34F00460D85 /* AppScannerView.swift in Sources */,
 				F29B871F27C4EC2B00460D85 /* AlertBlock.swift in Sources */,
 				F29B872E27C4F37D00460D85 /* UserProfileView.swift in Sources */,
 				F2F0011527BFEE3F00753D89 /* CartView.swift in Sources */,
+				F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */,
+				F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */,
 				F29B872827C4F31F00460D85 /* IntroView.swift in Sources */,
+				F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */,
 				F29B873727C4F4E900460D85 /* ButtonStyles.swift in Sources */,
+				F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */,
 				F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */,
 				F245856327C40CAA00AA93A2 /* ProductCardView.swift in Sources */,
 				F29B874127C4FC4200460D85 /* String+Localization.swift in Sources */,
@@ -474,12 +570,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Notificare Go/Preview Content\"";
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Notificare-Go-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -504,12 +602,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Notificare Go/Preview Content\"";
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Notificare-Go-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,6 +651,65 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F29B081027D648FA00EE90CC /* NotificareAssetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareAssetsKit;
+		};
+		F29B081227D648FA00EE90CC /* NotificareGeoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareGeoKit;
+		};
+		F29B081427D648FA00EE90CC /* NotificareInboxKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareInboxKit;
+		};
+		F29B081627D648FA00EE90CC /* NotificareKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareKit;
+		};
+		F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareLoyaltyKit;
+		};
+		F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareNotificationServiceExtensionKit;
+		};
+		F29B081C27D648FA00EE90CC /* NotificarePushKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificarePushKit;
+		};
+		F29B081E27D648FA00EE90CC /* NotificarePushUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificarePushUIKit;
+		};
+		F29B082027D648FA00EE90CC /* NotificareScannablesKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareScannablesKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2F000F727BFE83D00753D89 /* Project object */;
 }

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Notificare",
+        "repositoryURL": "https://github.com/Notificare/notificare-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "c20aa7f549939810a58e0c1cecfd5a2c70a99e4c",
+          "version": "3.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

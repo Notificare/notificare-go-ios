@@ -8,22 +8,48 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var viewModel = ViewModel()
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
+        Group {
+            switch viewModel.viewState {
+            case .splash:
+                ZStack(alignment: .center) {
+                    Circle()
+                        .foregroundColor(.orange)
+                        .frame(width: 200, height: 200)
+                    
+                    Text("GO")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                 }
-            
-            CartView()
-                .tabItem {
-                    Label("Cart", systemImage: "cart.fill")
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            case .intro:
+                IntroView()
+
+            case .main:
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Label("Home", systemImage: "house.fill")
+                        }
+                    
+                    CartView()
+                        .tabItem {
+                            Label("Cart", systemImage: "cart.fill")
+                        }
+                    
+                    SettingsView()
+                        .tabItem {
+                            Label("Settings", systemImage: "gear")
+                        }
                 }
-            
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        }
+        .onAppear {
+            viewModel.refresh()
         }
     }
 }
