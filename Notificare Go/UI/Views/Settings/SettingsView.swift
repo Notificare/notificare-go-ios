@@ -15,7 +15,7 @@ struct SettingsView: View {
             List {
                 Section {
                     NavigationLink {
-                        Text("user profile")
+                        UserProfileView()
                     } label: {
                         HStack(alignment: .center, spacing: 16) {                            
                             AsyncImageCompat(url: URL(string: "https://gravatar.com/avatar/1a73f51bd2d8f8114835508ecd678c66?s=400&d=blank")) { image in
