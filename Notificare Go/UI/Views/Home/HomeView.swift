@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var navigationBarHidden: Bool = false
+    @State var navigationBarHidden: Bool = true
     
     var body: some View {
         NavigationView {
@@ -71,42 +71,6 @@ struct HomeView: View {
                             }
                         }
                         .padding()
-                        
-                        VStack(alignment: .leading) {
-                            Text(String(localized: "home_nearby_title"))
-                                .font(.title2)
-                                .bold()
-                            
-                            AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
-                                Text(String(localized: "home_nearby_alert_permissions_message"))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                
-                                Button {
-                                    //
-                                } label: {
-                                    Text(String(localized: "home_nearby_alert_permissions_button"))
-                                }
-                            }
-                        }
-                        .padding()
-                        
-                        VStack(alignment: .leading) {
-                            Text(String(localized: "home_nearby_title"))
-                                .font(.title2)
-                                .bold()
-                            
-                            AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
-                                Text(String(localized: "home_nearby_alert_permissions_message"))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                
-                                Button {
-                                    //
-                                } label: {
-                                    Text(String(localized: "home_nearby_alert_permissions_button"))
-                                }
-                            }
-                        }
-                        .padding()
                     }
                     
                     GeometryReader { proxy in
@@ -117,6 +81,7 @@ struct HomeView: View {
             }
             .navigationTitle(String(localized: "home_title"))
             .navigationBarHidden(navigationBarHidden)
+            .navigationBarTitleDisplayMode(.inline)
             .coordinateSpace(name: "scroll")
             .onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
                 let navigationBarHidden = value < 64
