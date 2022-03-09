@@ -6,6 +6,13 @@
   
 */
 
+"intro_welcome_title" = "Welcome";
+"intro_welcome_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_notifications_title" = "Notifications";
+"intro_notifications_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_login_title" = "Login";
+"intro_login_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
 "home_title" = "Home";
 "home_welcome_user" = "Welcome\n%@";
 "home_top_products" = "Top products";
