@@ -54,36 +54,10 @@ struct IntroView: View {
                         case .success(let auth):
                             print("Authorization successful")
                             
-                            guard let credentials = auth.credential as? ASAuthorizationAppleIDCredential else {
-                                return
-                            }
+                            let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
+                            Keychain.standard.user = user
                             
-                            guard let tokenData = credentials.identityToken,
-                                  let tokenStr = String(data: tokenData, encoding: .utf8)
-                            else {
-                                return
-                            }
-                            
-                            print(tokenStr)
-                            
-                            var name: String? = nil
-                            if let nameComponents = credentials.fullName {
-                                var parts = [String]()
-                                
-                                if let givenName = nameComponents.givenName {
-                                    parts.append(givenName)
-                                }
-                                
-                                if let familyName = nameComponents.familyName {
-                                    parts.append(familyName)
-                                }
-                                
-                                if !parts.isEmpty {
-                                    name = parts.joined(separator: " ")
-                                }
-                            }
-                            
-                            Notificare.shared.device().register(userId: credentials.user, userName: name) { result in
+                            Notificare.shared.device().register(userId: user.id, userName: user.name) { result in
                                 switch result {
                                 case .success:
                                     break

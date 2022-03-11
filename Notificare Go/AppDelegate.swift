@@ -15,6 +15,7 @@ import NotificarePushKit
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Configure Notificare.
+        Notificare.shared.configure()
         Notificare.shared.push().presentationOptions = [.banner, .badge, .sound]
         
         // Setup the delegates.
@@ -22,9 +23,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Notificare.shared.push().delegate = self
         Notificare.shared.inbox().delegate = self
         Notificare.shared.geo().delegate = self
-        
-        // Fire it up! 🚀
-        Notificare.shared.launch()
         
         return true
     }
@@ -38,6 +36,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension AppDelegate: NotificareDelegate {
     func notificare(_ notificare: Notificare, onReady application: NotificareApplication) {
+        NotificationCenter.default.post(name: .notificareLaunched, object: nil)
+        
         if Notificare.shared.push().hasRemoteNotificationsEnabled {
             Notificare.shared.push().enableRemoteNotifications { _ in }
         }

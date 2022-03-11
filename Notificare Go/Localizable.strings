@@ -6,6 +6,8 @@
   
 */
 
+"shared_anonymous_user" = "Anonymous";
+
 "intro_welcome_title" = "Welcome";
 "intro_welcome_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 "intro_notifications_title" = "Notifications";
@@ -13,8 +15,13 @@
 "intro_login_title" = "Login";
 "intro_login_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
+"main_navigation_home" = "Home";
+"main_navigation_cart" = "Cart";
+"main_navigation_settings" = "Settings";
+
 "home_title" = "Home";
-"home_welcome_user" = "Welcome\n%@";
+"home_welcome_user" = "Welcome";
+"home_welcome_user_named" = "Welcome\n%@";
 "home_top_products" = "Top products";
 "home_top_products_browse_more_button" = "Browse more";
 "home_scan_title" = "Scan for a product";
@@ -42,3 +49,10 @@
 "inbox_section_today" = "Today";
 "inbox_section_yesterday" = "Yesterday";
 "inbox_section_last_seven_days" = "Last 7 days";
+
+"user_profile_title" = "Profile";
+"user_profile_copy_id" = "Copy user id";
+"user_profile_membership_card" = "Membership card";
+"user_profile_personal_information" = "Personal information";
+"user_profile_sign_out" = "Sign out";
+"user_profile_unsupported_user_data_type" = "Unsupported field";

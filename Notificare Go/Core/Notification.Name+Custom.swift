@@ -8,6 +8,9 @@
 import Foundation
 
 extension Notification.Name {
+    // Core
+    static let notificareLaunched = Notification.Name(rawValue: "app.notificare_launched")
+    
     // Push
     static let notificationSettingsChanged = Notification.Name(rawValue: "app.notification_settings_changed")
     

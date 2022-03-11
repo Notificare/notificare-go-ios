@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var navigationBarHidden: Bool = true
+    @StateObject private var viewModel = ViewModel()
+    @State private var navigationBarHidden: Bool = true
+    
+    private var user = Keychain.standard.user!
     
     var body: some View {
         NavigationView {
@@ -16,25 +19,36 @@ struct HomeView: View {
                 ZStack {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(String(localized: "home_welcome_user", "Helder"))
-                                .font(.largeTitle)
-                                .bold()
-                                .fixedSize(horizontal: false, vertical: true)
+                            if let name = user.name {
+                                Text(String(localized: "home_welcome_user_named", name))
+                                    .font(.largeTitle)
+                                    .bold()
+                                    .fixedSize(horizontal: false, vertical: true)
+                            } else {
+                                Text(String(localized: "home_welcome_user"))
+                                    .font(.largeTitle)
+                                    .bold()
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                             
                             Spacer()
                             
-                            AsyncImageCompat(url: URL(string: "https://gravatar.com/avatar/1a73f51bd2d8f8114835508ecd678c66?s=400&d=blank")) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                            } placeholder: {
-                                Color.clear
+                            NavigationLink {
+                                UserProfileView()
+                            } label: {
+                                AsyncImageCompat(url: user.gravatarUrl) { image in
+                                    Image(uiImage: image)
+                                        .resizable()
+                                } placeholder: {
+                                    Color.clear
+                                }
+                                .frame(width: 48, height: 48)
+                                .clipShape(Circle())
                             }
-                            .frame(width: 48, height: 48)
-                            .clipShape(Circle())
                         }
                         .padding()
                         
-                        TopProductsView()
+                        TopProductsView(products: viewModel.highlightedProducts)
                             .padding()
                         
                         GroupBox {
@@ -89,6 +103,9 @@ struct HomeView: View {
                     self.navigationBarHidden = navigationBarHidden
                 }
             }
+        }
+        .onAppear {
+            viewModel.refresh()
         }
     }
     

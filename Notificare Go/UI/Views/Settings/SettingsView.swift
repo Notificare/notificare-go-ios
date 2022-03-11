@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var viewModel = ViewModel()
     
+    let user = Keychain.standard.user!
+    
     var body: some View {
         NavigationView {
             List {
@@ -18,7 +20,7 @@ struct SettingsView: View {
                         UserProfileView()
                     } label: {
                         HStack(alignment: .center, spacing: 16) {                            
-                            AsyncImageCompat(url: URL(string: "https://gravatar.com/avatar/1a73f51bd2d8f8114835508ecd678c66?s=400&d=blank")) { image in
+                            AsyncImageCompat(url: user.gravatarUrl) { image in
                                 Image(uiImage: image)
                                     .resizable()
                             } placeholder: {
@@ -28,11 +30,11 @@ struct SettingsView: View {
                             .clipShape(Circle())
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(verbatim: "Helder Pinhal")
+                                Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
                                     .font(.title2)
                                     .lineLimit(1)
                                 
-                                Text(verbatim: "Regular user")
+                                Text(verbatim: user.id)
                                     .font(.subheadline)
                                     .lineLimit(1)
                             }

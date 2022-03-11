@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TopProductsView: View {
+    let products: [Product]
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(String(localized: "home_top_products"))
@@ -16,11 +18,9 @@ struct TopProductsView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 16) {
-                    ProductCardView()
-                    ProductCardView()
-                    ProductCardView()
-                    ProductCardView()
-                    ProductCardView()
+                    ForEach(products) { product in
+                        ProductCardView(product: product)
+                    }
                 }
             }
             
@@ -42,6 +42,6 @@ struct TopProductsView: View {
 
 struct TopProductsView_Previews: PreviewProvider {
     static var previews: some View {
-        TopProductsView()
+        TopProductsView(products: [.sample, .sample, .sample])
     }
 }
