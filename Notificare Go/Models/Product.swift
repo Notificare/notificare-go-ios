@@ -15,6 +15,16 @@ struct Product: Codable, Identifiable {
     let highlighted: Bool
 }
 
+extension Product {
+    var formattedPrice: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "EUR"
+        
+        return formatter.string(from: NSNumber(value: price))!
+    }
+}
+
 #if DEBUG
 
 extension Product {
