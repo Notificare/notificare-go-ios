@@ -10,7 +10,7 @@ import NotificareKit
 import NotificareScannablesKit
 
 struct HomeView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = HomeViewModel()
     @State private var navigationBarHidden: Bool = true
     
     private var user = Keychain.standard.user!
@@ -113,9 +113,6 @@ struct HomeView: View {
                     self.navigationBarHidden = navigationBarHidden
                 }
             }
-        }
-        .onAppear {
-            viewModel.refresh()
         }
     }
     

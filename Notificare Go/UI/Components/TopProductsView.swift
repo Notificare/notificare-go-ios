@@ -19,7 +19,12 @@ struct TopProductsView: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 16) {
                     ForEach(products) { product in
-                        ProductCardView(product: product)
+                        NavigationLink {
+                            ProductDetailsView(product: product)
+                        } label: {
+                            ProductCardView(product: product)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
             }

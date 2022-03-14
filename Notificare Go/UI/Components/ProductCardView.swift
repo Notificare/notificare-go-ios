@@ -21,21 +21,13 @@ struct ProductCardView: View {
             .frame(width: 96, height: 96)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             
-            Text(product.name)
+            Text(verbatim: product.name)
                 .font(.headline)
             
-            Text(priceFormatter.string(from: NSNumber(value: product.price))!)
+            Text(verbatim: product.formattedPrice)
                 .font(.caption)
         }
     }
-    
-    private let priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "EUR"
-        
-        return formatter
-    }()
 }
 
 struct ProductCardView_Previews: PreviewProvider {

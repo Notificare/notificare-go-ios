@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct AsyncImageCompat<Placeholder: View>: View {
+struct AsyncImageCompat<Placeholder: View, Content: View>: View {
     @StateObject private var loader: ImageLoader
-    private let placeholder: Placeholder
-    private let image: (UIImage) -> Image
+    private let placeholder: () -> Placeholder
+    private let image: (UIImage) -> Content
     
     init(
         url: URL?,
-        @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:),
-        @ViewBuilder placeholder: () -> Placeholder
+        @ViewBuilder image: @escaping (UIImage) -> Content,
+        @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
-        self.placeholder = placeholder()
+        self.placeholder = placeholder
         self.image = image
         _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue))
     }
@@ -27,7 +27,7 @@ struct AsyncImageCompat<Placeholder: View>: View {
             if loader.image != nil {
                 image(loader.image!)
             } else {
-                placeholder
+                placeholder()
             }
         }
         .onAppear(perform: loader.load)

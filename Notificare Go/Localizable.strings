@@ -56,3 +56,7 @@
 "user_profile_personal_information" = "Personal information";
 "user_profile_sign_out" = "Sign out";
 "user_profile_unsupported_user_data_type" = "Unsupported field";
+
+"product_details_product_info" = "Product info";
+"product_details_add_to_cart" = "Add to card";
+"product_details_view_cart" = "View cart";
