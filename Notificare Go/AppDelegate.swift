@@ -11,6 +11,7 @@ import NotificareKit
 import NotificareGeoKit
 import NotificareInboxKit
 import NotificarePushKit
+import NotificareScannablesKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -23,6 +24,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Notificare.shared.push().delegate = self
         Notificare.shared.inbox().delegate = self
         Notificare.shared.geo().delegate = self
+        Notificare.shared.scannables().delegate = self
         
         return true
     }
@@ -85,4 +87,19 @@ extension AppDelegate: NotificareInboxDelegate {
 
 extension AppDelegate: NotificareGeoDelegate {
     
+}
+
+extension AppDelegate: NotificareScannablesDelegate {
+    func notificare(_ notificareScannables: NotificareScannables, didDetectScannable scannable: NotificareScannable) {
+        guard let notification = scannable.notification else {
+            print("Cannot present a scannable without a notification.")
+            return
+        }
+        
+        UIApplication.shared.present(notification)
+    }
+    
+    func notificare(_ notificareScannables: NotificareScannables, didInvalidateScannerSession error: Error) {
+        print("Scannable session invalidated: \(error)")
+    }
 }
