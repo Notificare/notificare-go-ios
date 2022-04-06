@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
-    @StateObject private var viewModel = CartViewModel()
+    @StateObject private var viewModel: CartViewModel
     @Preference(\.cart) private var cart
     
     private var cartTotal: Double {
@@ -25,6 +25,10 @@ struct CartView: View {
         let mostRecentEntry = cart.max(by: { $0.time < $1.time })!
         
         return formatter.string(from: mostRecentEntry.time)
+    }
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: CartViewModel())
     }
     
     var body: some View {

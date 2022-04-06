@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ProductDetailsView: View {
-    @StateObject private var viewModel = ProductDetailsViewModel()
+    @StateObject private var viewModel: ProductDetailsViewModel
+    private let product: Product
     
-    let product: Product
+    init(product: Product) {
+        self._viewModel = StateObject(wrappedValue: ProductDetailsViewModel())
+        self.product = product
+    }
     
     var body: some View {
         ScrollView {

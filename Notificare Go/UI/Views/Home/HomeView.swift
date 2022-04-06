@@ -10,10 +10,14 @@ import NotificareKit
 import NotificareScannablesKit
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
     @State private var navigationBarHidden: Bool = true
     
     private var user = Keychain.standard.user!
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel())
+    }
     
     var body: some View {
         NavigationView {

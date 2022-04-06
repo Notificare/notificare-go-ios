@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: SettingsViewModel
+    private let user = Keychain.standard.user!
     
-    let user = Keychain.standard.user!
+    init() {
+        self._viewModel = StateObject(wrappedValue: SettingsViewModel())
+    }
     
     var body: some View {
         NavigationView {
@@ -19,7 +22,7 @@ struct SettingsView: View {
                     NavigationLink {
                         UserProfileView()
                     } label: {
-                        HStack(alignment: .center, spacing: 16) {                            
+                        HStack(alignment: .center, spacing: 16) {
                             AsyncImageCompat(url: user.gravatarUrl) { image in
                                 Image(uiImage: image)
                                     .resizable()

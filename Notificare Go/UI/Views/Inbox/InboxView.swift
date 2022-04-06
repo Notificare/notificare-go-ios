@@ -11,7 +11,11 @@ import NotificareInboxKit
 import NotificarePushUIKit
 
 struct InboxView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: InboxViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: InboxViewModel())
+    }
     
     var body: some View {
         List {
@@ -32,7 +36,7 @@ struct InboxView: View {
         .navigationTitle(String(localized: "inbox_title"))
     }
     
-    private func getSectionHeader(_ section: ViewModel.InboxSection) -> String {
+    private func getSectionHeader(_ section: InboxViewModel.InboxSection) -> String {
         switch section.group {
         case .today:
             return String(localized: "inbox_section_today")

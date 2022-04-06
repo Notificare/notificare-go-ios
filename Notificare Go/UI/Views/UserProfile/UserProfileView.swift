@@ -9,9 +9,12 @@ import SwiftUI
 import NotificareKit
 
 struct UserProfileView: View {
-    @StateObject private var viewModel = UserProfileViewModel()
-    
+    @StateObject private var viewModel: UserProfileViewModel
     private let user = Keychain.standard.user!
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: UserProfileViewModel())
+    }
     
     var body: some View {
         List {

@@ -37,10 +37,6 @@ class UserProfileViewModel: ObservableObject {
         }
     }
     
-    deinit {
-        cancellables.forEach { $0.cancel() }
-    }
-    
     private func startListeningToChanges() {
         $profileInformation
             .debounce(for: .seconds(1.5), scheduler: RunLoop.main)

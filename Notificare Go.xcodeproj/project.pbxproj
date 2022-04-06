@@ -45,8 +45,8 @@
 		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
 		F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BE27CF781400E6986B /* NotificareOptions.plist */; };
 		F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C127CF7F5400E6986B /* InboxView.swift */; };
-		F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */; };
-		F284C0C627CF850000E6986B /* SettingsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */; };
+		F284C0C427CF7F6F00E6986B /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C327CF7F6F00E6986B /* InboxViewModel.swift */; };
+		F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C527CF850000E6986B /* SettingsViewModel.swift */; };
 		F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C927CF8A5600E6986B /* BadgeView.swift */; };
 		F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0CD27CF907600E6986B /* DetermineSize.swift */; };
 		F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081027D648FA00EE90CC /* NotificareAssetsKit */; };
@@ -116,8 +116,8 @@
 		F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notificare Go.entitlements"; sourceTree = "<group>"; };
 		F284C0BE27CF781400E6986B /* NotificareOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
 		F284C0C127CF7F5400E6986B /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
-		F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InboxView+ViewModel.swift"; sourceTree = "<group>"; };
-		F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+ViewModel.swift"; sourceTree = "<group>"; };
+		F284C0C327CF7F6F00E6986B /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		F284C0C527CF850000E6986B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F284C0C927CF8A5600E6986B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		F284C0CD27CF907600E6986B /* DetermineSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetermineSize.swift; sourceTree = "<group>"; };
 		F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Notifications.swift"; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				F284C0C127CF7F5400E6986B /* InboxView.swift */,
-				F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */,
+				F284C0C327CF7F6F00E6986B /* InboxViewModel.swift */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F0011627BFEE5300753D89 /* SettingsView.swift */,
-				F284C0C527CF850000E6986B /* SettingsView+ViewModel.swift */,
+				F284C0C527CF850000E6986B /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -537,11 +537,11 @@
 				F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */,
 				F23B8EDE27DA45D4003B93B8 /* SplashViewModel.swift in Sources */,
 				F29B873A27C4F56A00460D85 /* AsyncImageCompat.swift in Sources */,
-				F284C0C627CF850000E6986B /* SettingsView+ViewModel.swift in Sources */,
+				F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */,
 				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
 				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
 				F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */,
-				F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */,
+				F284C0C427CF7F6F00E6986B /* InboxViewModel.swift in Sources */,
 				F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */,
 				F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */,
 				F23B8EE927DB4D89003B93B8 /* UserProfileViewModel.swift in Sources */,
