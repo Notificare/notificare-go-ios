@@ -18,58 +18,56 @@ struct HomeView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    TopProductsView(products: viewModel.highlightedProducts)
-                        .padding()
-                    
-                    GroupBox {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Label(String(localized: "home_scan_title"), systemImage: "barcode.viewfinder")
-                                .font(.headline)
-                            
-                            Text(String(localized: "home_scan_message"))
-                                .fixedSize(horizontal: false, vertical: true)
-                            
-                            Button(String(localized: "home_scan_button")) {
-                                if Notificare.shared.scannables().canStartNfcScannableSession {
-                                    Notificare.shared.scannables().startNfcScannableSession()
-                                } else {
-                                    guard let rootViewController = UIApplication.shared.rootViewController else {
-                                        return
-                                    }
-                                    
-                                    Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
-                                }
-                            }
-                            .buttonStyle(PrimaryButton())
-                            .padding(.top, 8)
-                        }
-                    }
+        ScrollView {
+            VStack(alignment: .leading) {
+                TopProductsView(products: viewModel.highlightedProducts)
                     .padding()
-                    
-                    VStack(alignment: .leading) {
-                        Text(String(localized: "home_nearby_title"))
-                            .font(.title2)
-                            .bold()
+                
+                GroupBox {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Label(String(localized: "home_scan_title"), systemImage: "barcode.viewfinder")
+                            .font(.headline)
                         
-                        AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
-                            Text(String(localized: "home_nearby_alert_permissions_message"))
-                                .fixedSize(horizontal: false, vertical: true)
-                            
-                            Button {
-                                //
-                            } label: {
-                                Text(String(localized: "home_nearby_alert_permissions_button"))
+                        Text(String(localized: "home_scan_message"))
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        Button(String(localized: "home_scan_button")) {
+                            if Notificare.shared.scannables().canStartNfcScannableSession {
+                                Notificare.shared.scannables().startNfcScannableSession()
+                            } else {
+                                guard let rootViewController = UIApplication.shared.rootViewController else {
+                                    return
+                                }
+                                
+                                Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                             }
                         }
+                        .buttonStyle(PrimaryButton())
+                        .padding(.top, 8)
                     }
-                    .padding()
                 }
+                .padding()
+                
+                VStack(alignment: .leading) {
+                    Text(String(localized: "home_nearby_title"))
+                        .font(.title2)
+                        .bold()
+                    
+                    AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
+                        Text(String(localized: "home_nearby_alert_permissions_message"))
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        Button {
+                            //
+                        } label: {
+                            Text(String(localized: "home_nearby_alert_permissions_button"))
+                        }
+                    }
+                }
+                .padding()
             }
-            .navigationTitle(String(localized: "home_title"))
         }
+        .navigationTitle(String(localized: "home_title"))
     }
 }
 

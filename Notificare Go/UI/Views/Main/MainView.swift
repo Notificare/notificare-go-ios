@@ -10,20 +10,26 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Label(String(localized: "main_navigation_home"), systemImage: "house.fill")
-                }
+            NavigationView {
+                HomeView()
+            }
+            .tabItem {
+                Label(String(localized: "main_navigation_home"), systemImage: "house.fill")
+            }
             
-            CartView()
-                .tabItem {
-                    Label(String(localized: "main_navigation_cart"), systemImage: "cart.fill")
-                }
+            NavigationView {
+                CartView()
+            }
+            .tabItem {
+                Label(String(localized: "main_navigation_cart"), systemImage: "cart.fill")
+            }
             
-            SettingsView()
-                .tabItem {
-                    Label(String(localized: "main_navigation_settings"), systemImage: "gear")
-                }
+            NavigationView {
+                SettingsView()
+            }
+            .tabItem {
+                Label(String(localized: "main_navigation_settings"), systemImage: "gear")
+            }
         }
     }
 }

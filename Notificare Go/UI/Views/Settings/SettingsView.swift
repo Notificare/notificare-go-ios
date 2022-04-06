@@ -16,118 +16,116 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    NavigationLink {
-                        UserProfileView()
-                    } label: {
-                        HStack(alignment: .center, spacing: 16) {
-                            AsyncImageCompat(url: user.gravatarUrl) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                            } placeholder: {
-                                Color.clear
-                            }
-                            .frame(width: 64, height: 64)
-                            .clipShape(Circle())
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
-                                    .font(.title2)
-                                    .lineLimit(1)
-                                
-                                Text(verbatim: user.id)
-                                    .font(.subheadline)
-                                    .lineLimit(1)
-                            }
+        List {
+            Section {
+                NavigationLink {
+                    UserProfileView()
+                } label: {
+                    HStack(alignment: .center, spacing: 16) {
+                        AsyncImageCompat(url: user.gravatarUrl) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                        } placeholder: {
+                            Color.clear
                         }
-                        .padding(.vertical, 8)
+                        .frame(width: 64, height: 64)
+                        .clipShape(Circle())
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
+                                .font(.title2)
+                                .lineLimit(1)
+                            
+                            Text(verbatim: user.id)
+                                .font(.subheadline)
+                                .lineLimit(1)
+                        }
+                    }
+                    .padding(.vertical, 8)
+                }
+            }
+            
+            Section {
+                NavigationLink {
+                    InboxView()
+                } label: {
+                    Label {
+                        Text(verbatim: String(localized: "settings_inbox_title"))
+                        
+                        Spacer(minLength: 16)
+                        
+                        if viewModel.badge > 0 {
+                            BadgeView(badge: viewModel.badge)
+                        }
+                    } icon: {
+                        Image(systemName: "tray.and.arrow.down.fill")
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding(6)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
-                
+            }
+            
+            Section {
+                Toggle(isOn: $viewModel.notificationsEnabled) {
+                    Label {
+                        Text(verbatim: String(localized: "settings_notifications_title"))
+                    } icon: {
+                        Image(systemName: "bell.badge.fill")
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding(6)
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                    }
+                }
+            } header: {
+                //
+            } footer: {
+                Text(verbatim: String(localized: "settings_notifications_helper_text"))
+            }
+            
+            if viewModel.notificationsEnabled {
                 Section {
-                    NavigationLink {
-                        InboxView()
-                    } label: {
+                    Toggle(isOn: $viewModel.doNotDisturbEnabled) {
                         Label {
-                            Text(verbatim: String(localized: "settings_inbox_title"))
-                            
-                            Spacer(minLength: 16)
-                            
-                            if viewModel.badge > 0 {
-                                BadgeView(badge: viewModel.badge)
-                            }
+                            Text(verbatim: String(localized: "settings_dnd_title"))
                         } icon: {
-                            Image(systemName: "tray.and.arrow.down.fill")
+                            Image(systemName: "moon.fill")
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
                                 .padding(6)
-                                .background(Color.red)
+                                .background(Color.blue)
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 4))
                         }
                     }
-                }
-                
-                Section {
-                    Toggle(isOn: $viewModel.notificationsEnabled) {
-                        Label {
-                            Text(verbatim: String(localized: "settings_notifications_title"))
-                        } icon: {
-                            Image(systemName: "bell.badge.fill")
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fit)
-                                .padding(6)
-                                .background(Color.green)
-                                .foregroundColor(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 4))
-                        }
+                    
+                    if viewModel.doNotDisturbEnabled {
+                        DatePicker(
+                            String(localized: "settings_dnd_start"),
+                            selection: $viewModel.doNotDisturbStart,
+                            displayedComponents: .hourAndMinute
+                        )
+                        
+                        DatePicker(
+                            String(localized: "settings_dnd_end"),
+                            selection: $viewModel.doNotDisturbEnd,
+                            displayedComponents: .hourAndMinute
+                        )
                     }
                 } header: {
                     //
                 } footer: {
-                    Text(verbatim: String(localized: "settings_notifications_helper_text"))
-                }
-                
-                if viewModel.notificationsEnabled {
-                    Section {
-                        Toggle(isOn: $viewModel.doNotDisturbEnabled) {
-                            Label {
-                                Text(verbatim: String(localized: "settings_dnd_title"))
-                            } icon: {
-                                Image(systemName: "moon.fill")
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .padding(6)
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                            }
-                        }
-                        
-                        if viewModel.doNotDisturbEnabled {
-                            DatePicker(
-                                String(localized: "settings_dnd_start"),
-                                selection: $viewModel.doNotDisturbStart,
-                                displayedComponents: .hourAndMinute
-                            )
-                            
-                            DatePicker(
-                                String(localized: "settings_dnd_end"),
-                                selection: $viewModel.doNotDisturbEnd,
-                                displayedComponents: .hourAndMinute
-                            )
-                        }
-                    } header: {
-                        //
-                    } footer: {
-                        Text(verbatim: String(localized: "settings_dnd_helper_text"))
-                    }
+                    Text(verbatim: String(localized: "settings_dnd_helper_text"))
                 }
             }
-            .navigationTitle(String(localized: "settings_title"))
         }
+        .navigationTitle(String(localized: "settings_title"))
     }
 }
 
