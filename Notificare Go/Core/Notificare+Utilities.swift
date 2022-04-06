@@ -13,8 +13,33 @@ extension NotificareInboxItem: Identifiable {}
 
 
 extension NotificareEventsModule {
-    func logCartUpdated() async throws {
-        let cart = Preferences.standard.cart
+    func logAddToCart(product: Product) async throws {
+        let data: NotificareEventData = [
+            "product": [
+                "id": product.id,
+                "name": product.name,
+                "price": product.price,
+                "price_formatted": product.price.asCurrencyString(),
+            ],
+        ]
+        
+        try await logCustom("add_to_cart", data: data)
+    }
+    
+    func logRemoveFromCart(product: Product) async throws {
+        let data: NotificareEventData = [
+            "product": [
+                "id": product.id,
+                "name": product.name,
+                "price": product.price,
+                "price_formatted": product.price.asCurrencyString(),
+            ],
+        ]
+        
+        try await logCustom("remove_from_cart", data: data)
+    }
+    
+    func logCartUpdated(cart: [CartEntry]) async throws {
         let total = cart.reduce(0.0, { $0 + $1.product.price })
         
         let data: NotificareEventData = [
@@ -34,20 +59,23 @@ extension NotificareEventsModule {
         try await logCustom("cart_updated", data: data)
     }
     
-    func logPurchase() async throws {
-        let cart = Preferences.standard.cart
-        let total = cart.reduce(0.0, { $0 + $1.product.price })
+    func logCartCleared() async throws {
+        try await logCustom("cart_cleared")
+    }
+    
+    func logPurchase(products: [Product]) async throws {
+        let total = products.reduce(0.0, { $0 + $1.price })
         
         let data: NotificareEventData = [
             "total_price": total,
             "total_price_formatted": total.asCurrencyString(),
-            "total_items": cart.count,
-            "products": cart.map { entry in
+            "total_items": products.count,
+            "products": products.map { product in
                 [
-                    "id": entry.product.id,
-                    "name": entry.product.name,
-                    "price": entry.product.price,
-                    "price_formatted": entry.product.price.asCurrencyString(),
+                    "id": product.id,
+                    "name": product.name,
+                    "price": product.price,
+                    "price_formatted": product.price.asCurrencyString(),
                 ]
             },
         ]
