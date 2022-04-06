@@ -27,9 +27,7 @@
 "main_navigation_cart" = "Cart";
 "main_navigation_settings" = "Settings";
 
-"home_title" = "Home";
-"home_welcome_user" = "Welcome";
-"home_welcome_user_named" = "Welcome\n%@";
+"home_title" = "Welcome";
 "home_top_products" = "Top products";
 "home_top_products_browse_more_button" = "Browse more";
 "home_scan_title" = "Scan for a product";
