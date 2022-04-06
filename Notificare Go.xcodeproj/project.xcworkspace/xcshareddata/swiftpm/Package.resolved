@@ -1,16 +1,50 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Notificare",
-        "repositoryURL": "https://github.com/Notificare/notificare-sdk-ios",
-        "state": {
-          "branch": null,
-          "revision": "c20aa7f549939810a58e0c1cecfd5a2c70a99e4c",
-          "version": "3.0.0"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
+        "version" : "5.5.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "c27a66149b7483fe42e2ec6aad61d5c3fffe522d",
+        "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "4a6058cbbdfe4f74aeae92c8bd51ad3b0de2a1ee",
+        "version" : "3.3.0"
+      }
+    },
+    {
+      "identity" : "notificare-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Notificare/notificare-sdk-ios",
+      "state" : {
+        "revision" : "c20aa7f549939810a58e0c1cecfd5a2c70a99e4c",
+        "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    }
+  ],
+  "version" : 2
 }

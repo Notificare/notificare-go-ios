@@ -16,7 +16,6 @@ import NotificareScannablesKit
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Configure Notificare.
-        Notificare.shared.configure()
         Notificare.shared.push().presentationOptions = [.banner, .badge, .sound]
         
         // Setup the delegates.

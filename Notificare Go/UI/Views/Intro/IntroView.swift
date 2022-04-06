@@ -7,6 +7,7 @@
 
 import AuthenticationServices
 import SwiftUI
+import Introspect
 import NotificareKit
 
 struct IntroView: View {
@@ -22,60 +23,63 @@ struct IntroView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $currentTab) {
-                IntroSlideView(slide: .intro)
-                    .tag(0)
-                
-                IntroSlideView(slide: .notifications)
-                    .tag(1)
-                
-                IntroSlideView(slide: .login)
-                    .tag(2)
-            }
-            .tabViewStyle(.page)
-            .onChange(of: currentTab) { newValue in
-                // Show the login button on the third tab.
-                loginButtonVisible = newValue == 2
-                
-                // Ask for permissions on the second tab.
-                if newValue == 1 {
-                    // TODO: handle the result.
-                    Notificare.shared.push().enableRemoteNotifications { _ in }
-                }
-            }
-            
-            if loginButtonVisible {
-                SignInWithAppleButton(
-                    .signIn,
-                    onRequest: { request in
-                        request.requestedScopes = [.email, .fullName]
-                    },
-                    onCompletion: { result in
-                        switch result {
-                        case .success(let auth):
-                            print("Authorization successful")
-                            
-                            let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
-                            Keychain.standard.user = user
-                            
-                            Notificare.shared.device().register(userId: user.id, userName: user.name) { result in
-                                switch result {
-                                case .success:
-                                    break
-                                case .failure:
-                                    break
-                                }
-                            }
-                            
-                        case .failure(let error):
-                            print("Authorization failed")
-                            print("\(error)")
+                IntroSlideView(slide: .intro) {
+                    Button(String(localized: "intro_welcome_button")) {
+                        withAnimation {
+                            currentTab += 1
                         }
                     }
-                )
+                    .buttonStyle(PrimaryButton())
+                }
+                .tag(0)
+                
+                IntroSlideView(slide: .notifications) {
+                    Button(String(localized: "intro_notifications_button")) {
+                        Notificare.shared.push().enableRemoteNotifications { _ in
+                            // TODO: handle error scenario.
+                            withAnimation {
+                                currentTab += 1
+                            }
+                        }
+                    }
+                    .buttonStyle(PrimaryButton())
+                }
+                .tag(1)
+                
+                IntroSlideView(slide: .login) {
+                    SignInWithAppleButton(
+                        .signIn,
+                        onRequest: { request in
+                            request.requestedScopes = [.email, .fullName]
+                        },
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let auth):
+                                print("Authorization successful")
+                                
+                                let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
+                                Keychain.standard.user = user
+                                
+                                Notificare.shared.device().register(userId: user.id, userName: user.name) { _ in
+                                    // TODO: handle error scenario.
+                                    Preferences.standard.introFinished = true
+                                    ContentRouter.main.route = .main
+                                }
+                            case .failure(let error):
+                                print("Authorization failed")
+                                print("\(error)")
+                            }
+                        }
+                    )
                     .signInWithAppleButtonStyle(colorScheme == .light ? .black : .white)
                     .frame(height: 50)
-                    .padding(.bottom, 64)
-                    .padding(.horizontal, 32)
+                }
+                .tag(2)
+            }
+            .tabViewStyle(.page)
+            .introspectPagedTabView { collectionView, scrollView in
+                scrollView.bounces = false
+                scrollView.isScrollEnabled = false
             }
         }
     }
@@ -90,27 +94,41 @@ struct IntroView_Previews: PreviewProvider {
     }
 }
 
-private struct IntroSlideView: View {
-    let slide: Slide
+private struct IntroSlideView<Footer: View>: View {
+    private let slide: Slide
+    private let footer: () -> Footer
+    
+    init(slide: Slide, @ViewBuilder footer: @escaping () -> Footer) {
+        self.slide = slide
+        self.footer = footer
+    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image(slide.artwork)
                 .resizable()
                 .scaledToFit()
+                .frame(height: 192)
                 .padding()
             
             Text(slide.title)
                 .font(.title)
                 .lineLimit(1)
                 .padding(.horizontal)
-                .padding(.top, 48)
+                .padding(.top, 32)
             
             Text(slide.message)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.top, 8)
+            
+            Spacer()
+            
+            footer()
+                .padding(32)
+                .padding(.bottom, 32)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     enum Slide {
@@ -150,5 +168,11 @@ private struct IntroSlideView: View {
                 return String(localized: "intro_login_message")
             }
         }
+    }
+}
+
+extension IntroSlideView where Footer == EmptyView {
+    init(slide: Slide) {
+        self.init(slide: slide, footer: { EmptyView() })
     }
 }

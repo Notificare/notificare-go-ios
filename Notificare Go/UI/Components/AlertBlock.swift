@@ -15,19 +15,23 @@ struct AlertBlock<Content: View>: View {
     
     private var backgroundColor: Color {
         switch type {
-        case .alert:
+        case .warning:
             return Color("color_alert_warning_background")
+        case .error:
+            return Color("color_alert_error_background")
         }
     }
     
     private var borderColor: Color {
         switch type {
-        case .alert:
+        case .warning:
             return Color("color_alert_warning_border")
+        case .error:
+            return Color("color_alert_error_background")
         }
     }
     
-    init(type: AlertType = .alert, title: String? = nil, systemImage: String? = nil, @ViewBuilder content: () -> Content) {
+    init(type: AlertType = .warning, title: String? = nil, systemImage: String? = nil, @ViewBuilder content: () -> Content) {
         self.type = type
         self.title = title
         self.systemImage = systemImage
@@ -61,14 +65,34 @@ struct AlertBlock<Content: View>: View {
     }
     
     enum AlertType {
-        case alert
+        case warning
+        case error
     }
 }
 
 struct AlertBlock_Previews: PreviewProvider {
     static var previews: some View {
-        AlertBlock(title: "Lorem ipsum", systemImage: "exclamationmark.triangle") {
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sed sem nec consectetur. Quisque urna sem, rhoncus non consequat et, lacinia sit amet libero.")
+        VStack {
+            AlertBlock(title: "Lorem ipsum", systemImage: "exclamationmark.triangle") {
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sed sem nec consectetur. Quisque urna sem, rhoncus non consequat et, lacinia sit amet libero.")
+            }
+            
+            AlertBlock(type: .error, title: "Lorem ipsum", systemImage: "exclamationmark.triangle") {
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sed sem nec consectetur. Quisque urna sem, rhoncus non consequat et, lacinia sit amet libero.")
+            }
         }
+        .padding()
+        
+        VStack {
+            AlertBlock(title: "Lorem ipsum", systemImage: "exclamationmark.triangle") {
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sed sem nec consectetur. Quisque urna sem, rhoncus non consequat et, lacinia sit amet libero.")
+            }
+            
+            AlertBlock(type: .error, title: "Lorem ipsum", systemImage: "exclamationmark.triangle") {
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sed sem nec consectetur. Quisque urna sem, rhoncus non consequat et, lacinia sit amet libero.")
+            }
+        }
+        .padding()
+        .preferredColorScheme(.dark)
     }
 }

@@ -24,8 +24,8 @@ struct ProductCardView: View {
             Text(verbatim: product.name)
                 .font(.headline)
             
-            Text(verbatim: product.formattedPrice)
-                .font(.caption)
+            Text(verbatim: product.price.asCurrencyString())
+                .font(.subheadline)
         }
     }
 }

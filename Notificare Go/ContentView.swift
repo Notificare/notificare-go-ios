@@ -15,6 +15,8 @@ struct ContentView: View {
             switch router.route {
             case .splash:
                 SplashView()
+            case .scanner:
+                AppScannerView()
             case .intro:
                 IntroView()
             case .main:
@@ -41,6 +43,7 @@ class ContentRouter: ObservableObject {
     
     enum Route {
         case splash
+        case scanner
         case intro
         case main
     }

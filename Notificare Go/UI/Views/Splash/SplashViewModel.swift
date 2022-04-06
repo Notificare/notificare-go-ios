@@ -12,16 +12,37 @@ import NotificareKit
 
 @MainActor
 class SplashViewModel: ObservableObject {
+    @Published private(set) var isShowingProgress = false
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
+        guard let appConfiguration = Preferences.standard.appConfiguration else {
+            DispatchQueue.main.async {
+                ContentRouter.main.route = .scanner
+            }
+            
+            return
+        }
+        
+        isShowingProgress = true
+        
+        Notificare.shared.configure(
+            servicesInfo: NotificareServicesInfo(
+                applicationKey: appConfiguration.applicationKey,
+                applicationSecret: appConfiguration.applicationSecret
+            )
+        )
+
         Notificare.shared.launch()
         
         NotificationCenter.default.publisher(for: .notificareLaunched, object: nil)
             .sink { _ in
-                guard let user = Keychain.standard.user else {
-                    ContentRouter.main.route = .intro
+                guard Preferences.standard.introFinished, let user = Keychain.standard.user else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        ContentRouter.main.route = .intro
+                    }
+                    
                     return
                 }
                 
@@ -40,15 +61,11 @@ class SplashViewModel: ObservableObject {
                         fatalError("Unhandled credential state.")
                     }
                     
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         ContentRouter.main.route = route
                     }
                 }
             }
             .store(in: &cancellables)
-    }
-    
-    deinit {
-        cancellables.forEach { $0.cancel() }
     }
 }

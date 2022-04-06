@@ -12,7 +12,6 @@ import NotificarePushUIKit
 
 struct InboxView: View {
     @StateObject private var viewModel = ViewModel()
-    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         List {

@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		F2018F6B27DB6D8D004908E7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6A27DB6D8D004908E7 /* Product.swift */; };
 		F2018F6D27DF935F004908E7 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6C27DF935F004908E7 /* ProductDetailsViewModel.swift */; };
+		F2018F7027DF99FA004908E7 /* ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6F27DF99FA004908E7 /* ProductsListView.swift */; };
+		F2018F7227DF9A52004908E7 /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7127DF9A52004908E7 /* ProductsListViewModel.swift */; };
+		F2018F7427E0AF33004908E7 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7327E0AF33004908E7 /* CartViewModel.swift */; };
+		F2018F7727E0D4AB004908E7 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7627E0D4AB004908E7 /* Preference.swift */; };
+		F2018F7927E0D553004908E7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7827E0D553004908E7 /* Preferences.swift */; };
+		F2018F7D27E0DE0C004908E7 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */; };
+		F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7E27E0E8D7004908E7 /* CartEntry.swift */; };
+		F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F8027E0EDF9004908E7 /* CartItemView.swift */; };
 		F23B8EB027D91574003B93B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */; };
 		F23B8ED927DA40D7003B93B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8ED827DA40D7003B93B8 /* ContentView.swift */; };
 		F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EDB27DA4563003B93B8 /* SplashView.swift */; };
@@ -19,12 +27,22 @@
 		F245855E27C40B8600AA93A2 /* TopProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F245855D27C40B8600AA93A2 /* TopProductsView.swift */; };
 		F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F245855F27C40C1E00AA93A2 /* Localizable.strings */; };
 		F245856327C40CAA00AA93A2 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F245856227C40CAA00AA93A2 /* ProductCardView.swift */; };
+		F2479BA427FC9ED900C1F8BE /* APIClient+Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */; };
+		F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = F2479BA627FDC8F300C1F8BE /* Introspect */; };
+		F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */; };
+		F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6E727ECC37B00F981DF /* CodeScanner */; };
+		F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6EA27EDD20800F981DF /* Lottie */; };
+		F24AA6ED27EDD91A00F981DF /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA6EC27EDD91A00F981DF /* LottieView.swift */; };
+		F24AA6F027EDDBB000F981DF /* animation-qr-code-scanner.json in Resources */ = {isa = PBXBuildFile; fileRef = F24AA6EF27EDDBB000F981DF /* animation-qr-code-scanner.json */; };
+		F24AA6F227EDDF3700F981DF /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA6F127EDDF3700F981DF /* AppConfiguration.swift */; };
+		F24D0D8727FC4D4F00E4232A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D0D8627FC4D4F00E4232A /* APIClient.swift */; };
+		F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F24D0D8927FC595A00E4232A /* Alamofire */; };
+		F24D0D8C27FC91B600E4232A /* AppScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D0D8B27FC91B600E4232A /* AppScannerViewModel.swift */; };
 		F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */; };
 		F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */; };
 		F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */; };
 		F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */; };
 		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
-		F284C0BD27CF77FD00E6986B /* NotificareServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BB27CF77EF00E6986B /* NotificareServices.plist */; };
 		F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BE27CF781400E6986B /* NotificareOptions.plist */; };
 		F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C127CF7F5400E6986B /* InboxView.swift */; };
 		F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */; };
@@ -64,6 +82,14 @@
 /* Begin PBXFileReference section */
 		F2018F6A27DB6D8D004908E7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F2018F6C27DF935F004908E7 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
+		F2018F6F27DF99FA004908E7 /* ProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListView.swift; sourceTree = "<group>"; };
+		F2018F7127DF9A52004908E7 /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
+		F2018F7327E0AF33004908E7 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		F2018F7627E0D4AB004908E7 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		F2018F7827E0D553004908E7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
+		F2018F7E27E0E8D7004908E7 /* CartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
+		F2018F8027E0EDF9004908E7 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F23B8ED827DA40D7003B93B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F23B8EDB27DA4563003B93B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -74,6 +100,13 @@
 		F245855D27C40B8600AA93A2 /* TopProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProductsView.swift; sourceTree = "<group>"; };
 		F245855F27C40C1E00AA93A2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F245856227C40CAA00AA93A2 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
+		F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Responses.swift"; sourceTree = "<group>"; };
+		F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Introspect.swift"; sourceTree = "<group>"; };
+		F24AA6EC27EDD91A00F981DF /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		F24AA6EF27EDDBB000F981DF /* animation-qr-code-scanner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-qr-code-scanner.json"; sourceTree = "<group>"; };
+		F24AA6F127EDDF3700F981DF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		F24D0D8627FC4D4F00E4232A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F24D0D8B27FC91B600E4232A /* AppScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScannerViewModel.swift; sourceTree = "<group>"; };
 		F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxItemView.swift; sourceTree = "<group>"; };
 		F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
@@ -81,7 +114,6 @@
 		F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Custom.swift"; sourceTree = "<group>"; };
 		F25E4EF627D23DC700BEFCF5 /* Notificare-Go-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Notificare-Go-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notificare Go.entitlements"; sourceTree = "<group>"; };
-		F284C0BB27CF77EF00E6986B /* NotificareServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareServices.plist; sourceTree = "<group>"; };
 		F284C0BE27CF781400E6986B /* NotificareOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
 		F284C0C127CF7F5400E6986B /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		F284C0C327CF7F6F00E6986B /* InboxView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InboxView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -116,12 +148,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */,
+				F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */,
 				F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */,
 				F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */,
 				F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */,
+				F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */,
 				F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */,
+				F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */,
 				F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */,
 				F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */,
+				F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */,
 				F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */,
 				F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */,
 			);
@@ -130,6 +166,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2018F6E27DF99E3004908E7 /* ProductsList */ = {
+			isa = PBXGroup;
+			children = (
+				F2018F6F27DF99FA004908E7 /* ProductsListView.swift */,
+				F2018F7127DF9A52004908E7 /* ProductsListViewModel.swift */,
+			);
+			path = ProductsList;
+			sourceTree = "<group>";
+		};
+		F2018F7527E0BBA1004908E7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F2018F7627E0D4AB004908E7 /* Preference.swift */,
+				F2018F7827E0D553004908E7 /* Preferences.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		F23B8EDA27DA4558003B93B8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +198,8 @@
 			children = (
 				F23B8EE427DA5D99003B93B8 /* CurrentUser.swift */,
 				F2018F6A27DB6D8D004908E7 /* Product.swift */,
+				F2018F7E27E0E8D7004908E7 /* CartEntry.swift */,
+				F24AA6F127EDDF3700F981DF /* AppConfiguration.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,14 +218,33 @@
 			children = (
 				F29B873827C4F55E00460D85 /* AsyncImageCompat */,
 				F29B871E27C4EC2B00460D85 /* AlertBlock.swift */,
-				F29B873627C4F4E900460D85 /* ButtonStyles.swift */,
 				F284C0C927CF8A5600E6986B /* BadgeView.swift */,
+				F29B873627C4F4E900460D85 /* ButtonStyles.swift */,
+				F2018F8027E0EDF9004908E7 /* CartItemView.swift */,
 				F284C0CD27CF907600E6986B /* DetermineSize.swift */,
 				F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */,
+				F24AA6EC27EDD91A00F981DF /* LottieView.swift */,
 				F245856227C40CAA00AA93A2 /* ProductCardView.swift */,
 				F245855D27C40B8600AA93A2 /* TopProductsView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F24AA6EE27EDDB9300F981DF /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				F24AA6EF27EDDBB000F981DF /* animation-qr-code-scanner.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		F24D0D8527FB58A000E4232A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F24D0D8627FC4D4F00E4232A /* APIClient.swift */,
+				F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F284C0C027CF7F3D00E6986B /* Inbox */ = {
@@ -185,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F0011427BFEE3F00753D89 /* CartView.swift */,
+				F2018F7327E0AF33004908E7 /* CartViewModel.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -227,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				F29B872A27C4F34F00460D85 /* AppScannerView.swift */,
+				F24D0D8B27FC91B600E4232A /* AppScannerViewModel.swift */,
 			);
 			path = AppScanner;
 			sourceTree = "<group>";
@@ -271,11 +348,13 @@
 			isa = PBXGroup;
 			children = (
 				F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */,
+				F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */,
+				F23B8EE127DA562A003B93B8 /* Keychain.swift */,
 				F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */,
 				F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */,
 				F29B874027C4FC4200460D85 /* String+Localization.swift */,
 				F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */,
-				F23B8EE127DA562A003B93B8 /* Keychain.swift */,
+				F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -302,14 +381,16 @@
 				F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */,
 				F25E4EF627D23DC700BEFCF5 /* Notificare-Go-Info.plist */,
 				F29B873F27C4FC3700460D85 /* Core */,
+				F24AA6EE27EDDB9300F981DF /* Lottie */,
 				F23B8EE327DA5D89003B93B8 /* Models */,
+				F24D0D8527FB58A000E4232A /* Network */,
+				F2018F7527E0BBA1004908E7 /* Storage */,
 				F245855A27C40B4F00AA93A2 /* UI */,
 				F2F0010227BFE83D00753D89 /* GoApp.swift */,
 				F23B8ED827DA40D7003B93B8 /* ContentView.swift */,
 				F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */,
 				F2F0010627BFE83E00753D89 /* Assets.xcassets */,
 				F245855F27C40C1E00AA93A2 /* Localizable.strings */,
-				F284C0BB27CF77EF00E6986B /* NotificareServices.plist */,
 				F284C0BE27CF781400E6986B /* NotificareOptions.plist */,
 				F2F0010827BFE83E00753D89 /* Preview Content */,
 			);
@@ -333,6 +414,7 @@
 				F284C0C027CF7F3D00E6986B /* Inbox */,
 				F29B872627C4F31600460D85 /* Intro */,
 				F29B872127C4F12600460D85 /* Main */,
+				F2018F6E27DF99E3004908E7 /* ProductsList */,
 				F29B873227C4F3A300460D85 /* ProductDetails */,
 				F23B8EDA27DA4558003B93B8 /* Splash */,
 				F29B872327C4F13100460D85 /* Settings */,
@@ -368,6 +450,10 @@
 				F29B081C27D648FA00EE90CC /* NotificarePushKit */,
 				F29B081E27D648FA00EE90CC /* NotificarePushUIKit */,
 				F29B082027D648FA00EE90CC /* NotificareScannablesKit */,
+				F24AA6E727ECC37B00F981DF /* CodeScanner */,
+				F24AA6EA27EDD20800F981DF /* Lottie */,
+				F24D0D8927FC595A00E4232A /* Alamofire */,
+				F2479BA627FDC8F300C1F8BE /* Introspect */,
 			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
@@ -399,6 +485,10 @@
 			mainGroup = F2F000F627BFE83D00753D89;
 			packageReferences = (
 				F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */,
+				F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = F2F0010027BFE83D00753D89 /* Products */;
 			projectDirPath = "";
@@ -416,9 +506,9 @@
 			files = (
 				F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */,
 				F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */,
-				F284C0BD27CF77FD00E6986B /* NotificareServices.plist in Resources */,
 				F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */,
 				F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */,
+				F24AA6F027EDDBB000F981DF /* animation-qr-code-scanner.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,16 +525,24 @@
 				F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */,
 				F29B872527C4F26F00460D85 /* MainView.swift in Sources */,
 				F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */,
+				F2018F7927E0D553004908E7 /* Preferences.swift in Sources */,
+				F24D0D8C27FC91B600E4232A /* AppScannerViewModel.swift in Sources */,
 				F29B873E27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift in Sources */,
+				F24D0D8727FC4D4F00E4232A /* APIClient.swift in Sources */,
 				F29B873C27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift in Sources */,
 				F245855E27C40B8600AA93A2 /* TopProductsView.swift in Sources */,
+				F2479BA427FC9ED900C1F8BE /* APIClient+Responses.swift in Sources */,
+				F24AA6ED27EDD91A00F981DF /* LottieView.swift in Sources */,
 				F29B873127C4F39F00460D85 /* StoreView.swift in Sources */,
+				F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */,
 				F23B8EDE27DA45D4003B93B8 /* SplashViewModel.swift in Sources */,
 				F29B873A27C4F56A00460D85 /* AsyncImageCompat.swift in Sources */,
 				F284C0C627CF850000E6986B /* SettingsView+ViewModel.swift in Sources */,
 				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
 				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
+				F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */,
 				F284C0C427CF7F6F00E6986B /* InboxView+ViewModel.swift in Sources */,
+				F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */,
 				F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */,
 				F23B8EE927DB4D89003B93B8 /* UserProfileViewModel.swift in Sources */,
 				F29B873427C4F3B900460D85 /* ProductDetailsView.swift in Sources */,
@@ -457,11 +555,17 @@
 				F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */,
 				F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */,
 				F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */,
+				F2018F7D27E0DE0C004908E7 /* Double+Currency.swift in Sources */,
+				F2018F7727E0D4AB004908E7 /* Preference.swift in Sources */,
 				F2018F6B27DB6D8D004908E7 /* Product.swift in Sources */,
 				F29B872827C4F31F00460D85 /* IntroView.swift in Sources */,
 				F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */,
 				F29B873727C4F4E900460D85 /* ButtonStyles.swift in Sources */,
+				F2018F7027DF99FA004908E7 /* ProductsListView.swift in Sources */,
 				F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */,
+				F2018F7427E0AF33004908E7 /* CartViewModel.swift in Sources */,
+				F2018F7227DF9A52004908E7 /* ProductsListViewModel.swift in Sources */,
+				F24AA6F227EDDF3700F981DF /* AppConfiguration.swift in Sources */,
 				F2F0010327BFE83D00753D89 /* GoApp.swift in Sources */,
 				F245856327C40CAA00AA93A2 /* ProductCardView.swift in Sources */,
 				F29B874127C4FC4200460D85 /* String+Localization.swift in Sources */,
@@ -677,6 +781,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+		F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
@@ -688,6 +824,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F2479BA627FDC8F300C1F8BE /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		F24AA6E727ECC37B00F981DF /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		F24AA6EA27EDD20800F981DF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		F24D0D8927FC595A00E4232A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		F29B081027D648FA00EE90CC /* NotificareAssetsKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;

@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct SplashView: View {
-    @StateObject private var viewModel = SplashViewModel()
+    @StateObject private var viewModel: SplashViewModel
     @State private var contentHeight = 0.0
-    @State private var showProgressIndicator = false
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: SplashViewModel())
+    }
     
     var body: some View {
         ZStack(alignment: .center) {
@@ -21,17 +24,12 @@ struct SplashView: View {
                     contentHeight = size.height
                 }
             
-            if showProgressIndicator {
+            if viewModel.isShowingProgress {
                 ProgressView()
                     .offset(y: contentHeight + 32)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                showProgressIndicator = true
-            }
-        }
     }
 }
 

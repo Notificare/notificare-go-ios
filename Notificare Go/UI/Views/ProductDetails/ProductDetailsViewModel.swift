@@ -10,28 +10,37 @@ import NotificareKit
 
 @MainActor
 class ProductDetailsViewModel: ObservableObject {
+    @Published private(set) var cartCommand: CartCommand = .na
     
     func addToCart(_ product: Product) {
         Task {
+            cartCommand = .loading
+            
+            // Delay the task between 0.5 and 1 second.
+            try? await Task.sleep(nanoseconds: .random(in: 500_000_000...1_000_000_000))
+            
             do {
-                let data: NotificareEventData = [
-                    "total_price": 300,
-                    "total_price_formatted": "€300,00",
-                    "total_items": 10,
-                    "products": [
-                        [
-                            "id": product.id,
-                            "name": product.name,
-                            "price": product.price,
-                            "price_formatted": product.formattedPrice,
-                        ],
-                    ],
-                ]
+                // Store the entry in the local cart.
+                Preferences.standard.cart.append(
+                    CartEntry(
+                        id: UUID(),
+                        time: Date(),
+                        product: product
+                    )
+                )
                 
-                try await Notificare.shared.events().logCustom("cart_updated", data: data)
+                try await Notificare.shared.events().logCartUpdated()
+                cartCommand = .success
             } catch {
-                // TODO: handle the error.
+                cartCommand = .failure
             }
         }
+    }
+    
+    enum CartCommand {
+        case na
+        case loading
+        case success
+        case failure
     }
 }

@@ -8,10 +8,18 @@
 
 "shared_anonymous_user" = "Anonymous";
 
+"app_scanner_title" = "Configure your app";
+"app_scanner_message" = "Either scan a QR code to automatically configure your app or click the magic link in the invitation email sent by your administrator.";
+"app_scanner_scan_button" = "Open scanner";
+"app_scanner_scan_error_title" = "Invalid QR code";
+"app_scanner_scan_error_message" = "The scanned QR code is not valid. Scan the QR code sent to your email.";
+
 "intro_welcome_title" = "Welcome";
 "intro_welcome_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_welcome_button" = "Get started";
 "intro_notifications_title" = "Notifications";
 "intro_notifications_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_notifications_button" = "Enable notifications";
 "intro_login_title" = "Login";
 "intro_login_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
@@ -60,3 +68,11 @@
 "product_details_product_info" = "Product info";
 "product_details_add_to_cart" = "Add to card";
 "product_details_view_cart" = "View cart";
+
+"cart_title" = "Cart";
+"cart_last_modified" = "Last modified: %@";
+"cart_total_amount" = "Total amount: %@";
+"cart_purchase_button" = "Purchase";
+"cart_remove_item_button" = "Remove this item";
+"cart_empty_message" = "There are no products in your cart.";
+"cart_shop_button" = "Shop for some products";

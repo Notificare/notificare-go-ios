@@ -29,7 +29,7 @@ struct ProductDetailsView: View {
                     Text(verbatim: product.name)
                         .font(.title)
                     
-                    Text(verbatim: product.formattedPrice)
+                    Text(verbatim: product.price.asCurrencyString())
                         .font(.subheadline)
                     
                     Text(verbatim: String(localized: "product_details_product_info"))
@@ -44,6 +44,7 @@ struct ProductDetailsView: View {
                     } label: {
                         Label(String(localized: "product_details_add_to_cart"), systemImage: "cart.badge.plus")
                     }
+                    .disabled(viewModel.cartCommand == .loading)
                     .buttonStyle(PrimaryButton())
                     .padding(.top, 16)
                 }
