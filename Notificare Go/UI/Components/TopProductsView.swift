@@ -32,8 +32,8 @@ struct TopProductsView: View {
             HStack {
                 Spacer()
                 
-                Button {
-                    //
+                NavigationLink {
+                    ProductsListView()
                 } label: {
                     HStack {
                         Text(String(localized: "home_top_products_browse_more_button"))
