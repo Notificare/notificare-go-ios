@@ -6,27 +6,29 @@
 //
 
 import AuthenticationServices
+import CoreLocation
 import SwiftUI
 import Introspect
 import NotificareKit
 
 struct IntroView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @State private var currentTab = 0
-    @State private var loginButtonVisible = false
+    @StateObject private var viewModel: IntroViewModel
     
     init() {
+        self._viewModel = StateObject(wrappedValue: IntroViewModel())
+        
         UIPageControl.appearance().currentPageIndicatorTintColor = .init(named: "color_intro_indicator_current")
         UIPageControl.appearance().pageIndicatorTintColor = .init(named: "color_intro_indicator_unselected")
     }
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            TabView(selection: $currentTab) {
+            TabView(selection: $viewModel.currentTab) {
                 IntroSlideView(slide: .intro) {
                     Button(String(localized: "intro_welcome_button")) {
                         withAnimation {
-                            currentTab += 1
+                            viewModel.currentTab += 1
                         }
                     }
                     .buttonStyle(PrimaryButton())
@@ -35,16 +37,19 @@ struct IntroView: View {
                 
                 IntroSlideView(slide: .notifications) {
                     Button(String(localized: "intro_notifications_button")) {
-                        Notificare.shared.push().enableRemoteNotifications { _ in
-                            // TODO: handle error scenario.
-                            withAnimation {
-                                currentTab += 1
-                            }
-                        }
+                        viewModel.enableRemoteNotifications()
                     }
                     .buttonStyle(PrimaryButton())
                 }
                 .tag(1)
+                
+                IntroSlideView(slide: .location) {
+                    Button(String(localized: "intro_location_button")) {
+                        viewModel.enableLocationUpdates()
+                    }
+                    .buttonStyle(PrimaryButton())
+                }
+                .tag(2)
                 
                 IntroSlideView(slide: .login) {
                     SignInWithAppleButton(
@@ -74,13 +79,31 @@ struct IntroView: View {
                     .signInWithAppleButtonStyle(colorScheme == .light ? .black : .white)
                     .frame(height: 50)
                 }
-                .tag(2)
+                .tag(3)
             }
             .tabViewStyle(.page)
             .introspectPagedTabView { collectionView, scrollView in
                 scrollView.bounces = false
                 scrollView.isScrollEnabled = false
             }
+        }
+        .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
+            Alert(
+                title: Text(String(localized: "intro_location_alert_denied_title")),
+                message: Text(String(localized: "intro_location_alert_denied_message")),
+                primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
+                    withAnimation {
+                        viewModel.currentTab += 1
+                    }
+                }),
+                secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
+                    guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
+                        return
+                    }
+                    
+                    UIApplication.shared.open(url)
+                })
+            )
         }
     }
 }
@@ -134,6 +157,7 @@ private struct IntroSlideView<Footer: View>: View {
     enum Slide {
         case intro
         case notifications
+        case location
         case login
         
         var artwork: String {
@@ -142,6 +166,8 @@ private struct IntroSlideView<Footer: View>: View {
                 return "artwork_intro"
             case .notifications:
                 return "artwork_remote_notifications"
+            case .location:
+                return "artwork_location"
             case .login:
                 return "artwork_login"
             }
@@ -153,6 +179,8 @@ private struct IntroSlideView<Footer: View>: View {
                 return String(localized: "intro_welcome_title")
             case .notifications:
                 return String(localized: "intro_notifications_title")
+            case .location:
+                return String(localized: "intro_location_title")
             case .login:
                 return String(localized: "intro_login_title")
             }
@@ -164,6 +192,8 @@ private struct IntroSlideView<Footer: View>: View {
                 return String(localized: "intro_welcome_message")
             case .notifications:
                 return String(localized: "intro_notifications_message")
+            case .location:
+                return String(localized: "intro_location_message")
             case .login:
                 return String(localized: "intro_login_message")
             }

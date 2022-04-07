@@ -6,6 +6,12 @@
 	<string>We need access to the camera to scan for products and reply to notifications.</string>
 	<key>NFCReaderUsageDescription</key>
 	<string>We need access to NFC to scan for products.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We will need to make use of your location to present relevant information about offers around you.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We will need to make use of your location to present relevant information about offers around you.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We will need to make use of your location to present relevant information about offers around you.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

@@ -30,6 +30,7 @@
 		F2479BA427FC9ED900C1F8BE /* APIClient+Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */; };
 		F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = F2479BA627FDC8F300C1F8BE /* Introspect */; };
 		F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */; };
+		F2479BAB27FF15ED00C1F8BE /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */; };
 		F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6E727ECC37B00F981DF /* CodeScanner */; };
 		F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6EA27EDD20800F981DF /* Lottie */; };
 		F24AA6ED27EDD91A00F981DF /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA6EC27EDD91A00F981DF /* LottieView.swift */; };
@@ -101,6 +102,7 @@
 		F245856227C40CAA00AA93A2 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Responses.swift"; sourceTree = "<group>"; };
 		F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Introspect.swift"; sourceTree = "<group>"; };
+		F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		F24AA6EC27EDD91A00F981DF /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		F24AA6EF27EDDBB000F981DF /* animation-qr-code-scanner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-qr-code-scanner.json"; sourceTree = "<group>"; };
 		F24AA6F127EDDF3700F981DF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				F29B872727C4F31F00460D85 /* IntroView.swift */,
+				F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */,
 				F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */,
 				F23B8ED927DA40D7003B93B8 /* ContentView.swift in Sources */,
+				F2479BAB27FF15ED00C1F8BE /* IntroViewModel.swift in Sources */,
 				F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */,
 				F29B872527C4F26F00460D85 /* MainView.swift in Sources */,
 				F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */,

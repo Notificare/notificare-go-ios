@@ -7,6 +7,8 @@
 */
 
 "shared_anonymous_user" = "Anonymous";
+"shared_dialog_button_ok" = "OK";
+"shared_dialog_button_skip" = "Skip";
 
 "app_scanner_title" = "Configure your app";
 "app_scanner_message" = "Either scan a QR code to automatically configure your app or click the magic link in the invitation email sent by your administrator.";
@@ -20,6 +22,11 @@
 "intro_notifications_title" = "Notifications";
 "intro_notifications_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 "intro_notifications_button" = "Enable notifications";
+"intro_location_title" = "Location";
+"intro_location_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_location_button" = "Enable location updates";
+"intro_location_alert_denied_title" = "Missing permission";
+"intro_location_alert_denied_message" = "Please go to Settings and enable the location permission.";
 "intro_login_title" = "Login";
 "intro_login_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
