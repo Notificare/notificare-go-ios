@@ -7,10 +7,12 @@
 
 import Foundation
 import NotificareKit
+import NotificareGeoKit
 import NotificareInboxKit
 
 extension NotificareInboxItem: Identifiable {}
 
+extension NotificareBeacon: Identifiable {}
 
 extension NotificareEventsModule {
     func logAddToCart(product: Product) async throws {

@@ -17,4 +17,7 @@ extension Notification.Name {
     // Inbox
     static let badgeUpdated = Notification.Name(rawValue: "app.badge_updated")
     static let inboxUpdated = Notification.Name(rawValue: "app.inbox_updated")
+    
+    // Geo
+    static let beaconsRanged = Notification.Name(rawValue: "app.beacons_ranged")
 }

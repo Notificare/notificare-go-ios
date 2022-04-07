@@ -31,6 +31,8 @@
 		F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = F2479BA627FDC8F300C1F8BE /* Introspect */; };
 		F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */; };
 		F2479BAB27FF15ED00C1F8BE /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */; };
+		F2479BAD27FF354600C1F8BE /* BeaconRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAC27FF354600C1F8BE /* BeaconRow.swift */; };
+		F2479BAF27FF431600C1F8BE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAE27FF431600C1F8BE /* LocationService.swift */; };
 		F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6E727ECC37B00F981DF /* CodeScanner */; };
 		F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F24AA6EA27EDD20800F981DF /* Lottie */; };
 		F24AA6ED27EDD91A00F981DF /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA6EC27EDD91A00F981DF /* LottieView.swift */; };
@@ -103,6 +105,8 @@
 		F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Responses.swift"; sourceTree = "<group>"; };
 		F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Introspect.swift"; sourceTree = "<group>"; };
 		F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
+		F2479BAC27FF354600C1F8BE /* BeaconRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRow.swift; sourceTree = "<group>"; };
+		F2479BAE27FF431600C1F8BE /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		F24AA6EC27EDD91A00F981DF /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		F24AA6EF27EDDBB000F981DF /* animation-qr-code-scanner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-qr-code-scanner.json"; sourceTree = "<group>"; };
 		F24AA6F127EDDF3700F981DF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				F29B873627C4F4E900460D85 /* ButtonStyles.swift */,
 				F2018F8027E0EDF9004908E7 /* CartItemView.swift */,
 				F284C0CD27CF907600E6986B /* DetermineSize.swift */,
+				F2479BAC27FF354600C1F8BE /* BeaconRow.swift */,
 				F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */,
 				F24AA6EC27EDD91A00F981DF /* LottieView.swift */,
 				F245856227C40CAA00AA93A2 /* ProductCardView.swift */,
@@ -343,6 +348,7 @@
 				F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */,
 				F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */,
 				F23B8EE127DA562A003B93B8 /* Keychain.swift */,
+				F2479BAE27FF431600C1F8BE /* LocationService.swift */,
 				F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */,
 				F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */,
 				F29B874027C4FC4200460D85 /* String+Localization.swift */,
@@ -529,6 +535,7 @@
 				F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */,
 				F23B8EDE27DA45D4003B93B8 /* SplashViewModel.swift in Sources */,
 				F29B873A27C4F56A00460D85 /* AsyncImageCompat.swift in Sources */,
+				F2479BAD27FF354600C1F8BE /* BeaconRow.swift in Sources */,
 				F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */,
 				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
 				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
@@ -544,6 +551,7 @@
 				F29B872E27C4F37D00460D85 /* UserProfileView.swift in Sources */,
 				F2018F6D27DF935F004908E7 /* ProductDetailsViewModel.swift in Sources */,
 				F2F0011527BFEE3F00753D89 /* CartView.swift in Sources */,
+				F2479BAF27FF431600C1F8BE /* LocationService.swift in Sources */,
 				F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */,
 				F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */,
 				F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */,

@@ -11,7 +11,6 @@ import NotificareScannablesKit
 
 struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
-    private var user = Keychain.standard.user!
     
     init() {
         self._viewModel = StateObject(wrappedValue: HomeViewModel())
@@ -53,14 +52,33 @@ struct HomeView: View {
                         .font(.title2)
                         .bold()
                     
-                    AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
-                        Text(String(localized: "home_nearby_alert_permissions_message"))
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Button {
-                            //
-                        } label: {
-                            Text(String(localized: "home_nearby_alert_permissions_button"))
+                    if viewModel.hasLocationPermissions {
+                        GroupBox {
+                            if viewModel.rangedBeacons.isEmpty {
+                                Text(String(localized: "home_nearby_no_beacons"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            } else {
+                                VStack {
+                                    ForEach(Array(viewModel.rangedBeacons.enumerated()), id: \.1) { index, beacon in
+                                        BeaconRow(beacon: beacon)
+                                        
+                                        if index < viewModel.rangedBeacons.count - 1 {
+                                            Divider()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
+                            Text(String(localized: "home_nearby_alert_permissions_message"))
+                                .fixedSize(horizontal: false, vertical: true)
+
+                            Button {
+                                viewModel.enableLocationUpdates()
+                            } label: {
+                                Text(String(localized: "home_nearby_alert_permissions_button"))
+                            }
                         }
                     }
                 }
@@ -68,6 +86,22 @@ struct HomeView: View {
             }
         }
         .navigationTitle(String(localized: "home_title"))
+        .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
+            Alert(
+                title: Text(String(localized: "intro_location_alert_denied_title")),
+                message: Text(String(localized: "intro_location_alert_denied_message")),
+                primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
+                    
+                }),
+                secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
+                    guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
+                        return
+                    }
+                    
+                    UIApplication.shared.open(url)
+                })
+            )
+        }
     }
 }
 

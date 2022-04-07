@@ -41,6 +41,7 @@
 "home_scan_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar neque facilisis laoreet.";
 "home_scan_button" = "Scan";
 "home_nearby_title" = "Nearby stores";
+"home_nearby_no_beacons" = "There are no stores in your vicinity.";
 "home_nearby_alert_permissions_title" = "Missing permissions";
 "home_nearby_alert_permissions_message" = "In order to show your nearby stored we need access to your precise location.";
 "home_nearby_alert_permissions_button" = "Request access";

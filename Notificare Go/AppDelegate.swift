@@ -85,7 +85,16 @@ extension AppDelegate: NotificareInboxDelegate {
 }
 
 extension AppDelegate: NotificareGeoDelegate {
-    
+    func notificare(_ notificareGeo: NotificareGeo, didRange beacons: [NotificareBeacon], in region: NotificareRegion) {
+        NotificationCenter.default.post(
+            name: .beaconsRanged,
+            object: nil,
+            userInfo: [
+                "region": region,
+                "beacons": beacons,
+            ]
+        )
+    }
 }
 
 extension AppDelegate: NotificareScannablesDelegate {
