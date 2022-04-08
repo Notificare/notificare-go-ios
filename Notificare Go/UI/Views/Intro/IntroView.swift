@@ -23,69 +23,73 @@ struct IntroView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TabView(selection: $viewModel.currentTab) {
-                IntroSlideView(slide: .intro) {
-                    Button(String(localized: "intro_welcome_button")) {
-                        withAnimation {
-                            viewModel.currentTab += 1
-                        }
-                    }
-                    .buttonStyle(PrimaryButton())
-                }
-                .tag(0)
-                
-                IntroSlideView(slide: .notifications) {
-                    Button(String(localized: "intro_notifications_button")) {
-                        viewModel.enableRemoteNotifications()
-                    }
-                    .buttonStyle(PrimaryButton())
-                }
-                .tag(1)
-                
-                IntroSlideView(slide: .location) {
-                    Button(String(localized: "intro_location_button")) {
-                        viewModel.enableLocationUpdates()
-                    }
-                    .buttonStyle(PrimaryButton())
-                }
-                .tag(2)
-                
-                IntroSlideView(slide: .login) {
-                    SignInWithAppleButton(
-                        .signIn,
-                        onRequest: { request in
-                            request.requestedScopes = [.email, .fullName]
-                        },
-                        onCompletion: { result in
-                            switch result {
-                            case .success(let auth):
-                                print("Authorization successful")
-                                
-                                let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
-                                Keychain.standard.user = user
-                                
-                                Notificare.shared.device().register(userId: user.id, userName: user.name) { _ in
-                                    // TODO: handle error scenario.
-                                    Preferences.standard.introFinished = true
-                                    ContentRouter.main.route = .main
-                                }
-                            case .failure(let error):
-                                print("Authorization failed")
-                                print("\(error)")
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                TabView(selection: $viewModel.currentTab) {
+                    IntroSlideView(slide: .intro) {
+                        Button(String(localized: "intro_welcome_button")) {
+                            withAnimation {
+                                viewModel.currentTab += 1
                             }
                         }
-                    )
-                    .signInWithAppleButtonStyle(colorScheme == .light ? .black : .white)
-                    .frame(height: 50)
+                        .buttonStyle(PrimaryButton())
+                    }
+                    .tag(0)
+                    
+                    IntroSlideView(slide: .notifications) {
+                        Button(String(localized: "intro_notifications_button")) {
+                            viewModel.enableRemoteNotifications()
+                        }
+                        .buttonStyle(PrimaryButton())
+                    }
+                    .tag(1)
+                    
+                    IntroSlideView(slide: .location) {
+                        Button(String(localized: "intro_location_button")) {
+                            viewModel.enableLocationUpdates()
+                        }
+                        .buttonStyle(PrimaryButton())
+                    }
+                    .tag(2)
+                    
+                    IntroSlideView(slide: .login) {
+                        SignInWithAppleButton(
+                            .signIn,
+                            onRequest: { request in
+                                request.requestedScopes = [.email, .fullName]
+                            },
+                            onCompletion: { result in
+                                switch result {
+                                case .success(let auth):
+                                    print("Authorization successful")
+                                    
+                                    let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
+                                    Keychain.standard.user = user
+                                    
+                                    Notificare.shared.device().register(userId: user.id, userName: user.name) { _ in
+                                        // TODO: handle error scenario.
+                                        Preferences.standard.introFinished = true
+                                        ContentRouter.main.route = .main
+                                    }
+                                case .failure(let error):
+                                    print("Authorization failed")
+                                    print("\(error)")
+                                }
+                            }
+                        )
+                        .signInWithAppleButtonStyle(colorScheme == .light ? .black : .white)
+                        .frame(height: 50)
+                    }
+                    .tag(3)
                 }
-                .tag(3)
+                .tabViewStyle(.page)
+                .introspectPagedTabView { collectionView, scrollView in
+                    scrollView.bounces = false
+                    scrollView.isScrollEnabled = false
+                }
             }
-            .tabViewStyle(.page)
-            .introspectPagedTabView { collectionView, scrollView in
-                scrollView.bounces = false
-                scrollView.isScrollEnabled = false
-            }
+            .navigationTitle(String(localized: "intro_title"))
+            .navigationBarTitleDisplayMode(.inline)
         }
         .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
             Alert(
