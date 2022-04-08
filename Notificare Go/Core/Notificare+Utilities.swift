@@ -84,4 +84,17 @@ extension NotificareEventsModule {
         
         try await logCustom("purchase", data: data)
     }
+    
+    func logProductView(_ product: Product) async throws {
+        let data: NotificareEventData = [
+            "product": [
+                "id": product.id,
+                "name": product.name,
+                "price": product.price,
+                "price_formatted": product.price.asCurrencyString(),
+            ],
+        ]
+        
+        try await logCustom("product_viewed", data: data)
+    }
 }

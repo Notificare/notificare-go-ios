@@ -10,9 +10,23 @@ import NotificareKit
 
 @MainActor
 class ProductDetailsViewModel: ObservableObject {
+    let product: Product
+    
     @Published private(set) var cartCommand: CartCommand = .na
     
-    func addToCart(_ product: Product) {
+    init(product: Product) {
+        self.product = product
+        
+        Task {
+            do {
+                try await Notificare.shared.events().logProductView(product)
+            } catch {
+                //
+            }
+        }
+    }
+    
+    func addToCart() {
         Task {
             cartCommand = .loading
             

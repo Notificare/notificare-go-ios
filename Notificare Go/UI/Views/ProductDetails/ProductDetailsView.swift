@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     @StateObject private var viewModel: ProductDetailsViewModel
-    private let product: Product
     
     init(product: Product) {
-        self._viewModel = StateObject(wrappedValue: ProductDetailsViewModel())
-        self.product = product
+        self._viewModel = StateObject(wrappedValue: ProductDetailsViewModel(product: product))
     }
     
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                AsyncImageCompat(url: URL(string: product.imageUrl)) { image in
+                AsyncImageCompat(url: URL(string: viewModel.product.imageUrl)) { image in
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
@@ -30,21 +28,21 @@ struct ProductDetailsView: View {
                 .clipped()
 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(verbatim: product.name)
+                    Text(verbatim: viewModel.product.name)
                         .font(.title)
                     
-                    Text(verbatim: product.price.asCurrencyString())
+                    Text(verbatim: viewModel.product.price.asCurrencyString())
                         .font(.subheadline)
                     
                     Text(verbatim: String(localized: "product_details_product_info"))
                         .font(.headline)
                         .padding(.top, 32)
                     
-                    Text(verbatim: product.description)
+                    Text(verbatim: viewModel.product.description)
                         .font(.subheadline)
                     
                     Button {
-                        viewModel.addToCart(product)
+                        viewModel.addToCart()
                     } label: {
                         Label(String(localized: "product_details_add_to_cart"), systemImage: "cart.badge.plus")
                     }
@@ -55,7 +53,7 @@ struct ProductDetailsView: View {
                 .padding()
             }
         }
-        .navigationTitle(product.name)
+        .navigationTitle(viewModel.product.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
