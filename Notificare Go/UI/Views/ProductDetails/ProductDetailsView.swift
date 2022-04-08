@@ -76,9 +76,3 @@ struct ProductDetails_Previews: PreviewProvider {
         }
     }
 }
-
-extension Product {
-    var description: String {
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed turpis mi. Etiam et eros facilisis, facilisis orci at, feugiat ante. Sed maximus, mi quis vestibulum porttitor, lacus risus consectetur turpis, sit amet rutrum velit turpis nec ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at sem mauris. "
-    }
-}
