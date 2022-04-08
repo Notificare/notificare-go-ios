@@ -15,10 +15,11 @@ struct ProductCardView: View {
             AsyncImageCompat(url: URL(string: product.imageUrl)) { image in
                 Image(uiImage: image)
                     .resizable()
+                    .scaledToFill()
             } placeholder: {
                 Color.clear
             }
-            .frame(width: 96, height: 96)
+            .frame(width: 128, height: 96)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             
             Text(verbatim: product.name)
@@ -27,6 +28,7 @@ struct ProductCardView: View {
             Text(verbatim: product.price.asCurrencyString())
                 .font(.subheadline)
         }
+        .frame(width: 128)
     }
 }
 
