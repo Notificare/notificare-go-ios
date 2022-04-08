@@ -62,7 +62,7 @@ struct SettingsView: View {
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
                             .padding(6)
-                            .background(Color.red)
+                            .background(Color("color_settings_location"))
                             .foregroundColor(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
@@ -78,7 +78,7 @@ struct SettingsView: View {
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
                             .padding(6)
-                            .background(Color.green)
+                            .background(Color("color_settings_notifications"))
                             .foregroundColor(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
@@ -99,7 +99,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
                                 .padding(6)
-                                .background(Color.blue)
+                                .background(Color("color_settings_dnd"))
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 4))
                         }
@@ -124,8 +124,46 @@ struct SettingsView: View {
                     Text(verbatim: String(localized: "settings_dnd_helper_text"))
                 }
             }
+            
+            Section {
+                Toggle(isOn: $viewModel.locationEnabled) {
+                    Label {
+                        Text(verbatim: String(localized: "settings_location_title"))
+                    } icon: {
+                        Image(systemName: "location.fill")
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding(6)
+                            .background(Color("color_settings_location"))
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                    }
+                }
+            } header: {
+                //
+            } footer: {
+                Text(verbatim: String(localized: "settings_location_helper_text"))
+            }
         }
         .navigationTitle(String(localized: "settings_title"))
+        .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
+            Alert(
+                title: Text(String(localized: "intro_location_alert_denied_title")),
+                message: Text(String(localized: "intro_location_alert_denied_message")),
+                primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
+                    withAnimation {
+                        viewModel.locationEnabled = false
+                    }
+                }),
+                secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
+                    guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
+                        return
+                    }
+                    
+                    UIApplication.shared.open(url)
+                })
+            )
+        }
     }
 }
 

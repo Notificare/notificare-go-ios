@@ -18,7 +18,10 @@ class SettingsViewModel: ObservableObject {
     @Published var doNotDisturbEnabled: Bool
     @Published var doNotDisturbStart: Date
     @Published var doNotDisturbEnd: Date
+    @Published var locationEnabled: Bool = false
+    @Published var showingSettingsPermissionDialog = false
     
+    private let locationService = LocationService()
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -98,6 +101,51 @@ class SettingsViewModel: ObservableObject {
             Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
         }
         .store(in: &cancellables)
+        
+        $locationEnabled.sink { enabled in
+            guard enabled else {
+                Notificare.shared.geo().disableLocationUpdates()
+                return
+            }
+            
+            guard self.locationService.authorizationStatus != .denied else {
+                self.showingSettingsPermissionDialog = true
+                return
+            }
+            
+            guard self.locationService.authorizationStatus == .authorizedWhenInUse || self.locationService.authorizationStatus == .authorizedAlways else {
+                self.locationService.requestWhenInUseAuthorization()
+                return
+            }
+            
+            guard self.locationService.authorizationStatus == .authorizedAlways else {
+                self.locationService.requestAlwaysAuthorization()
+                return
+            }
+            
+            Notificare.shared.geo().enableLocationUpdates()
+        }
+        .store(in: &cancellables)
+        
+        locationService.authorizationStatusPublisher
+            .sink { [weak self] authorizationStatus in
+                switch authorizationStatus {
+                case .authorizedWhenInUse:
+                    Notificare.shared.geo().enableLocationUpdates()
+                    self?.locationService.requestAlwaysAuthorization()
+                    return
+                case .authorizedAlways:
+                    Notificare.shared.geo().enableLocationUpdates()
+                    self?.locationEnabled = true
+                    return
+                default:
+                    print("Unhandled location authorization status: \(authorizationStatus)")
+                }
+                
+                Notificare.shared.geo().disableLocationUpdates()
+                self?.locationEnabled = false
+            }
+            .store(in: &cancellables)
     }
 }
 
