@@ -8,8 +8,49 @@
 import SwiftUI
 
 struct ProductsListView: View {
+    @StateObject private var viewModel: ProductsListViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: ProductsListViewModel())
+    }
+    
     var body: some View {
-        Text("Hello, World!")
+        List {
+            ForEach(viewModel.products) { product in
+                NavigationLink {
+                    ProductDetailsView(product: product)
+                } label: {
+                    HStack {
+                        AsyncImageCompat(url: URL(string: product.imageUrl)) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            Color.clear
+                        }
+                        .frame(width: 64, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        VStack(alignment: .leading) {
+                            Text(verbatim: product.name)
+                                .font(.headline)
+                                .lineLimit(1)
+                            
+                            Text(verbatim: product.description)
+                                .font(.caption)
+                                .lineLimit(2)
+                        }
+                        .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        Text(verbatim: product.price.asCurrencyString())
+                            .font(.headline)
+                    }
+                }
+            }
+        }
+        .navigationTitle(String(localized: "products_list_title"))
     }
 }
 
