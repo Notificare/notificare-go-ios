@@ -26,7 +26,7 @@ struct ProductDetailsView: View {
                 } placeholder: {
                     Color.clear
                 }
-                .frame(height: 300)
+                .frame(width: UIScreen.main.bounds.width, height: 300)
                 .clipped()
 
                 VStack(alignment: .leading, spacing: 0) {
