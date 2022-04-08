@@ -29,20 +29,34 @@ struct HomeView: View {
                         
                         Text(String(localized: "home_scan_message"))
                             .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 8)
                         
-                        Button(String(localized: "home_scan_button")) {
-                            if Notificare.shared.scannables().canStartNfcScannableSession {
-                                Notificare.shared.scannables().startNfcScannableSession()
-                            } else {
+                        if Notificare.shared.scannables().canStartNfcScannableSession {
+                            VStack(spacing: 0) {
+                                Button(String(localized: "home_scan_nfc_button")) {
+                                    Notificare.shared.scannables().startNfcScannableSession()
+                                }
+                                .buttonStyle(PrimaryButton())
+                                
+                                Button(String(localized: "home_scan_qr_button")) {
+                                    guard let rootViewController = UIApplication.shared.rootViewController else {
+                                        return
+                                    }
+                                    
+                                    Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
+                                }
+                                .padding(.top, 12)
+                            }
+                        } else {
+                            Button(String(localized: "home_scan_nfc_button")) {
                                 guard let rootViewController = UIApplication.shared.rootViewController else {
                                     return
                                 }
                                 
                                 Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                             }
+                            .buttonStyle(PrimaryButton())
                         }
-                        .buttonStyle(PrimaryButton())
-                        .padding(.top, 8)
                     }
                 }
                 .padding()

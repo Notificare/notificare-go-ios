@@ -39,7 +39,8 @@
 "home_top_products_browse_more_button" = "Browse more";
 "home_scan_title" = "Scan for a product";
 "home_scan_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar neque facilisis laoreet.";
-"home_scan_button" = "Scan";
+"home_scan_nfc_button" = "Scan NFC tag";
+"home_scan_qr_button" = "Scan QR code";
 "home_nearby_title" = "Nearby stores";
 "home_nearby_no_beacons" = "There are no stores in your vicinity.";
 "home_nearby_alert_permissions_title" = "Missing permissions";
