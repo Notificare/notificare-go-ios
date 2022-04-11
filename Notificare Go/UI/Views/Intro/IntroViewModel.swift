@@ -46,6 +46,9 @@ class IntroViewModel: NSObject, ObservableObject {
         }
         
         Notificare.shared.geo().enableLocationUpdates()
+        withAnimation {
+            self.currentTab += 1
+        }
     }
 }
 
