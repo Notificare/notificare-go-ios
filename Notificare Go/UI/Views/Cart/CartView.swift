@@ -38,6 +38,13 @@ struct CartView: View {
             } else {
                 List {
                     Section {
+                        Text(String(localized: "cart_disclaimer_message"))
+                            .font(.subheadline)
+                    }
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                    
+                    Section {
                         ForEach(cart.sorted(by: { $0.time < $1.time })) { entry in
                             CartItemView(item: entry)
                                 .contextMenu {

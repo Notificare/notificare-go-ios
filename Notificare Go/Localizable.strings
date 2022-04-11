@@ -87,6 +87,7 @@
 "product_details_view_cart" = "View cart";
 
 "cart_title" = "Cart";
+"cart_disclaimer_message" = "The cart functionality is merely illustrative.\nYou are not acquiring any products, nor will you be charged.\nTest your automations with peace of mind.";
 "cart_last_modified" = "Last modified: %@";
 "cart_total_amount" = "Total amount: %@";
 "cart_purchase_button" = "Purchase";
