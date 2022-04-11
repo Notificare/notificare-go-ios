@@ -17,8 +17,10 @@ struct SplashView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Text("Notificare GO!")
-                .font(.title)
+            Image("artwork_logo_badge")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 128)
                 .overlay(DetermineSize())
                 .onPreferenceChange(SizePreferenceKey.self) { size in
                     contentHeight = size.height
