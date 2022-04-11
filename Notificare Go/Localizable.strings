@@ -47,6 +47,9 @@
 "home_nearby_alert_permissions_title" = "Missing permissions";
 "home_nearby_alert_permissions_message" = "In order to show your nearby stored we need access to your precise location.";
 "home_nearby_alert_permissions_button" = "Request access";
+"home_events_title" = "Log custom events";
+"home_events_message" = "Log events manually by setting up its name and attributes. Use your custom event to create event-based automations.";
+"home_events_button" = "Try it!";
 
 "settings_title" = "Settings";
 "settings_inbox_title" = "Inbox";
@@ -88,3 +91,11 @@
 "cart_remove_item_button" = "Remove this item";
 "cart_empty_message" = "There are no products in your cart.";
 "cart_shop_button" = "Shop for some products";
+
+"events_title" = "Events";
+"events_name_section" = "Name";
+"events_attributes_section" = "Attributes";
+"events_attributes_attribute_name" = "Name";
+"events_attributes_attribute_value" = "Value";
+"events_attributes_add_button" = "Create an attribute";
+"events_submit_button" = "Log custom event";

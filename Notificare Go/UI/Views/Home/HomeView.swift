@@ -97,6 +97,25 @@ struct HomeView: View {
                     }
                 }
                 .padding()
+                
+                GroupBox {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Label(String(localized: "home_events_title"), systemImage: "calendar.badge.plus")
+                            .font(.headline)
+                        
+                        Text(String(localized: "home_events_message"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 8)
+                        
+                        NavigationLink {
+                            EventsView()
+                        } label: {
+                            Text(String(localized: "home_events_button"))
+                        }
+                    }
+                }
+                .padding()
             }
         }
         .navigationTitle(String(localized: "home_title"))
