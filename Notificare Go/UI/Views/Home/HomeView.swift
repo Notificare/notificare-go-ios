@@ -19,10 +19,21 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(spacing: 24) {
+                VStack(spacing: 0) {
+                    Text(String(localized: "home_welcome_title"))
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .padding(.top)
+                    
+                    Text(String(localized: "home_welcome_message"))
+                        .multilineTextAlignment(.center)
+                        .font(.subheadline)
+                        .padding(.vertical)
+                }
+                
                 if storeEnabled {
                     TopProductsView(products: viewModel.highlightedProducts)
-                        .padding()
                 }
                 
                 GroupBox {
@@ -62,25 +73,25 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding()
                 
-                VStack(alignment: .leading) {
-                    Text(String(localized: "home_nearby_title"))
-                        .font(.title2)
-                        .bold()
-                    
+                Group {
                     if viewModel.hasLocationPermissions {
                         GroupBox {
-                            if viewModel.rangedBeacons.isEmpty {
-                                Text(String(localized: "home_nearby_no_beacons"))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            } else {
-                                VStack {
-                                    ForEach(Array(viewModel.rangedBeacons.enumerated()), id: \.1) { index, beacon in
-                                        BeaconRow(beacon: beacon)
-                                        
-                                        if index < viewModel.rangedBeacons.count - 1 {
-                                            Divider()
+                            VStack(alignment: .leading, spacing: 8) {
+                                Label(String(localized: "home_nearby_title"), systemImage: "sensor.tag.radiowaves.forward")
+                                    .font(.headline)
+                                
+                                if viewModel.rangedBeacons.isEmpty {
+                                    Text(String(localized: "home_nearby_no_beacons"))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    VStack {
+                                        ForEach(Array(viewModel.rangedBeacons.enumerated()), id: \.1) { index, beacon in
+                                            BeaconRow(beacon: beacon)
+                                            
+                                            if index < viewModel.rangedBeacons.count - 1 {
+                                                Divider()
+                                            }
                                         }
                                     }
                                 }
@@ -90,7 +101,7 @@ struct HomeView: View {
                         AlertBlock(title: String(localized: "home_nearby_alert_permissions_title"), systemImage: "exclamationmark.triangle") {
                             Text(String(localized: "home_nearby_alert_permissions_message"))
                                 .fixedSize(horizontal: false, vertical: true)
-
+                            
                             Button {
                                 viewModel.enableLocationUpdates()
                             } label: {
@@ -99,7 +110,6 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding()
                 
                 GroupBox {
                     VStack(alignment: .leading, spacing: 8) {
@@ -118,8 +128,8 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding()
             }
+            .padding()
         }
         .navigationTitle(String(localized: "home_title"))
         .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {

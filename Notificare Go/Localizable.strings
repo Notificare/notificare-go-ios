@@ -36,16 +36,18 @@
 "main_navigation_settings" = "Settings";
 
 "home_title" = "Home";
+"home_welcome_title" = "Welcome to the Notificare Go app";
+"home_welcome_message" = "Here you can play around with all the functionalities provided by the Notificare platform.";
 "home_top_products" = "Top products";
 "home_top_products_browse_more_button" = "Browse more";
 "home_scan_title" = "Scan for a product";
 "home_scan_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar neque facilisis laoreet.";
 "home_scan_nfc_button" = "Scan NFC tag";
 "home_scan_qr_button" = "Scan QR code";
-"home_nearby_title" = "Nearby stores";
-"home_nearby_no_beacons" = "There are no stores in your vicinity.";
+"home_nearby_title" = "Nearby beacons";
+"home_nearby_no_beacons" = "There are no beacons in your vicinity.";
 "home_nearby_alert_permissions_title" = "Missing permissions";
-"home_nearby_alert_permissions_message" = "In order to show your nearby stored we need access to your precise location.";
+"home_nearby_alert_permissions_message" = "In order to show your nearby beacons we need access to your precise location.";
 "home_nearby_alert_permissions_button" = "Request access";
 "home_events_title" = "Log custom events";
 "home_events_message" = "Log events manually by setting up its name and attributes. Use your custom event to create event-based automations.";
