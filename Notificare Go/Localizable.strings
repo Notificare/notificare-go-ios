@@ -18,18 +18,18 @@
 
 "intro_title" = "Welcome";
 "intro_welcome_title" = "Welcome";
-"intro_welcome_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_welcome_message" = "Welcome to the Notificare Go app.\nHere you can play around with all the functionalities provided by the Notificare platform.";
 "intro_welcome_button" = "Get started";
 "intro_notifications_title" = "Notifications";
-"intro_notifications_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_notifications_message" = "By enabling remote notifications, you can harness the power of highly relevant and contextual messages.";
 "intro_notifications_button" = "Enable notifications";
 "intro_location_title" = "Location";
-"intro_location_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_location_message" = "Granting the privilege to access your location enables the Notificare Geo functionality, providing you with a way to segment and geo-target your users.\nYou can also configure beacons to show relevant content to nearby users.";
 "intro_location_button" = "Enable location updates";
 "intro_location_alert_denied_title" = "Missing permission";
 "intro_location_alert_denied_message" = "Please go to Settings and enable the location permission.";
 "intro_login_title" = "Login";
-"intro_login_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+"intro_login_message" = "Sign in with your Apple ID to quickly find and target your user in the Notificare Dashboard.";
 
 "main_navigation_home" = "Home";
 "main_navigation_cart" = "Cart";
@@ -41,7 +41,7 @@
 "home_top_products" = "Top products";
 "home_top_products_browse_more_button" = "Browse more";
 "home_scan_title" = "Scan for a product";
-"home_scan_message" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar neque facilisis laoreet.";
+"home_scan_message" = "Create scannables and attach them to products to easily unlock relevant informational content.";
 "home_scan_nfc_button" = "Scan NFC tag";
 "home_scan_qr_button" = "Scan QR code";
 "home_nearby_title" = "Nearby beacons";
