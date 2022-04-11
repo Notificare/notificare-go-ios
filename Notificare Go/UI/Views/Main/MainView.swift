@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    @Preference(\.storeEnabled)
+    private var storeEnabled: Bool
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -17,11 +20,13 @@ struct MainView: View {
                 Label(String(localized: "main_navigation_home"), systemImage: "house.fill")
             }
             
-            NavigationView {
-                CartView()
-            }
-            .tabItem {
-                Label(String(localized: "main_navigation_cart"), systemImage: "cart.fill")
+            if storeEnabled {
+                NavigationView {
+                    CartView()
+                }
+                .tabItem {
+                    Label(String(localized: "main_navigation_cart"), systemImage: "cart.fill")
+                }
             }
             
             NavigationView {

@@ -11,6 +11,7 @@ import NotificareScannablesKit
 
 struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
+    @Preference(\.storeEnabled) private var storeEnabled: Bool
     
     init() {
         self._viewModel = StateObject(wrappedValue: HomeViewModel())
@@ -19,8 +20,10 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                TopProductsView(products: viewModel.highlightedProducts)
-                    .padding()
+                if storeEnabled {
+                    TopProductsView(products: viewModel.highlightedProducts)
+                        .padding()
+                }
                 
                 GroupBox {
                     VStack(alignment: .leading, spacing: 8) {

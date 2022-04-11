@@ -29,6 +29,9 @@ final class Preferences {
     @UserDefault("intro_finished")
     var introFinished: Bool = false
     
+    @UserDefault("store_enabled")
+    var storeEnabled: Bool = false
+    
     @CodableUserDefault("cart")
     var cart: [CartEntry] = []
 }
