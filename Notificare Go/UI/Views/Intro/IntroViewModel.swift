@@ -19,8 +19,10 @@ class IntroViewModel: NSObject, ObservableObject {
     func enableRemoteNotifications() {
         Notificare.shared.push().enableRemoteNotifications { _ in
             // TODO: handle error scenario.
-            withAnimation {
-                self.currentTab += 1
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.currentTab += 1
+                }
             }
         }
     }
