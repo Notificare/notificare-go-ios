@@ -17,7 +17,7 @@ import CodeScanner
         
         switch result {
         case let .success(result):
-            guard let code = extractScanCode(from: result.string) else {
+            guard let url = URL(string: result.string), let code = extractCodeParameter(from: url) else {
                 processScanState = .failure
                 return
             }
@@ -47,29 +47,6 @@ import CodeScanner
             processScanState = .failure
         }
     }
-    
-    
-    
-    private func extractScanCode(from str: String) -> String? {
-        guard let url = URL(string: str) else {
-            // Unable to parse the URL.
-            return nil
-        }
-        
-        guard url.scheme == "https",
-              let hostComponents = url.host?.components(separatedBy: "."),
-              hostComponents.count == 4,
-              hostComponents[1] == "demo",
-              hostComponents[2] == "notificare",
-              hostComponents[3] == "com"
-        else {
-            // Invalid URL format.
-            return nil
-        }
-        
-        return hostComponents[0]
-    }
-    
     
     enum ProcessScanState {
         case idle

@@ -14,6 +14,7 @@ import NotificareKit
 struct IntroView: View {
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: IntroViewModel
+    @EnvironmentObject private var alertController: AlertController
     
     init() {
         self._viewModel = StateObject(wrappedValue: IntroViewModel())
@@ -66,8 +67,15 @@ struct IntroView: View {
                                     let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
                                     Keychain.standard.user = user
                                     
-                                    Notificare.shared.device().register(userId: user.id, userName: user.name) { _ in
-                                        // TODO: handle error scenario.
+                                    Task {
+                                        await loadRemoteConfig()
+                                        
+                                        do {
+                                            try await Notificare.shared.device().register(userId: user.id, userName: user.name)
+                                        } catch {
+                                            // TODO: handle error scenario.
+                                        }
+                                        
                                         Preferences.standard.introFinished = true
                                         ContentRouter.main.route = .main
                                     }
@@ -91,23 +99,32 @@ struct IntroView: View {
             .navigationTitle(String(localized: "intro_title"))
             .navigationBarTitleDisplayMode(.inline)
         }
-        .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
-            Alert(
-                title: Text(String(localized: "intro_location_alert_denied_title")),
-                message: Text(String(localized: "intro_location_alert_denied_message")),
-                primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
-                    withAnimation {
-                        viewModel.currentTab += 1
-                    }
-                }),
-                secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
-                    guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
-                        return
-                    }
-                    
-                    UIApplication.shared.open(url)
-                })
+        .onChange(of: viewModel.showingSettingsPermissionDialog) { newValue in
+            guard newValue else { return }
+            
+            alertController.info = AlertController.AlertInfo(
+                Alert(
+                    title: Text(String(localized: "intro_location_alert_denied_title")),
+                    message: Text(String(localized: "intro_location_alert_denied_message")),
+                    primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
+                        withAnimation {
+                            viewModel.currentTab += 1
+                        }
+                    }),
+                    secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
+                        guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
+                            return
+                        }
+                        
+                        UIApplication.shared.open(url)
+                    })
+                )
             )
+        }
+        .onChange(of: alertController.info) { _ in
+            // Reset the flag upon changing the presented alert.
+            // Otherwise it will remain set as true.
+            viewModel.showingSettingsPermissionDialog = false
         }
     }
 }

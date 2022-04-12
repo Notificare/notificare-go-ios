@@ -47,7 +47,7 @@ class SplashViewModel: ObservableObject {
                 }
                 
                 Task {
-                    await self.checkRemoteConfig()
+                    await loadRemoteConfig()
                     
                     let provider = ASAuthorizationAppleIDProvider()
                     provider.getCredentialState(forUserID: user.id) { state, error in
@@ -71,26 +71,5 @@ class SplashViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
-    }
-    
-    private func checkRemoteConfig() async {
-        do {
-            let assets = try await Notificare.shared.assets().fetch(group: "config")
-            
-            if let config = assets.first, let storeEnabled = config.extra["storeEnabled"] as? Bool, storeEnabled {
-                Preferences.standard.storeEnabled = true
-                return
-            }
-        } catch {
-            if case let NotificareNetworkError.validationError(response, _, _) = error, response.statusCode == 404 {
-                // The config asset group is not available. The store can be enabled.
-                Preferences.standard.storeEnabled = true
-                return
-            }
-            
-            print("Failed to fetch the remote config. \(error)")
-        }
-        
-        Preferences.standard.storeEnabled = false
     }
 }

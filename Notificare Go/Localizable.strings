@@ -10,6 +10,11 @@
 "shared_dialog_button_ok" = "OK";
 "shared_dialog_button_skip" = "Skip";
 
+"content_configured_dialog_title" = "Already configured";
+"content_configured_dialog_message" = "You cannot change the configuration once it has been set. Please reinstall the app to reconfigure it.";
+"content_configuration_error_dialog_title" = "Configuration failed";
+"content_configuration_error_dialog_message" = "Something went wrong while configuring the app. Check your internet connection and try again.";
+
 "app_scanner_title" = "Configure your app";
 "app_scanner_message" = "Either scan a QR code to automatically configure your app or click the magic link in the invitation email sent by your administrator.";
 "app_scanner_scan_button" = "Open scanner";
