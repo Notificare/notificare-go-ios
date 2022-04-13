@@ -48,6 +48,8 @@
 		F25E4EF027D237B000BEFCF5 /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EEF27D237B000BEFCF5 /* Date+Utilities.swift */; };
 		F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */; };
 		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
+		F2716A7C2806FE60000CC7A5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2716A7B2806FE60000CC7A5 /* NotificationService.swift */; };
+		F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F2716A792806FE60000CC7A5 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F273D88D2805B5B9007E4BDE /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273D88C2805B5B9007E4BDE /* Globals.swift */; };
 		F273D88F2805C9D1007E4BDE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273D88E2805C9D1007E4BDE /* AlertController.swift */; };
 		F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BE27CF781400E6986B /* NotificareOptions.plist */; };
@@ -84,6 +86,30 @@
 		F2F0011527BFEE3F00753D89 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011427BFEE3F00753D89 /* CartView.swift */; };
 		F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011627BFEE5300753D89 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2716A7E2806FE60000CC7A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2F000F727BFE83D00753D89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2716A782806FE60000CC7A5;
+			remoteInfo = NotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2716A842806FE60000CC7A5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F2018F6A27DB6D8D004908E7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -125,6 +151,9 @@
 		F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Custom.swift"; sourceTree = "<group>"; };
 		F25E4EF627D23DC700BEFCF5 /* Notificare-Go-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Notificare-Go-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F25E4EF727D23DCE00BEFCF5 /* Notificare Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notificare Go.entitlements"; sourceTree = "<group>"; };
+		F2716A792806FE60000CC7A5 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2716A7B2806FE60000CC7A5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F2716A7D2806FE60000CC7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F273D88C2805B5B9007E4BDE /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		F273D88E2805C9D1007E4BDE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		F273D8902805DC5B007E4BDE /* Notificare Go-Debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Notificare Go-Debug.entitlements"; sourceTree = "<group>"; };
@@ -156,6 +185,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F2716A762806FE60000CC7A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2F000FC27BFE83D00753D89 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +305,15 @@
 				F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F2716A7A2806FE60000CC7A5 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				F2716A7B2806FE60000CC7A5 /* NotificationService.swift */,
+				F2716A7D2806FE60000CC7A5 /* Info.plist */,
+			);
+			path = NotificationService;
 			sourceTree = "<group>";
 		};
 		F273D88B2805B598007E4BDE /* Extensions */ = {
@@ -390,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F0010127BFE83D00753D89 /* Notificare Go */,
+				F2716A7A2806FE60000CC7A5 /* NotificationService */,
 				F2F0010027BFE83D00753D89 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -398,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F000FF27BFE83D00753D89 /* Notificare Go.app */,
+				F2716A792806FE60000CC7A5 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,6 +502,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F2716A782806FE60000CC7A5 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2716A812806FE60000CC7A5 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				F2716A752806FE60000CC7A5 /* Sources */,
+				F2716A762806FE60000CC7A5 /* Frameworks */,
+				F2716A772806FE60000CC7A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = F2716A792806FE60000CC7A5 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F2F000FE27BFE83D00753D89 /* Notificare Go */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2F0010D27BFE83E00753D89 /* Build configuration list for PBXNativeTarget "Notificare Go" */;
@@ -462,10 +526,12 @@
 				F2F000FB27BFE83D00753D89 /* Sources */,
 				F2F000FC27BFE83D00753D89 /* Frameworks */,
 				F2F000FD27BFE83D00753D89 /* Resources */,
+				F2716A842806FE60000CC7A5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F2716A7F2806FE60000CC7A5 /* PBXTargetDependency */,
 			);
 			name = "Notificare Go";
 			packageProductDependencies = (
@@ -494,9 +560,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					F2716A782806FE60000CC7A5 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 					F2F000FE27BFE83D00753D89 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -523,11 +592,19 @@
 			projectRoot = "";
 			targets = (
 				F2F000FE27BFE83D00753D89 /* Notificare Go */,
+				F2716A782806FE60000CC7A5 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F2716A772806FE60000CC7A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2F000FD27BFE83D00753D89 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -543,6 +620,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F2716A752806FE60000CC7A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2716A7C2806FE60000CC7A5 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2F000FB27BFE83D00753D89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,7 +695,67 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F2716A7F2806FE60000CC7A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2716A782806FE60000CC7A5 /* NotificationService */;
+			targetProxy = F2716A7E2806FE60000CC7A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F2716A822806FE60000CC7A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E3J9DDFVP4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX).NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F2716A832806FE60000CC7A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E3J9DDFVP4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX).NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F2F0010B27BFE83E00753D89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -732,6 +877,7 @@
 		F2F0010E27BFE83E00753D89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go-Debug.entitlements";
@@ -771,6 +917,7 @@
 		F2F0010F27BFE83E00753D89 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go.entitlements";
@@ -810,6 +957,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F2716A812806FE60000CC7A5 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2716A822806FE60000CC7A5 /* Debug */,
+				F2716A832806FE60000CC7A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F2F000FA27BFE83D00753D89 /* Build configuration list for PBXProject "Notificare Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
