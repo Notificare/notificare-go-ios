@@ -24,7 +24,6 @@ struct InboxItemView: View {
         return formatter
     }()
     
-    @State private var height: CGFloat = 0
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
     let item: NotificareInboxItem
@@ -43,7 +42,7 @@ struct InboxItemView: View {
                     imagePlaceholder
                 }
             }
-            .frame(width: height * 3 / 2, height: height)
+            .frame(width: 48, height: 36)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             
             VStack(alignment: .leading, spacing: 0) {
@@ -53,20 +52,10 @@ struct InboxItemView: View {
                         .lineLimit(1)
                 }
                 
-                if let subtitle = item.notification.subtitle {
-                    Text(verbatim: subtitle)
-                        .font(.subheadline)
-                        .lineLimit(1)
-                }
-                
                 Text(verbatim: item.notification.message)
                     .font(.caption)
-                    .lineLimit(1)
+                    .lineLimit(item.notification.title == nil ? 2 : 1)
                     .foregroundColor(.gray)
-            }
-            .overlay(DetermineSize())
-            .onPreferenceChange(DetermineSize.Key.self) { size in
-                height = size.height
             }
             
             Spacer()
@@ -83,7 +72,6 @@ struct InboxItemView: View {
                 Text(verbatim: formattedTime)
                     .font(.footnote)
             }
-            .frame(height: height)
         }
     }
     
@@ -135,9 +123,13 @@ struct InboxItemView_Previews: PreviewProvider {
             expires: nil
         )
         
-        InboxItemView(item: item)
+        List {
+            InboxItemView(item: item)
+        }
         
-        InboxItemView(item: item)
-            .preferredColorScheme(.dark)
+        List {
+            InboxItemView(item: item)
+        }
+        .preferredColorScheme(.dark)
     }
 }
