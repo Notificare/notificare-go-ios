@@ -9,7 +9,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>go.notifica.re</string>
+				<string>re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX)</string>
 			</array>
 		</dict>
 	</array>

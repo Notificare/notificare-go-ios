@@ -16,8 +16,6 @@ struct Product: Codable, Identifiable {
     let highlighted: Bool
 }
 
-#if DEBUG
-
 extension Product {
     static var sample: Product {
         Product(
@@ -30,5 +28,3 @@ extension Product {
         )
     }
 }
-
-#endif
