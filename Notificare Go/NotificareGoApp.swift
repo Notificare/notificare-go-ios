@@ -19,53 +19,12 @@ struct NotificareGoApp: App {
             ContentView()
                 .environmentObject(alertController)
                 .alert(item: $alertController.info, content: { $0.alert })
-                .onOpenURL { url in
-                    print("Received a deep link: \(url.absoluteString)")
-                    
-                    if handleUniversalLink(url) {
-                        print("Universal link processed by the app.")
-                        return
-                    }
-                    
-                    if handleDeepLink(url) {
-                        print("Deep link processed by the app.")
-                        return
-                    }
-                    
-                    if Notificare.shared.handleDynamicLinkUrl(url) {
-                        print("Universal link processed by Notificare.")
-                        return
-                    }
-                }
+                .onOpenURL { handleConfigurationUniversalLink($0) }
         }
     }
     
-    private func handleDeepLink(_ url: URL) -> Bool {
-        guard url.scheme == Bundle.main.bundleIdentifier else {
-            print("Scheme mismatch.")
-            return false
-        }
-        
-        guard url.host == "go.notifica.re" else {
-            print("Host mismatch.")
-            return false
-        }
-        
-        guard let action = url.pathComponents.first else {
-            print("No path components available.")
-            return false
-        }
-        
-        // TODO: add some deep links
-        
-        return true
-    }
-    
-    private func handleUniversalLink(_ url: URL) -> Bool {
-        guard let code = extractCodeParameter(from: url) else {
-            print("Invalid URL: \(url.absoluteString)")
-            return false
-        }
+    private func handleConfigurationUniversalLink(_ url: URL) {
+        guard let code = extractCodeParameter(from: url) else { return }
         
         guard Preferences.standard.appConfiguration == nil else {
             print("Application already configured.")
@@ -77,7 +36,7 @@ struct NotificareGoApp: App {
                 )
             )
             
-            return true
+            return
         }
         
         Task {
@@ -101,7 +60,5 @@ struct NotificareGoApp: App {
                 )
             }
         }
-        
-        return true
     }
 }
