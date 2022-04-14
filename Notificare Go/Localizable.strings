@@ -72,6 +72,11 @@
 "settings_about_feedback_mail_subject" = "Write a subject";
 "settings_about_feedback_mail_body" = "Write a message";
 "settings_about_version" = "Version %@";
+"settings_tags_announcements_title" = "Announcements & events";
+"settings_tags_best_practices_title" = "Best practices";
+"settings_tags_product_updates_title" = "Product updates";
+"settings_tags_engineering_title" = "Engineering & technology";
+"settings_tags_staff_title" = "Staff & experiences";
 
 "inbox_title" = "Inbox";
 "inbox_section_today" = "Today";

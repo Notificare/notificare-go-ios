@@ -10,6 +10,7 @@ import Foundation
 import NotificareKit
 import NotificareInboxKit
 import NotificarePushKit
+import SwiftUI
 
 @MainActor
 class SettingsViewModel: ObservableObject {
@@ -18,8 +19,14 @@ class SettingsViewModel: ObservableObject {
     @Published var doNotDisturbEnabled: Bool
     @Published var doNotDisturbStart: Date
     @Published var doNotDisturbEnd: Date
-    @Published var locationEnabled: Bool = false
+    @Published var locationEnabled = false
     @Published var showingSettingsPermissionDialog = false
+    // Tags section
+    @Published var announcementsTagEnabled = false
+    @Published var bestPracticesTagEnabled = false
+    @Published var productUpdatesTagEnabled = false
+    @Published var engineeringTagEnabled = false
+    @Published var staffTagEnabled = false
     
     private let locationService = LocationService()
     private var cancellables = Set<AnyCancellable>()
@@ -144,6 +151,122 @@ class SettingsViewModel: ObservableObject {
                 
                 Notificare.shared.geo().disableLocationUpdates()
                 self?.locationEnabled = false
+            }
+            .store(in: &cancellables)
+        
+        Task {
+            await loadDeviceTags()
+            observeTagChanges()
+        }
+    }
+    
+    private func loadDeviceTags() async {
+        do {
+            let tags = try await Notificare.shared.device().fetchTags()
+            
+            announcementsTagEnabled = tags.contains("topic_announcements")
+            bestPracticesTagEnabled = tags.contains("topic_best_practices")
+            productUpdatesTagEnabled = tags.contains("topic_product_updates")
+            engineeringTagEnabled = tags.contains("topic_engineering")
+            staffTagEnabled = tags.contains("topic_staff")
+        } catch {
+            print("Failed to fetch device tags. \(error)")
+        }
+    }
+    
+    private func observeTagChanges() {
+        $announcementsTagEnabled
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_announcements")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_announcements")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.announcementsTagEnabled = !enabled
+                        }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        $bestPracticesTagEnabled
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_best_practices")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_best_practices")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.bestPracticesTagEnabled = !enabled
+                        }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        $productUpdatesTagEnabled
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_product_updates")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_product_updates")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.productUpdatesTagEnabled = !enabled
+                        }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        $engineeringTagEnabled
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_engineering")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_engineering")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.engineeringTagEnabled = !enabled
+                        }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        $staffTagEnabled
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_staff")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_staff")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.staffTagEnabled = !enabled
+                        }
+                    }
+                }
             }
             .store(in: &cancellables)
     }

@@ -144,6 +144,30 @@ struct SettingsView: View {
             } footer: {
                 Text(verbatim: String(localized: "settings_location_helper_text"))
             }
+            
+            Section {
+                Toggle(isOn: $viewModel.announcementsTagEnabled) {
+                    Text(String(localized: "settings_tags_announcements_title"))
+                }
+                
+                Toggle(isOn: $viewModel.bestPracticesTagEnabled) {
+                    Text(String(localized: "settings_tags_best_practices_title"))
+                }
+                
+                Toggle(isOn: $viewModel.productUpdatesTagEnabled) {
+                    Text(String(localized: "settings_tags_product_updates_title"))
+                }
+                
+                Toggle(isOn: $viewModel.engineeringTagEnabled) {
+                    Text(String(localized: "settings_tags_engineering_title"))
+                }
+                
+                Toggle(isOn: $viewModel.staffTagEnabled) {
+                    Text(String(localized: "settings_tags_staff_title"))
+                }
+            } header: {
+                Text("Subscribe to topics")
+            }
         }
         .navigationTitle(String(localized: "settings_title"))
         .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
