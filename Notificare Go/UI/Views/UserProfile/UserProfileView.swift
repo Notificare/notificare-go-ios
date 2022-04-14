@@ -72,7 +72,7 @@ struct UserProfileView: View {
                             )
                         } else if item.type == "boolean" {
                             Toggle(
-                                "Loves Notificare",
+                                item.label,
                                 isOn: Binding(
                                     get: { (item.value as NSString).boolValue },
                                     set: { item.value = $0.description }
