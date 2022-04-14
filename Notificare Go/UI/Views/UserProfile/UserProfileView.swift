@@ -54,13 +54,13 @@ struct UserProfileView: View {
             .frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
             
-            Section {
-                NavigationLink {
-                    EmptyView()
-                } label: {
-                    Text(verbatim: String(localized: "user_profile_membership_card"))
-                }
-            }
+//            Section {
+//                NavigationLink {
+//                    EmptyView()
+//                } label: {
+//                    Text(verbatim: String(localized: "user_profile_membership_card"))
+//                }
+//            }
             
             if !viewModel.profileInformation.isEmpty {
                 Section {
