@@ -12,6 +12,13 @@ struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
     private let user = Keychain.standard.user!
     
+    private let dateFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
+        
+        return formatter
+    }()
+    
     init() {
         self._viewModel = StateObject(wrappedValue: UserProfileViewModel())
     }
@@ -75,8 +82,8 @@ struct UserProfileView: View {
                             DatePicker(
                                 item.label,
                                 selection: Binding(
-                                    get: { ISO8601DateFormatter().date(from: item.value) ?? Date() },
-                                    set: { item.value = ISO8601DateFormatter().string(from: $0) }
+                                    get: { dateFormatter.date(from: item.value) ?? Date() },
+                                    set: { item.value = dateFormatter.string(from: $0) }
                                 ),
                                 displayedComponents: .date
                             )
