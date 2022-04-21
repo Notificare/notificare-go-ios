@@ -33,7 +33,9 @@ struct InboxView: View {
                 }
             }
         }
+        .customListStyle()
         .navigationTitle(String(localized: "inbox_title"))
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func getSectionHeader(_ section: InboxViewModel.InboxSection) -> String {

@@ -171,6 +171,7 @@ struct SettingsView: View {
                 Text("Subscribe to topics")
             }
         }
+        .customListStyle()
         .navigationTitle(String(localized: "settings_title"))
         .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
             Alert(

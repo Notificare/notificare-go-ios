@@ -61,6 +61,7 @@ struct EventsView: View {
                 .disabled(viewModel.loading)
             }
         }
+        .customListStyle()
         .navigationTitle(String(localized: "events_title"))
     }
 }

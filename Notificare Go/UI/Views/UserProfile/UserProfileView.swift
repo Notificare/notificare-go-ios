@@ -110,6 +110,7 @@ struct UserProfileView: View {
 //                }
 //            }
         }
+        .customListStyle()
         .navigationTitle(String(localized: "user_profile_title"))
         .navigationBarTitleDisplayMode(.inline)
     }

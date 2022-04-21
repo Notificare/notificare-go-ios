@@ -50,6 +50,7 @@ struct ProductsListView: View {
                 }
             }
         }
+        .customListStyle()
         .navigationTitle(String(localized: "products_list_title"))
     }
 }
