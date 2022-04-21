@@ -78,8 +78,20 @@ struct HomeView: View {
                     if viewModel.hasLocationPermissions {
                         GroupBox {
                             VStack(alignment: .leading, spacing: 8) {
-                                Label(String(localized: "home_nearby_title"), systemImage: "sensor.tag.radiowaves.forward")
-                                    .font(.headline)
+                                if #available(iOS 15.0, *) {
+                                    Label(String(localized: "home_nearby_title"), systemImage: "sensor.tag.radiowaves.forward")
+                                        .font(.headline)
+                                } else {
+                                    HStack(spacing: 10) {
+                                        Image("sensor.tag.radiowaves.forward")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 24, height: 18)
+                                        
+                                        Text(String(localized: "home_nearby_title"))
+                                            .font(.headline)
+                                    }
+                                }
                                 
                                 if viewModel.rangedBeacons.isEmpty {
                                     Text(String(localized: "home_nearby_no_beacons"))

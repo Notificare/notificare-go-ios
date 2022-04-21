@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "sensor.tag.radiowaves.forward.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
