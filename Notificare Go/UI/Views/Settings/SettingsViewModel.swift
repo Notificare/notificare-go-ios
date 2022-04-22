@@ -19,7 +19,7 @@ class SettingsViewModel: ObservableObject {
     @Published var doNotDisturbEnabled: Bool
     @Published var doNotDisturbStart: Date
     @Published var doNotDisturbEnd: Date
-    @Published var locationEnabled = false
+    @Published var locationEnabled: Bool
     @Published var showingSettingsPermissionDialog = false
     // Tags section
     @Published var announcementsTagEnabled = false
@@ -28,7 +28,7 @@ class SettingsViewModel: ObservableObject {
     @Published var engineeringTagEnabled = false
     @Published var staffTagEnabled = false
     
-    private let locationService = LocationService()
+    private let locationController = LocationController(requestAlwaysAuthorization: false)
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -40,6 +40,8 @@ class SettingsViewModel: ObservableObject {
         self.doNotDisturbEnabled = notificationsEnabled && dnd != nil
         self.doNotDisturbStart = (dnd?.start ?? .defaultStart).date
         self.doNotDisturbEnd = (dnd?.end ?? .defaultEnd).date
+        
+        self.locationEnabled = locationController.hasLocationTrackingCapabilities
         
         NotificationCenter.default
             .publisher(for: .badgeUpdated, object: nil)
@@ -109,48 +111,32 @@ class SettingsViewModel: ObservableObject {
         }
         .store(in: &cancellables)
         
-        $locationEnabled.sink { enabled in
-            guard enabled else {
-                Notificare.shared.geo().disableLocationUpdates()
-                return
-            }
-            
-            guard self.locationService.authorizationStatus != .denied else {
-                self.showingSettingsPermissionDialog = true
-                return
-            }
-            
-            guard self.locationService.authorizationStatus == .authorizedWhenInUse || self.locationService.authorizationStatus == .authorizedAlways else {
-                self.locationService.requestWhenInUseAuthorization()
-                return
-            }
-            
-            guard self.locationService.authorizationStatus == .authorizedAlways else {
-                self.locationService.requestAlwaysAuthorization()
-                return
-            }
-            
-            Notificare.shared.geo().enableLocationUpdates()
-        }
-        .store(in: &cancellables)
-        
-        locationService.authorizationStatusPublisher
-            .sink { [weak self] authorizationStatus in
-                switch authorizationStatus {
-                case .authorizedWhenInUse:
-                    Notificare.shared.geo().enableLocationUpdates()
-                    self?.locationService.requestAlwaysAuthorization()
+        $locationEnabled
+            .dropFirst()
+            .sink { enabled in
+                guard enabled else {
+                    Notificare.shared.geo().disableLocationUpdates()
                     return
-                case .authorizedAlways:
-                    Notificare.shared.geo().enableLocationUpdates()
-                    self?.locationEnabled = true
-                    return
-                default:
-                    print("Unhandled location authorization status: \(authorizationStatus)")
                 }
                 
-                Notificare.shared.geo().disableLocationUpdates()
-                self?.locationEnabled = false
+                Task {
+                    let result = await self.locationController.requestPermissions()
+                    
+                    switch result {
+                    case .ok, .denied, .restricted:
+                        // Will trigger a capabilities change when executed.
+                        break
+                    case .requiresChangeInSettings:
+                        self.showingSettingsPermissionDialog = true
+                    }
+                }
+            }
+            .store(in: &self.cancellables)
+        
+        
+        locationController.onLocationCapabilitiesChanged
+            .sink { [weak self] in
+                self?.locationEnabled = self?.locationController.hasLocationTrackingCapabilities ?? false
             }
             .store(in: &cancellables)
         

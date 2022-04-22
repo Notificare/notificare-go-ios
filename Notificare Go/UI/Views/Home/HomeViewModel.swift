@@ -15,7 +15,7 @@ import NotificareScannablesKit
 
 @MainActor
 class HomeViewModel: ObservableObject {
-    private let locationService = LocationService()
+    private let locationController = LocationController(requestAlwaysAuthorization: false)
     private var cancellables = Set<AnyCancellable>()
     
     @Published private(set) var highlightedProducts = [Product]()
@@ -58,45 +58,34 @@ class HomeViewModel: ObservableObject {
     }
     
     private func checkLocationPermissions() {
-        hasLocationPermissions = locationService.authorizationStatus == .authorizedAlways && Notificare.shared.geo().hasLocationServicesEnabled
+        hasLocationPermissions = locationController.hasGeofencingCapabilities
         
-        locationService.authorizationStatusPublisher
-            .sink { [weak self] authorizationStatus in
-                switch authorizationStatus {
-                case .authorizedWhenInUse:
-                    Notificare.shared.geo().enableLocationUpdates()
-                    self?.locationService.requestAlwaysAuthorization()
-                    return
-                case .authorizedAlways:
-                    Notificare.shared.geo().enableLocationUpdates()
-                    self?.hasLocationPermissions = true
-                    return
-                default:
-                    print("Unhandled location authorization status: \(authorizationStatus)")
-                }
+        locationController.onLocationCapabilitiesChanged
+            .sink { [weak self] in
+                guard let self = self else { return }
                 
-                Notificare.shared.geo().disableLocationUpdates()
-                self?.hasLocationPermissions = false
+                self.hasLocationPermissions = self.locationController.hasGeofencingCapabilities
             }
             .store(in: &cancellables)
     }
     
     func enableLocationUpdates() {
-        guard locationService.authorizationStatus != .denied else {
-            showingSettingsPermissionDialog = true
-            return
+        Task {
+            // Allow automatic upgrades.
+            locationController.requestAlwaysAuthorization = true
+            
+            let result = await locationController.requestPermissions()
+            
+            switch result {
+            case .ok, .denied, .restricted:
+                // Will trigger a capabilities change when executed.
+                break
+            case .requiresChangeInSettings:
+                showingSettingsPermissionDialog = true
+            }
+            
+            // Prevent automatic upgrades afterwards.
+            locationController.requestAlwaysAuthorization = true
         }
-        
-        guard locationService.authorizationStatus == .authorizedWhenInUse || locationService.authorizationStatus == .authorizedAlways else {
-            locationService.requestWhenInUseAuthorization()
-            return
-        }
-        
-        guard locationService.authorizationStatus == .authorizedAlways else {
-            locationService.requestAlwaysAuthorization()
-            return
-        }
-        
-        Notificare.shared.geo().enableLocationUpdates()
     }
 }

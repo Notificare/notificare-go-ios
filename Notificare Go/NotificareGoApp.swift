@@ -8,6 +8,8 @@
 import SwiftUI
 import NotificareKit
 
+internal let PRIVACY_DETAILS_URL = URL(string: "https://ntc.re/0OMbJKeJ2m")!
+
 @main
 struct NotificareGoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

@@ -9,6 +9,7 @@
 "shared_anonymous_user" = "Anonymous";
 "shared_dialog_button_ok" = "OK";
 "shared_dialog_button_skip" = "Skip";
+"shared_continue_to_settings" = "Continue to Settings";
 
 "content_configured_dialog_title" = "Already configured";
 "content_configured_dialog_message" = "You cannot change the configuration once it has been set. Please reinstall the app to reconfigure it.";

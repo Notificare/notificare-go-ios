@@ -12,7 +12,8 @@ import NotificareKit
 
 @MainActor
 class IntroViewModel: NSObject, ObservableObject {
-    private let locationManager = CLLocationManager()
+    private let locationController = LocationController()
+    
     @Published var currentTab = 0
     @Published var showingSettingsPermissionDialog = false
     
@@ -28,47 +29,26 @@ class IntroViewModel: NSObject, ObservableObject {
     }
     
     func enableLocationUpdates() {
-        locationManager.delegate = self
-        
-        let authorizationStatus = locationManager.authorizationStatus
-        
-        guard authorizationStatus != .denied else {
-            showingSettingsPermissionDialog = true
-            return
-        }
-        
-        guard authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways else {
-            locationManager.requestWhenInUseAuthorization()
-            return
-        }
-        
-        guard authorizationStatus == .authorizedAlways else {
-            locationManager.requestAlwaysAuthorization()
-            return
-        }
-        
-        Notificare.shared.geo().enableLocationUpdates()
-        withAnimation {
-            self.currentTab += 1
-        }
-    }
-}
-
-extension IntroViewModel: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedWhenInUse:
-            Notificare.shared.geo().enableLocationUpdates()
-            manager.requestAlwaysAuthorization()
-            return
-        case .authorizedAlways:
-            Notificare.shared.geo().enableLocationUpdates()
-        default:
-            print("Unhandled location authorization status: \(manager.authorizationStatus)")
-        }
-        
-        withAnimation {
-            self.currentTab += 1
+        Task {
+            let result = await locationController.requestPermissions()
+            
+            switch result {
+            case .ok:
+                withAnimation {
+                    currentTab += 1
+                }
+            case .denied:
+                // In the intro we simply allow the user to move forward.
+                withAnimation {
+                    currentTab += 1
+                }
+            case .requiresChangeInSettings:
+                showingSettingsPermissionDialog = true
+            case .restricted:
+                // TODO: handle the restricted scenario.
+                // The user cannot change this app’s status, possibly due to active restrictions such as parental controls being in place.
+                break
+            }
         }
     }
 }

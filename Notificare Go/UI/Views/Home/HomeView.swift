@@ -144,21 +144,22 @@ struct HomeView: View {
             .padding()
         }
         .navigationTitle(String(localized: "home_title"))
-        .alert(isPresented: $viewModel.showingSettingsPermissionDialog) {
-            Alert(
-                title: Text(String(localized: "intro_location_alert_denied_title")),
-                message: Text(String(localized: "intro_location_alert_denied_message")),
-                primaryButton: .cancel(Text(String(localized: "shared_dialog_button_skip")), action: {
-                    
-                }),
-                secondaryButton: .default(Text(String(localized: "shared_dialog_button_ok")), action: {
+        .sheet(isPresented: $viewModel.showingSettingsPermissionDialog) {
+            VStack(spacing: 0) {
+                WebView(url: PRIVACY_DETAILS_URL)
+                
+                Button(String(localized: "shared_continue_to_settings")) {
                     guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
+                        viewModel.showingSettingsPermissionDialog = false
                         return
                     }
                     
                     UIApplication.shared.open(url)
-                })
-            )
+                    viewModel.showingSettingsPermissionDialog = false
+                }
+                .buttonStyle(PrimaryButton())
+                .padding()
+            }
         }
     }
 }
