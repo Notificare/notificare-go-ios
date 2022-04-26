@@ -28,10 +28,10 @@
 "intro_welcome_button" = "Get started";
 "intro_notifications_title" = "Notifications";
 "intro_notifications_message" = "By enabling remote notifications, you can harness the power of highly relevant and contextual messages.";
-"intro_notifications_button" = "Enable notifications";
+"intro_notifications_button" = "Continue";
 "intro_location_title" = "Location";
 "intro_location_message" = "Granting the privilege to access your location enables the Notificare Geo functionality, providing you with a way to segment and geo-target your users.\nYou can also configure beacons to show relevant content to nearby users.";
-"intro_location_button" = "Enable location updates";
+"intro_location_button" = "Continue";
 "intro_location_alert_denied_title" = "Missing permission";
 "intro_location_alert_denied_message" = "Please go to Settings and enable the location permission.";
 "intro_login_title" = "Login";
