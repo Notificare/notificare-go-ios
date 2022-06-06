@@ -15,13 +15,15 @@ class CartViewModel: ObservableObject {
     func remove(_ entry: CartEntry) {
         Task {
             do {
-                if let index = Preferences.standard.cart.firstIndex(where: { $0.id == entry.id }) {
-                    let entry = Preferences.standard.cart.remove(at: index)
-                    try await Notificare.shared.events().logRemoveFromCart(product: entry.product)
-                }
+                Preferences.standard.cart.removeAll(where: { $0.id == entry.id })
                 
-                try await Notificare.shared.events().logCartUpdated(cart: Preferences.standard.cart)
-                try await Notificare.shared.events().logCartCleared()
+                let entries = Preferences.standard.cart
+                try await Notificare.shared.events().logRemoveFromCart(product: entry.product)
+                try await Notificare.shared.events().logCartUpdated(products: entries.map { $0.product })
+                
+                if entries.isEmpty {
+                    try await Notificare.shared.events().logCartCleared()
+                }
             } catch {
                 //
             }
@@ -36,11 +38,12 @@ class CartViewModel: ObservableObject {
             try? await Task.sleep(nanoseconds: .random(in: 500_000_000...1_000_000_000))
             
             do {
-                let products = Preferences.standard.cart.map { $0.product }
-                Preferences.standard.cart.removeAll()
+                let entries = Preferences.standard.cart
+                try await Notificare.shared.events().logPurchase(products: entries.map { $0.product })
                 
+                Preferences.standard.cart.removeAll()
                 try await Notificare.shared.events().logCartCleared()
-                try await Notificare.shared.events().logPurchase(products: products)
+                
                 purchaseCommand = .success
             } catch {
                 purchaseCommand = .failure

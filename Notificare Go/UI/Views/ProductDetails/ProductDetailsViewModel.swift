@@ -43,8 +43,9 @@ class ProductDetailsViewModel: ObservableObject {
                     )
                 )
                 
+                let entries = Preferences.standard.cart
                 try await Notificare.shared.events().logAddToCart(product: product)
-                try await Notificare.shared.events().logCartUpdated(cart: Preferences.standard.cart)
+                try await Notificare.shared.events().logCartUpdated(products: entries.map { $0.product })
                 cartCommand = .success
             } catch {
                 cartCommand = .failure
