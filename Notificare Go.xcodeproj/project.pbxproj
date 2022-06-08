@@ -81,6 +81,9 @@
 		F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39C28118FE1004837C9 /* View+Theme.swift */; };
 		F2A3F3A02812F346004837C9 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39F2812F346004837C9 /* LocationController.swift */; };
 		F2A3F3A22812FAA3004837C9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F3A12812FAA3004837C9 /* WebView.swift */; };
+		F2B984CD2851089D005CD6D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */; };
+		F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984CE2851089D005CD6D6 /* FirebaseAuth */; };
+		F2B984D12851089D005CD6D6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */; };
 		F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */; };
 		F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010627BFE83E00753D89 /* Assets.xcassets */; };
 		F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */; };
@@ -179,6 +182,8 @@
 		F2A3F39C28118FE1004837C9 /* View+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Theme.swift"; sourceTree = "<group>"; };
 		F2A3F39F2812F346004837C9 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		F2A3F3A12812FAA3004837C9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F2B984DB28512CB9005CD6D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2B984DD28512CD0005CD6D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2F000FF27BFE83D00753D89 /* Notificare Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notificare Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificareGoApp.swift; sourceTree = "<group>"; };
 		F2F0010627BFE83E00753D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,6 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B984CD2851089D005CD6D6 /* FirebaseAnalytics in Frameworks */,
+				F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */,
 				F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */,
 				F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */,
 				F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */,
@@ -211,6 +218,7 @@
 				F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */,
 				F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */,
 				F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */,
+				F2B984D12851089D005CD6D6 /* FirebaseCrashlytics in Frameworks */,
 				F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */,
 				F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */,
 			);
@@ -437,6 +445,31 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		F2B984D228510979005CD6D6 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				F2B984D32851097F005CD6D6 /* Debug */,
+				F2B984D428510984005CD6D6 /* Release */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		F2B984D32851097F005CD6D6 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				F2B984DB28512CB9005CD6D6 /* GoogleService-Info.plist */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		F2B984D428510984005CD6D6 /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				F2B984DD28512CD0005CD6D6 /* GoogleService-Info.plist */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
 		F2F000F627BFE83D00753D89 = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +506,7 @@
 				F2F0010627BFE83E00753D89 /* Assets.xcassets */,
 				F245855F27C40C1E00AA93A2 /* Localizable.strings */,
 				F284C0BE27CF781400E6986B /* NotificareOptions.plist */,
+				F2B984D228510979005CD6D6 /* Configurations */,
 				F2F0010827BFE83E00753D89 /* Preview Content */,
 			);
 			path = "Notificare Go";
@@ -529,10 +563,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2F0010D27BFE83E00753D89 /* Build configuration list for PBXNativeTarget "Notificare Go" */;
 			buildPhases = (
+				F2B984E028512EF8005CD6D6 /* Copy Firebase configuration file */,
 				F2F000FB27BFE83D00753D89 /* Sources */,
 				F2F000FC27BFE83D00753D89 /* Frameworks */,
 				F2F000FD27BFE83D00753D89 /* Resources */,
 				F2716A842806FE60000CC7A5 /* Embed App Extensions */,
+				F2B984DF28512EAF005CD6D6 /* Crashlytics: Upload dSYM files */,
 			);
 			buildRules = (
 			);
@@ -554,6 +590,9 @@
 				F24AA6EA27EDD20800F981DF /* Lottie */,
 				F24D0D8927FC595A00E4232A /* Alamofire */,
 				F2479BA627FDC8F300C1F8BE /* Introspect */,
+				F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */,
+				F2B984CE2851089D005CD6D6 /* FirebaseAuth */,
+				F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */,
 			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
@@ -592,6 +631,7 @@
 				F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = F2F0010027BFE83D00753D89 /* Products */;
 			projectDirPath = "";
@@ -624,6 +664,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2B984DF28512EAF005CD6D6 /* Crashlytics: Upload dSYM files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Crashlytics: Upload dSYM files";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		F2B984E028512EF8005CD6D6 /* Copy Firebase configuration file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Firebase configuration file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource to copy\nINFO_PLIST_FILE=GoogleService-Info.plist\n\n# Get references to debug and release versions of the plist file\nDEBUG_INFO_PLIST_FILE=${PROJECT_DIR}/${TARGET_NAME}/Configurations/Debug/${INFO_PLIST_FILE}\nRELEASE_INFO_PLIST_FILE=${PROJECT_DIR}/${TARGET_NAME}/Configurations/Release/${INFO_PLIST_FILE}\n\n# Make sure the debug version exists\necho \"Looking for ${INFO_PLIST_FILE} in ${DEBUG_INFO_PLIST_FILE}\"\nif [ ! -f $DEBUG_INFO_PLIST_FILE ] ; then\n    echo \"File ${INFO_PLIST_FILE} (debug) not found.\"\n    exit 1\nfi\n\n# Make sure the release version exists\necho \"Looking for ${INFO_PLIST_FILE} in ${RELEASE_INFO_PLIST_FILE}\"\nif [ ! -f $RELEASE_INFO_PLIST_FILE ] ; then\n    echo \"File ${INFO_PLIST_FILE} (release) not found.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the plist file\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Copying ${INFO_PLIST_FILE} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy the appropriate file to app bundle\nif [ \"${CONFIGURATION}\" == \"Debug\" ] ; then\n    echo \"File ${DEBUG_INFO_PLIST_FILE} copied\"\n    cp \"${DEBUG_INFO_PLIST_FILE}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"File ${RELEASE_INFO_PLIST_FILE} copied\"\n    cp \"${RELEASE_INFO_PLIST_FILE}\" \"${PLIST_DESTINATION}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2716A752806FE60000CC7A5 /* Sources */ = {
@@ -799,7 +880,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1035,6 +1116,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1102,6 +1191,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareScannablesKit;
+		};
+		F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F2B984CE2851089D005CD6D6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

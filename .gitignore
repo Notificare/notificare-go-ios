@@ -60,5 +60,5 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-GoogleServices-Info.plist
+GoogleService-Info.plist
 NotificareServices.plist

@@ -5,6 +5,7 @@
 //  Created by Helder Pinhal on 04/03/2022.
 //
 
+import Firebase
 import Foundation
 import UIKit
 import NotificareKit
@@ -15,6 +16,12 @@ import NotificareScannablesKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        
+        #if DEBUG
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+        #endif
+        
         // Configure Notificare.
         Notificare.shared.push().presentationOptions = [.banner, .badge, .sound]
         
