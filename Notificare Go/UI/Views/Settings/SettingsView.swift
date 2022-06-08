@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject private var viewModel: SettingsViewModel
-    private let user = Keychain.standard.user
     
     init() {
         self._viewModel = StateObject(wrappedValue: SettingsViewModel())
@@ -17,33 +16,31 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            if let user = user {
-                Section {
-                    NavigationLink {
-                        UserProfileView()
-                    } label: {
-                        HStack(alignment: .center, spacing: 16) {
-                            AsyncImageCompat(url: user.gravatarUrl) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                            } placeholder: {
-                                Color.clear
-                            }
-                            .frame(width: 64, height: 64)
-                            .clipShape(Circle())
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
-                                    .font(.title2)
-                                    .lineLimit(1)
-                                
-                                Text(verbatim: user.id)
-                                    .font(.subheadline)
-                                    .lineLimit(1)
-                            }
+            Section {
+                NavigationLink {
+                    UserProfileView()
+                } label: {
+                    HStack(alignment: .center, spacing: 16) {
+                        AsyncImageCompat(url: viewModel.user.pictureUrl) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                        } placeholder: {
+                            Color.clear
                         }
-                        .padding(.vertical, 8)
+                        .frame(width: 64, height: 64)
+                        .clipShape(Circle())
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(verbatim: viewModel.user.name ?? String(localized: "shared_anonymous_user"))
+                                .font(.title2)
+                                .lineLimit(1)
+                            
+                            Text(verbatim: viewModel.user.id)
+                                .font(.subheadline)
+                                .lineLimit(1)
+                        }
                     }
+                    .padding(.vertical, 8)
                 }
             }
             

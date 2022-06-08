@@ -8,12 +8,14 @@
 import AuthenticationServices
 import CoreLocation
 import SwiftUI
+import FirebaseAuth
 import Introspect
 import NotificareKit
 
 struct IntroView: View {
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: IntroViewModel
+    @State private var nonce = ""
     @EnvironmentObject private var alertController: AlertController
     
     init() {
@@ -57,33 +59,11 @@ struct IntroView: View {
                         SignInWithAppleButton(
                             .signIn,
                             onRequest: { request in
+                                self.nonce = randomNonceString()
+                                request.nonce = sha256(self.nonce)
                                 request.requestedScopes = [.email, .fullName]
                             },
-                            onCompletion: { result in
-                                switch result {
-                                case .success(let auth):
-                                    print("Authorization successful")
-                                    
-                                    let user = CurrentUser(credential: auth.credential as! ASAuthorizationAppleIDCredential)
-                                    Keychain.standard.user = user
-                                    
-                                    Task {
-                                        await loadRemoteConfig()
-                                        
-                                        do {
-                                            try await Notificare.shared.device().register(userId: user.id, userName: user.name)
-                                        } catch {
-                                            // TODO: handle error scenario.
-                                        }
-                                        
-                                        Preferences.standard.introFinished = true
-                                        ContentRouter.main.route = .main
-                                    }
-                                case .failure(let error):
-                                    print("Authorization failed")
-                                    print("\(error)")
-                                }
-                            }
+                            onCompletion: handleAuthenticationCallback
                         )
                         .signInWithAppleButtonStyle(colorScheme == .light ? .black : .white)
                         .frame(height: 50)
@@ -125,6 +105,56 @@ struct IntroView: View {
             // Reset the flag upon changing the presented alert.
             // Otherwise it will remain set as true.
             viewModel.showingSettingsPermissionDialog = false
+        }
+    }
+    
+    private func handleAuthenticationCallback(_ result: Result<ASAuthorization, Error>) {
+        switch result {
+        case .success(let auth):
+            guard let appleCredential = auth.credential as? ASAuthorizationAppleIDCredential,
+                  let idToken = appleCredential.identityToken,
+                  let idTokenStr = String(data: idToken, encoding: .utf8)
+            else {
+                print("Unable to acquire the ID token string.")
+                return
+            }
+            
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idTokenStr,
+                rawNonce: self.nonce
+            )
+            
+            Task {
+                do {
+                    let result = try await Auth.auth().signIn(with: credential)
+                    
+                    if let name = appleCredential.name {
+                        let profileChangeRequest = result.user.createProfileChangeRequest()
+                        profileChangeRequest.displayName = name
+                        
+                        try await profileChangeRequest.commitChanges()
+                    }
+                } catch {
+                    print("Failed to login with Firebase. \(error)")
+                    return
+                }
+                
+                await loadRemoteConfig()
+                
+                do {
+                    let user = Auth.auth().currentUser!
+                    try await Notificare.shared.device().register(userId: user.uid, userName: user.displayName)
+                } catch {
+                    // TODO: handle error scenario.
+                }
+                
+                Preferences.standard.introFinished = true
+                ContentRouter.main.route = .main
+            }
+        case .failure(let error):
+            print("Authorization failed")
+            print("\(error)")
         }
     }
 }
@@ -225,5 +255,28 @@ private struct IntroSlideView<Footer: View>: View {
 extension IntroSlideView where Footer == EmptyView {
     init(slide: Slide) {
         self.init(slide: slide, footer: { EmptyView() })
+    }
+}
+
+private extension ASAuthorizationAppleIDCredential {
+    var name: String? {
+        guard let nameComponents = fullName else {
+            return nil
+        }
+        var parts = [String]()
+        
+        if let givenName = nameComponents.givenName {
+            parts.append(givenName)
+        }
+        
+        if let familyName = nameComponents.familyName {
+            parts.append(familyName)
+        }
+        
+        guard !parts.isEmpty else {
+            return nil
+        }
+        
+        return parts.joined(separator: " ")
     }
 }

@@ -8,6 +8,7 @@
 import Combine
 import AuthenticationServices
 import Foundation
+import FirebaseAuth
 import NotificareKit
 
 @MainActor
@@ -38,7 +39,7 @@ class SplashViewModel: ObservableObject {
         
         NotificationCenter.default.publisher(for: .notificareLaunched, object: nil)
             .sink { _ in
-                guard Preferences.standard.introFinished, let user = Keychain.standard.user else {
+                guard Preferences.standard.introFinished, Auth.auth().currentUser != nil else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         ContentRouter.main.route = .intro
                     }
@@ -49,24 +50,8 @@ class SplashViewModel: ObservableObject {
                 Task {
                     await loadRemoteConfig()
                     
-                    let provider = ASAuthorizationAppleIDProvider()
-                    provider.getCredentialState(forUserID: user.id) { state, error in
-                        let route: ContentRouter.Route
-                        
-                        switch state {
-                        case .authorized:
-                            route = .main
-                        case .notFound, .revoked, .transferred:
-                            // Remove the user identifier from the keychain and run the intro again.
-                            Keychain.standard.user = nil
-                            route = .intro
-                        default:
-                            fatalError("Unhandled credential state.")
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            ContentRouter.main.route = route
-                        }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        ContentRouter.main.route = .main
                     }
                 }
             }

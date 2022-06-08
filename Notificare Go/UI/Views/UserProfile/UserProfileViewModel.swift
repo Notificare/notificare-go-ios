@@ -7,15 +7,19 @@
 
 import Combine
 import Foundation
+import FirebaseAuth
 import NotificareKit
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
+    @Published private(set) var user: UserInfo
     @Published var profileInformation: [ProfileInformationItem] = []
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
+        self.user = UserInfo(user: Auth.auth().currentUser!)
+        
         Task {
             do {
                 let fields = try await Notificare.shared.fetchApplication().userDataFields

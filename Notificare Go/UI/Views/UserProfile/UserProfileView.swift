@@ -10,7 +10,6 @@ import NotificareKit
 
 struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
-    private let user = Keychain.standard.user!
     
     private let dateFormatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
@@ -26,7 +25,7 @@ struct UserProfileView: View {
     var body: some View {
         List {
             VStack(alignment: .center, spacing: 0) {
-                AsyncImageCompat(url: user.gravatarUrl) { image in
+                AsyncImageCompat(url: viewModel.user.pictureUrl) { image in
                     Image(uiImage: image)
                         .resizable()
                 } placeholder: {
@@ -35,17 +34,17 @@ struct UserProfileView: View {
                 .frame(width: 128, height: 128)
                 .clipShape(Circle())
                 
-                Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
+                Text(verbatim: viewModel.user.name ?? String(localized: "shared_anonymous_user"))
                     .font(.title2)
                     .lineLimit(1)
                     .padding(.top)
                 
-                Text(verbatim: user.id)
+                Text(verbatim: viewModel.user.id)
                     .font(.subheadline)
                     .lineLimit(1)
                     .contextMenu {
                         Button {
-                            UIPasteboard.general.string = user.id
+                            UIPasteboard.general.string = viewModel.user.id
                         } label: {
                             Label(String(localized: "user_profile_copy_id"), systemImage: "doc.on.doc")
                         }

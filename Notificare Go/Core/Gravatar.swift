@@ -1,0 +1,13 @@
+//
+//  Gravatar.swift
+//  Notificare Go
+//
+//  Created by Helder Pinhal on 06/06/2022.
+//
+
+import Foundation
+
+internal func getGravatarUrl(email: String) -> URL {
+    let hash = md5(email.lowercased())
+    return URL(string: "https://gravatar.com/avatar/\(hash)?s=400&d=retro")!
+}
