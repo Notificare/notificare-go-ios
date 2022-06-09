@@ -12,13 +12,15 @@ import NotificareKit
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
-    @Published private(set) var user: UserInfo
+    @Published private(set) var user: UserInfo?
     @Published var profileInformation: [ProfileInformationItem] = []
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.user = UserInfo(user: Auth.auth().currentUser!)
+        if let user = Auth.auth().currentUser {
+            self.user = UserInfo(user: user)
+        }
         
         Task {
             do {
@@ -39,6 +41,14 @@ class UserProfileViewModel: ObservableObject {
                 //
             }
         }
+    }
+    
+    func deleteAccount() async throws {
+        // Register the device as anonymous.
+        try await Notificare.shared.device().register(userId: nil, userName: nil)
+        
+        // Remove the Firebase user.
+        try await Auth.auth().currentUser!.delete()
     }
     
     private func startListeningToChanges() {

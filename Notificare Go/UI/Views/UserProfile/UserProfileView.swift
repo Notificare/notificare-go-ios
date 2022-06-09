@@ -10,6 +10,7 @@ import NotificareKit
 
 struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
+    @State private var showDeleteAccountConfirmation = false
     
     private let dateFormatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
@@ -24,34 +25,36 @@ struct UserProfileView: View {
     
     var body: some View {
         List {
-            VStack(alignment: .center, spacing: 0) {
-                AsyncImageCompat(url: viewModel.user.pictureUrl) { image in
-                    Image(uiImage: image)
-                        .resizable()
-                } placeholder: {
-                    Color.clear
-                }
-                .frame(width: 128, height: 128)
-                .clipShape(Circle())
-                
-                Text(verbatim: viewModel.user.name ?? String(localized: "shared_anonymous_user"))
-                    .font(.title2)
-                    .lineLimit(1)
-                    .padding(.top)
-                
-                Text(verbatim: viewModel.user.id)
-                    .font(.subheadline)
-                    .lineLimit(1)
-                    .contextMenu {
-                        Button {
-                            UIPasteboard.general.string = viewModel.user.id
-                        } label: {
-                            Label(String(localized: "user_profile_copy_id"), systemImage: "doc.on.doc")
-                        }
+            if let user = viewModel.user {
+                VStack(alignment: .center, spacing: 0) {
+                    AsyncImageCompat(url: user.pictureUrl) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                    } placeholder: {
+                        Color.clear
                     }
+                    .frame(width: 128, height: 128)
+                    .clipShape(Circle())
+                    
+                    Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
+                        .font(.title2)
+                        .lineLimit(1)
+                        .padding(.top)
+                    
+                    Text(verbatim: user.id)
+                        .font(.subheadline)
+                        .lineLimit(1)
+                        .contextMenu {
+                            Button {
+                                UIPasteboard.general.string = user.id
+                            } label: {
+                                Label(String(localized: "user_profile_copy_id"), systemImage: "doc.on.doc")
+                            }
+                        }
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
             }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(Color.clear)
             
 //            Section {
 //                NavigationLink {
@@ -100,14 +103,34 @@ struct UserProfileView: View {
                 }
             }
             
-//            Section {
-//                Button {
-//
-//                } label: {
-//                    Text(verbatim: String(localized: "user_profile_sign_out"))
-//                        .foregroundColor(.red)
-//                }
-//            }
+            Section {
+                Button {
+                    showDeleteAccountConfirmation = true
+                } label: {
+                    Text(verbatim: String(localized: "user_profile_delete_account_button"))
+                        .foregroundColor(.red)
+                }
+                .alert(isPresented: $showDeleteAccountConfirmation) {
+                    Alert(
+                        title: Text("user_profile_delete_account_confirmation_title"),
+                        message: Text("user_profile_delete_account_confirmation_message"),
+                        primaryButton: .destructive(Text("shared_dialog_button_yes")) {
+                            Task {
+                                do {
+                                    try await viewModel.deleteAccount()
+                                    
+                                    withAnimation {
+                                        ContentRouter.main.route = .intro
+                                    }
+                                } catch {
+                                    //
+                                }
+                            }
+                        },
+                        secondaryButton: .cancel(Text("shared_dialog_button_cancel"))
+                    )
+                }
+            }
         }
         .customListStyle()
         .navigationTitle(String(localized: "user_profile_title"))

@@ -7,7 +7,9 @@
 */
 
 "shared_anonymous_user" = "Notificarista";
+"shared_dialog_button_yes" = "Yes";
 "shared_dialog_button_ok" = "OK";
+"shared_dialog_button_cancel" = "Cancel";
 "shared_dialog_button_skip" = "Skip";
 "shared_continue_to_settings" = "Continue to Settings";
 
@@ -90,6 +92,10 @@
 "user_profile_personal_information" = "Tell us about you";
 "user_profile_sign_out" = "Sign out";
 "user_profile_unsupported_user_data_type" = "Unsupported field";
+"user_profile_delete_account_button" = "Delete account";
+"user_profile_delete_account_confirmation_title" = "Are you certain?";
+"user_profile_delete_account_confirmation_message" = "This action is permanent and will delete your user account. Proceed with caution.";
+"user_profile_delete_account_failure" = "Couldn't delete your account.";
 
 "products_list_title" = "Products";
 
