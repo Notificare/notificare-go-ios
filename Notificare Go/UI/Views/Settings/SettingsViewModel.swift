@@ -76,54 +76,64 @@ class SettingsViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        $notificationsEnabled.sink { enabled in
-            if enabled {
-                Notificare.shared.push().enableRemoteNotifications { _ in }
-            } else {
-                Notificare.shared.push().disableRemoteNotifications()
+        $notificationsEnabled
+            .dropFirst()
+            .sink { enabled in
+                NotificareLogger.warning("=== NOTIFICATIONS ENABLED CHANGED : \(enabled) ===")
+                if enabled {
+                    Notificare.shared.push().enableRemoteNotifications { _ in }
+                } else {
+                    Notificare.shared.push().disableRemoteNotifications()
+                }
             }
-        }
-        .store(in: &cancellables)
+            .store(in: &cancellables)
         
-        $doNotDisturbEnabled.sink { [weak self] enabled in
-            guard let self = self else { return }
-            
-            if enabled {
+        $doNotDisturbEnabled
+            .dropFirst()
+            .sink { [weak self] enabled in
+                NotificareLogger.warning("=== DND ENABLED CHANGED : \(enabled) ===")
+                guard let self = self else { return }
+                
+                if enabled {
+                    let dnd = NotificareDoNotDisturb(
+                        start: NotificareTime(from: self.doNotDisturbStart),
+                        end: NotificareTime(from: self.doNotDisturbEnd)
+                    )
+                    
+                    Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
+                } else {
+                    Notificare.shared.device().clearDoNotDisturb { _ in }
+                }
+            }
+            .store(in: &cancellables)
+        
+        $doNotDisturbStart
+            .dropFirst()
+            .sink { [weak self] start in
+                guard let self = self else { return }
+                
                 let dnd = NotificareDoNotDisturb(
-                    start: NotificareTime(from: self.doNotDisturbStart),
+                    start: NotificareTime(from: start),
                     end: NotificareTime(from: self.doNotDisturbEnd)
                 )
                 
                 Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
-            } else {
-                Notificare.shared.device().clearDoNotDisturb { _ in }
             }
-        }
-        .store(in: &cancellables)
+            .store(in: &cancellables)
         
-        $doNotDisturbStart.sink { [weak self] start in
-            guard let self = self else { return }
-            
-            let dnd = NotificareDoNotDisturb(
-                start: NotificareTime(from: start),
-                end: NotificareTime(from: self.doNotDisturbEnd)
-            )
-            
-            Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
-        }
-        .store(in: &cancellables)
-        
-        $doNotDisturbEnd.sink { [weak self] end in
-            guard let self = self else { return }
-            
-            let dnd = NotificareDoNotDisturb(
-                start: NotificareTime(from: self.doNotDisturbStart),
-                end: NotificareTime(from: end)
-            )
-            
-            Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
-        }
-        .store(in: &cancellables)
+        $doNotDisturbEnd
+            .dropFirst()
+            .sink { [weak self] end in
+                guard let self = self else { return }
+                
+                let dnd = NotificareDoNotDisturb(
+                    start: NotificareTime(from: self.doNotDisturbStart),
+                    end: NotificareTime(from: end)
+                )
+                
+                Notificare.shared.device().updateDoNotDisturb(dnd) { _ in }
+            }
+            .store(in: &cancellables)
         
         $locationEnabled
             .dropFirst()
@@ -176,6 +186,7 @@ class SettingsViewModel: ObservableObject {
     
     private func observeTagChanges() {
         $announcementsTagEnabled
+            .dropFirst()
             .sink { enabled in
                 Task {
                     do {
@@ -195,6 +206,7 @@ class SettingsViewModel: ObservableObject {
             .store(in: &cancellables)
         
         $bestPracticesTagEnabled
+            .dropFirst()
             .sink { enabled in
                 Task {
                     do {
@@ -214,6 +226,7 @@ class SettingsViewModel: ObservableObject {
             .store(in: &cancellables)
         
         $productUpdatesTagEnabled
+            .dropFirst()
             .sink { enabled in
                 Task {
                     do {
@@ -233,6 +246,7 @@ class SettingsViewModel: ObservableObject {
             .store(in: &cancellables)
         
         $engineeringTagEnabled
+            .dropFirst()
             .sink { enabled in
                 Task {
                     do {
@@ -252,6 +266,7 @@ class SettingsViewModel: ObservableObject {
             .store(in: &cancellables)
         
         $staffTagEnabled
+            .dropFirst()
             .sink { enabled in
                 Task {
                     do {
