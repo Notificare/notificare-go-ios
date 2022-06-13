@@ -15,7 +15,7 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = "EUR"
-        formatter.currencySymbol = "EUR"
+        formatter.currencySymbol = "€"
         formatter.maximumFractionDigits = hasCentsAmount ? 2 : 0
         
         return formatter.string(from: NSNumber(value: self))!
