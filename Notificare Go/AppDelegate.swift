@@ -34,6 +34,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Notificare.shared.geo().delegate = self
         Notificare.shared.scannables().delegate = self
         
+        if let configuration = Preferences.standard.appConfiguration {
+            Notificare.shared.configure(
+                servicesInfo: NotificareServicesInfo(
+                    applicationKey: configuration.applicationKey,
+                    applicationSecret: configuration.applicationSecret
+                )
+            )
+        }
+        
         return true
     }
     

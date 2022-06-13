@@ -28,12 +28,14 @@ class SplashViewModel: ObservableObject {
         
         isShowingProgress = true
         
-        Notificare.shared.configure(
-            servicesInfo: NotificareServicesInfo(
-                applicationKey: appConfiguration.applicationKey,
-                applicationSecret: appConfiguration.applicationSecret
+        if !Notificare.shared.isConfigured {
+            Notificare.shared.configure(
+                servicesInfo: NotificareServicesInfo(
+                    applicationKey: appConfiguration.applicationKey,
+                    applicationSecret: appConfiguration.applicationSecret
+                )
             )
-        )
+        }
 
         Notificare.shared.launch()
         
