@@ -67,6 +67,10 @@ class LocationController: NSObject, CLLocationManagerDelegate {
                     return .ok
                 }
             } else {
+                if !Notificare.shared.geo().hasLocationServicesEnabled {
+                    Notificare.shared.geo().enableLocationUpdates()
+                }
+                
                 return .ok
             }
         case .authorized:
@@ -78,10 +82,17 @@ class LocationController: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
+            guard Notificare.shared.geo().hasLocationServicesEnabled || requestPermissionsContinuation != nil else {
+                print("Received the initial authorization status. Skipping...")
+                return
+            }
+        }
+        
         switch manager.authorizationStatus {
         case .denied:
             // To clear the device's location in case one has been acquired.
-            Notificare.shared.geo().enableLocationUpdates()
+            Notificare.shared.geo().disableLocationUpdates()
             self.requestPermissionsContinuation?.resume(returning: .denied)
             self.requestPermissionsContinuation = nil
         case .authorizedAlways:
