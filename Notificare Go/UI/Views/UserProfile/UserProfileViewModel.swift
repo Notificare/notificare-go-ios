@@ -13,6 +13,7 @@ import NotificareKit
 @MainActor
 class UserProfileViewModel: ObservableObject {
     @Published private(set) var user: UserInfo?
+    @Published private(set) var membershipCardUrl: String?
     @Published var profileInformation: [ProfileInformationItem] = []
     
     private var cancellables = Set<AnyCancellable>()
@@ -21,6 +22,8 @@ class UserProfileViewModel: ObservableObject {
         if let user = Auth.auth().currentUser {
             self.user = UserInfo(user: user)
         }
+        
+        self.membershipCardUrl = Preferences.standard.membershipCardUrl
         
         Task {
             do {

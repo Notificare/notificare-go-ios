@@ -14,7 +14,22 @@ extension APIClient {
         struct Demo: Decodable {
             let applicationKey: String
             let applicationSecret: String
-            // let loyaltyProgram: String
+            let loyaltyProgram: String?
+        }
+    }
+    
+    struct CreateEnrollmentResponse: Decodable {
+        let pass: Pass
+        let saveLinks: SaveLinks
+        
+        struct Pass: Decodable {
+            let serial: String
+            let barcode: String
+        }
+        
+        struct SaveLinks: Decodable {
+            let appleWallet: String
+            let googlePay: String
         }
     }
 }

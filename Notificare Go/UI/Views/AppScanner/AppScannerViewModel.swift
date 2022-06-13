@@ -31,7 +31,8 @@ import CodeScanner
                     // Persist the configuration.
                     Preferences.standard.appConfiguration = AppConfiguration(
                         applicationKey: response.demo.applicationKey,
-                        applicationSecret: response.demo.applicationSecret
+                        applicationSecret: response.demo.applicationSecret,
+                        loyaltyProgramId: response.demo.loyaltyProgram
                     )
                     
                     processScanState = .success

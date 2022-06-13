@@ -10,5 +10,5 @@ import Foundation
 struct AppConfiguration: Codable {
     let applicationKey: String
     let applicationSecret: String
-    // let loyaltyProgram: String
+    let loyaltyProgramId: String?
 }

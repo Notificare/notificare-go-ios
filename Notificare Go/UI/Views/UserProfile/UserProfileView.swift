@@ -56,13 +56,16 @@ struct UserProfileView: View {
                 .listRowBackground(Color.clear)
             }
             
-//            Section {
-//                NavigationLink {
-//                    EmptyView()
-//                } label: {
-//                    Text(verbatim: String(localized: "user_profile_membership_card"))
-//                }
-//            }
+            if let membershipCardUrl = viewModel.membershipCardUrl {
+                Section {
+                    Button(String(localized: "user_profile_membership_card")) {
+                        guard let url = URL(string: membershipCardUrl) else { return }
+                        guard UIApplication.shared.canOpenURL(url) else { return }
+                        
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
             
             if !viewModel.profileInformation.isEmpty {
                 Section {

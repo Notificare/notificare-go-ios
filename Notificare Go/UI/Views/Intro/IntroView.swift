@@ -145,6 +145,29 @@ struct IntroView: View {
                 do {
                     let user = Auth.auth().currentUser!
                     try await Notificare.shared.device().register(userId: user.uid, userName: user.displayName)
+                    
+                    if let programId = Preferences.standard.appConfiguration?.loyaltyProgramId {
+                        print("Creating loyalty program enrollment.")
+                        let response = try await APIClient.createEnrollment(
+                            programId: programId,
+                            payload: APIClient.CreateEnrollmentPayload(
+                                userId: user.uid,
+                                memberId: user.uid,
+                                fields: [
+                                    APIClient.CreateEnrollmentPayload.Field(
+                                        key: "name",
+                                        value: user.displayName ?? String(localized: "shared_anonymous_user")
+                                    ),
+                                    APIClient.CreateEnrollmentPayload.Field(
+                                        key: "email",
+                                        value: user.email ?? ""
+                                    ),
+                                ]
+                            )
+                        )
+
+                        Preferences.standard.membershipCardUrl = response.saveLinks.appleWallet
+                    }
                 } catch {
                     // TODO: handle error scenario.
                 }

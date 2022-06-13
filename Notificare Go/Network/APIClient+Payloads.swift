@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+extension APIClient {
+    struct CreateEnrollmentPayload: Encodable {
+        let userId: String
+        let memberId: String
+        let fields: [Field]
+        
+        private enum CodingKeys: String, CodingKey {
+            case userId = "userID"
+        }
+        
+        struct Field: Encodable {
+            let key: String
+            let value: String
+        }
+    }
+}

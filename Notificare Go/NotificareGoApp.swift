@@ -48,7 +48,8 @@ struct NotificareGoApp: App {
                 // Persist the configuration.
                 Preferences.standard.appConfiguration = AppConfiguration(
                     applicationKey: response.demo.applicationKey,
-                    applicationSecret: response.demo.applicationSecret
+                    applicationSecret: response.demo.applicationSecret,
+                    loyaltyProgramId: response.demo.loyaltyProgram
                 )
                 
                 ContentRouter.main.route = .splash

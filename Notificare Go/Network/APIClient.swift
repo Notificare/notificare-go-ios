@@ -18,10 +18,26 @@ enum APIClient {
             .appendingPathComponent("code")
             .appendingPathComponent(code)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
         return try await AF.request(url)
+            .validate()
+            .serializingDecodable()
+            .value
+    }
+    
+    static func createEnrollment(programId: String, payload: CreateEnrollmentPayload) async throws -> CreateEnrollmentResponse {
+        let url = baseUrl
+            .appendingPathComponent("loyalty")
+            .appendingPathComponent("profile")
+            .appendingPathComponent("enrollment")
+            .appendingPathComponent(programId)
+        
+        var headers: HTTPHeaders = []
+        
+        if let configuration = Preferences.standard.appConfiguration {
+            headers.add(.authorization(username: configuration.applicationKey, password: configuration.applicationSecret))
+        }
+        
+        return try await AF.request(url, method: .post, parameters: payload, encoder: .json, headers: headers)
             .validate()
             .serializingDecodable()
             .value

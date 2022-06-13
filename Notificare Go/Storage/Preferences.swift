@@ -34,6 +34,9 @@ final class Preferences {
     
     @CodableUserDefault("cart")
     var cart: [CartEntry] = []
+    
+    @UserDefault("membership_card_url")
+    var membershipCardUrl: String? = nil
 }
 
 @propertyWrapper
