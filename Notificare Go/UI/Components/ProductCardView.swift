@@ -19,7 +19,7 @@ struct ProductCardView: View {
             } placeholder: {
                 Color.clear
             }
-            .frame(width: 128, height: 96)
+            .frame(width: 128, height: 128 * 10 / 16)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             
             Text(verbatim: product.name)

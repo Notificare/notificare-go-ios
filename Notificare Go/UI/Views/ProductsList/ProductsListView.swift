@@ -28,7 +28,7 @@ struct ProductsListView: View {
                         } placeholder: {
                             Color.clear
                         }
-                        .frame(width: 64, height: 48)
+                        .frame(width: 64, height: 64 * 10 / 16)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         
                         VStack(alignment: .leading) {
