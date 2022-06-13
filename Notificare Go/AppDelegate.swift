@@ -20,6 +20,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         #if DEBUG
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+        #else
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
         #endif
         
         // Configure Notificare.

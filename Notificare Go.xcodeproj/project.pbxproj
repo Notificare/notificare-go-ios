@@ -79,13 +79,13 @@
 		F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39C28118FE1004837C9 /* View+Theme.swift */; };
 		F2A3F3A02812F346004837C9 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39F2812F346004837C9 /* LocationController.swift */; };
 		F2A3F3A22812FAA3004837C9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F3A12812FAA3004837C9 /* WebView.swift */; };
-		F2B984CD2851089D005CD6D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */; };
 		F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984CE2851089D005CD6D6 /* FirebaseAuth */; };
 		F2B984D12851089D005CD6D6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */; };
 		F2B984E228513963005CD6D6 /* Gravatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E128513963005CD6D6 /* Gravatar.swift */; };
 		F2B984E42851396D005CD6D6 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E32851396D005CD6D6 /* Crypto.swift */; };
 		F2B984E6285139B7005CD6D6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E5285139B7005CD6D6 /* UserInfo.swift */; };
 		F2B984E92852617D005CD6D6 /* APIClient+Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */; };
+		F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */; };
 		F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010627BFE83E00753D89 /* Assets.xcassets */; };
 		F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */; };
@@ -209,7 +209,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2B984CD2851089D005CD6D6 /* FirebaseAnalytics in Frameworks */,
 				F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */,
 				F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */,
 				F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */,
@@ -217,6 +216,7 @@
 				F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */,
 				F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */,
 				F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */,
+				F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */,
 				F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */,
 				F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */,
@@ -476,12 +476,20 @@
 			path = Release;
 			sourceTree = "<group>";
 		};
+		F2B984F0285772A0005CD6D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F2F000F627BFE83D00753D89 = {
 			isa = PBXGroup;
 			children = (
 				F2F0010127BFE83D00753D89 /* Notificare Go */,
 				F2716A7A2806FE60000CC7A5 /* NotificationService */,
 				F2F0010027BFE83D00753D89 /* Products */,
+				F2B984F0285772A0005CD6D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -596,9 +604,9 @@
 				F24AA6EA27EDD20800F981DF /* Lottie */,
 				F24D0D8927FC595A00E4232A /* Alamofire */,
 				F2479BA627FDC8F300C1F8BE /* Introspect */,
-				F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */,
 				F2B984CE2851089D005CD6D6 /* FirebaseAuth */,
 				F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */,
+				F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */,
 			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
@@ -1003,6 +1011,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1043,6 +1052,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1200,11 +1210,6 @@
 			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareScannablesKit;
 		};
-		F2B984CC2851089D005CD6D6 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		F2B984CE2851089D005CD6D6 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1214,6 +1219,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
