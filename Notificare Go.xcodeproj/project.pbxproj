@@ -85,6 +85,7 @@
 		F2B984E228513963005CD6D6 /* Gravatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E128513963005CD6D6 /* Gravatar.swift */; };
 		F2B984E42851396D005CD6D6 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E32851396D005CD6D6 /* Crypto.swift */; };
 		F2B984E6285139B7005CD6D6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E5285139B7005CD6D6 /* UserInfo.swift */; };
+		F2B984E92852617D005CD6D6 /* APIClient+Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */; };
 		F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */; };
 		F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010627BFE83E00753D89 /* Assets.xcassets */; };
 		F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */; };
@@ -186,6 +187,7 @@
 		F2B984E128513963005CD6D6 /* Gravatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravatar.swift; sourceTree = "<group>"; };
 		F2B984E32851396D005CD6D6 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		F2B984E5285139B7005CD6D6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payloads.swift"; sourceTree = "<group>"; };
 		F2F000FF27BFE83D00753D89 /* Notificare Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notificare Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificareGoApp.swift; sourceTree = "<group>"; };
 		F2F0010627BFE83E00753D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				F24D0D8627FC4D4F00E4232A /* APIClient.swift */,
+				F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */,
 				F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */,
 			);
 			path = Network;
@@ -772,6 +775,7 @@
 				F2B984E42851396D005CD6D6 /* Crypto.swift in Sources */,
 				F29B872827C4F31F00460D85 /* IntroView.swift in Sources */,
 				F2479BB42800529500C1F8BE /* EventsView.swift in Sources */,
+				F2B984E92852617D005CD6D6 /* APIClient+Payloads.swift in Sources */,
 				F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */,
 				F29B873727C4F4E900460D85 /* ButtonStyles.swift in Sources */,
 				F2018F7027DF99FA004908E7 /* ProductsListView.swift in Sources */,
@@ -1117,7 +1121,7 @@
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.2.0;
 			};
 		};
 		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
