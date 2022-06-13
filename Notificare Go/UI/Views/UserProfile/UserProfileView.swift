@@ -8,6 +8,7 @@
 import SwiftUI
 import NotificareKit
 import PassKit
+import FirebaseAuth
 
 struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
@@ -126,19 +127,7 @@ struct UserProfileView: View {
                     Alert(
                         title: Text("user_profile_delete_account_confirmation_title"),
                         message: Text("user_profile_delete_account_confirmation_message"),
-                        primaryButton: .destructive(Text("shared_dialog_button_yes")) {
-                            Task {
-                                do {
-                                    try await viewModel.deleteAccount()
-                                    
-                                    withAnimation {
-                                        ContentRouter.main.route = .intro
-                                    }
-                                } catch {
-                                    //
-                                }
-                            }
-                        },
+                        primaryButton: .destructive(Text("shared_dialog_button_yes"), action: onDeleteAccountClicked),
                         secondaryButton: .cancel(Text("shared_dialog_button_cancel"))
                     )
                 }
@@ -147,6 +136,38 @@ struct UserProfileView: View {
         .customListStyle()
         .navigationTitle(String(localized: "user_profile_title"))
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func onDeleteAccountClicked() {
+        Task {
+            do {
+                try await viewModel.deleteAccount()
+                
+                withAnimation {
+                    ContentRouter.main.route = .intro
+                }
+            } catch {
+                let authError = AuthErrorCode(_nsError: error as NSError)
+                if authError.code == AuthErrorCode.requiresRecentLogin {
+                    Task {
+                        do {
+                            try await viewModel.reauthenticate()
+                            try await viewModel.deleteAccount()
+                            
+                            withAnimation {
+                                ContentRouter.main.route = .intro
+                            }
+                        } catch {
+                            //
+                        }
+                    }
+                    
+                    return
+                }
+                
+                // TODO: Handle other errors.
+            }
+        }
     }
 }
 

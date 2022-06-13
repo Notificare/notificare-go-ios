@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import FirebaseAuth
 import NotificareKit
+import AuthenticationServices
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
@@ -17,6 +18,7 @@ class UserProfileViewModel: ObservableObject {
     @Published var profileInformation: [ProfileInformationItem] = []
     
     private var cancellables = Set<AnyCancellable>()
+    private var appleSignInDelegate: AppleSignInDelegate?
     
     init() {
         if let user = Auth.auth().currentUser {
@@ -47,11 +49,30 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func deleteAccount() async throws {
-        // Register the device as anonymous.
-        try await Notificare.shared.device().register(userId: nil, userName: nil)
-        
         // Remove the Firebase user.
         try await Auth.auth().currentUser!.delete()
+        
+        // Register the device as anonymous.
+        try await Notificare.shared.device().register(userId: nil, userName: nil)
+    }
+    
+    func reauthenticate() async throws {
+        let nonce = randomNonceString()
+        self.appleSignInDelegate = AppleSignInDelegate(nonce: nonce)
+        
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.email, .fullName]
+        request.nonce = sha256(nonce)
+        
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = appleSignInDelegate
+        controller.presentationContextProvider = UIApplication.shared.rootViewController as? ASAuthorizationControllerPresentationContextProviding
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            self.appleSignInDelegate?.continuation = continuation
+            controller.performRequests()
+        }
     }
     
     private func startListeningToChanges() {
@@ -80,5 +101,54 @@ class UserProfileViewModel: ObservableObject {
         let label: String
         let type: String
         var value: String
+    }
+}
+
+extension UserProfileViewModel {
+    class AppleSignInDelegate: NSObject, ASAuthorizationControllerDelegate {
+        private let nonce: String
+        var continuation: CheckedContinuation<Void, Error>?
+        
+        init(nonce: String) {
+            self.nonce = nonce
+        }
+        
+        func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+            guard let continuation = continuation else { return }
+
+            guard let appleCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                  let idToken = appleCredential.identityToken,
+                  let idTokenStr = String(data: idToken, encoding: .utf8)
+            else {
+                print("Unable to acquire the ID token string.")
+                continuation.resume(throwing: AuthenticationError.missingCredentials)
+                return
+            }
+            
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idTokenStr,
+                rawNonce: self.nonce
+            )
+            
+            Task {
+                do {
+                    try await Auth.auth().currentUser!.reauthenticate(with: credential)
+                    continuation.resume()
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+        
+        func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+            continuation?.resume(throwing: error)
+        }
+    }
+}
+
+extension UserProfileViewModel {
+    enum AuthenticationError: Error {
+        case missingCredentials
     }
 }
