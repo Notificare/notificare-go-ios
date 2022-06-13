@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NotificareKit
+import PassKit
 
 struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
@@ -60,9 +61,17 @@ struct UserProfileView: View {
                 Section {
                     Button(String(localized: "user_profile_membership_card")) {
                         guard let url = URL(string: membershipCardUrl) else { return }
-                        guard UIApplication.shared.canOpenURL(url) else { return }
+                        guard let rootViewController = UIApplication.shared.rootViewController else { return }
                         
-                        UIApplication.shared.open(url)
+                        do {
+                            let data = try Data(contentsOf: url)
+                            let pass = try PKPass(data: data)
+                            
+                            guard let controller = PKAddPassesViewController(pass: pass) else { return }
+                            rootViewController.present(controller, animated: true)
+                        } catch {
+                            print("Failed to fetch the PKPass.")
+                        }
                     }
                 }
             }
