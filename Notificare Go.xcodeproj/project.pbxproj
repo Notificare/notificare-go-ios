@@ -17,6 +17,7 @@
 		F2018F7D27E0DE0C004908E7 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */; };
 		F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7E27E0E8D7004908E7 /* CartEntry.swift */; };
 		F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F8027E0EDF9004908E7 /* CartItemView.swift */; };
+		F2021D2528589AD600E4FDBC /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */; };
 		F23B8EB027D91574003B93B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */; };
 		F23B8ED927DA40D7003B93B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8ED827DA40D7003B93B8 /* ContentView.swift */; };
 		F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EDB27DA4563003B93B8 /* SplashView.swift */; };
@@ -202,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2021D2528589AD600E4FDBC /* NotificareNotificationServiceExtensionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +571,9 @@
 			dependencies = (
 			);
 			name = NotificationService;
+			packageProductDependencies = (
+				F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */,
+			);
 			productName = NotificationService;
 			productReference = F2716A792806FE60000CC7A5 /* NotificationService.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1145,6 +1150,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareNotificationServiceExtensionKit;
+		};
 		F2479BA627FDC8F300C1F8BE /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
