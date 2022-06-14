@@ -15,6 +15,8 @@ extension APIClient {
         
         private enum CodingKeys: String, CodingKey {
             case userId = "userID"
+            case memberId
+            case fields
         }
         
         struct Field: Encodable {
