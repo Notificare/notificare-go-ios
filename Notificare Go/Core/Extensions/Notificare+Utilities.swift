@@ -23,7 +23,7 @@ extension NotificareEventsModule {
     // MARK: Page views
     
     func logPageView(_ page: PageView) async throws {
-        try await logCustom("paged_viewed.\(page.rawValue)")
+        try await logCustom("page_viewed.\(page.rawValue)")
     }
     
     // MARK: Cart & Products
