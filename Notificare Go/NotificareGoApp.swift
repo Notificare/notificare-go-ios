@@ -15,18 +15,33 @@ internal let PRIVACY_DETAILS_URL = URL(string: "https://ntc.re/0OMbJKeJ2m")!
 struct NotificareGoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     @StateObject private var appState = AppState()
     @StateObject private var alertController = AlertController()
+    
+    private let shortcutsService = ShortcutsService.shared
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(appState)
                 .environmentObject(alertController)
+                .environmentObject(shortcutsService)
                 .alert(item: $alertController.info, content: { $0.alert })
                 .onOpenURL {
                     handleConfigurationUniversalLink($0)
                     handleDeepLink($0)
+                }
+                .onChange(of: scenePhase) { scenePhase in
+                    switch scenePhase {
+                    case .active:
+                        handleShortcutAction()
+                    case .background:
+                        updateShortcuts()
+                    default:
+                        break
+                    }
                 }
         }
     }
@@ -109,5 +124,55 @@ struct NotificareGoApp: App {
         default:
             Logger.main.warning("Unprocessed deep link: \(url)")
         }
+    }
+    
+    private func handleShortcutAction() {
+        guard let action = shortcutsService.action else {
+            return
+        }
+        
+        Logger.main.info("Handling '\(action.rawValue)' shortcut.")
+        shortcutsService.action = nil
+        
+        guard let url = action.deepLink else {
+            return
+        }
+        
+        handleDeepLink(url)
+    }
+    
+    private func updateShortcuts() {
+        var shortcuts: [UIApplicationShortcutItem] = []
+        
+        if Preferences.standard.storeEnabled {
+            shortcuts.append(
+                UIApplicationShortcutItem(
+                    type: ShortcutAction.cart.rawValue,
+                    localizedTitle: String(localized: "shortcut_cart"),
+                    localizedSubtitle: nil,
+                    icon: .init(systemImageName: "cart.fill")
+                )
+            )
+        }
+        
+        shortcuts.append(
+            UIApplicationShortcutItem(
+                type: ShortcutAction.settings.rawValue,
+                localizedTitle: String(localized: "shortcut_settings"),
+                localizedSubtitle: nil,
+                icon: .init(systemImageName: "gear")
+            )
+        )
+        
+        shortcuts.append(
+            UIApplicationShortcutItem(
+                type: ShortcutAction.events.rawValue,
+                localizedTitle: String(localized: "shortcut_events"),
+                localizedSubtitle: nil,
+                icon: .init(systemImageName: "calendar.badge.plus")
+            )
+        )
+        
+        UIApplication.shared.shortcutItems = shortcuts
     }
 }

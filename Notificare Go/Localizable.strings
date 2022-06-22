@@ -13,6 +13,10 @@
 "shared_dialog_button_skip" = "Skip";
 "shared_continue_to_settings" = "Continue to Settings";
 
+"shortcut_cart" = "Cart";
+"shortcut_settings" = "Settings";
+"shortcut_events" = "Create an event";
+
 "content_configured_dialog_title" = "Already configured";
 "content_configured_dialog_message" = "You cannot change the configuration once it has been set. Please reinstall the app to reconfigure it.";
 "content_configuration_error_dialog_title" = "Configuration failed";
