@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel: SettingsViewModel
     
     init() {
@@ -17,7 +18,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink {
+                NavigationLink(isActive: $appState.showUserProfile) {
                     UserProfileView()
                 } label: {
                     HStack(alignment: .center, spacing: 16) {
@@ -45,7 +46,7 @@ struct SettingsView: View {
             }
             
             Section {
-                NavigationLink {
+                NavigationLink(isActive: $appState.showInbox) {
                     InboxView()
                 } label: {
                     Label {

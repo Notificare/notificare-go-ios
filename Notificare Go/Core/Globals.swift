@@ -7,15 +7,16 @@
 
 import Foundation
 import NotificareKit
+import OSLog
 
 func extractCodeParameter(from url: URL) -> String? {
     guard url.scheme == "https" else {
-        print("Scheme mismatch.")
+        Logger.main.debug("Scheme mismatch.")
         return nil
     }
     
     guard url.host == "go-demo.ntc.re" || url.host == "go-demo-dev.ntc.re" else {
-        print("Host mismatch.")
+        Logger.main.debug("Host mismatch.")
         return nil
     }
     
@@ -23,7 +24,7 @@ func extractCodeParameter(from url: URL) -> String? {
           let queryItems = components.queryItems,
           let referrer = queryItems.first(where: { $0.name == "referrer" })?.value
     else {
-        print("Missing referrer parameter.")
+        Logger.main.debug("Missing referrer parameter.")
         return nil
     }
     
@@ -45,7 +46,7 @@ func loadRemoteConfig() async {
             return
         }
         
-        print("Failed to fetch the remote config. \(error)")
+        Logger.main.error("Failed to fetch the remote config. \(error.localizedDescription)")
     }
     
     Preferences.standard.storeEnabled = false

@@ -10,6 +10,7 @@ import CoreLocation
 import Foundation
 import NotificareKit
 import NotificareAssetsKit
+import OSLog
 import NotificareGeoKit
 import NotificareScannablesKit
 
@@ -55,7 +56,7 @@ class HomeViewModel: ObservableObject {
                     }
                     .filter(\.highlighted)
             } catch {
-                print(error.localizedDescription)
+                Logger.main.error("Error fetching the products. \(error.localizedDescription)")
             }
         }
     }

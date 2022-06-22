@@ -11,6 +11,7 @@ import SwiftUI
 import FirebaseAuth
 import Introspect
 import NotificareKit
+import OSLog
 
 struct IntroView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -115,7 +116,7 @@ struct IntroView: View {
                   let idToken = appleCredential.identityToken,
                   let idTokenStr = String(data: idToken, encoding: .utf8)
             else {
-                print("Unable to acquire the ID token string.")
+                Logger.main.error("Unable to acquire the ID token string.")
                 return
             }
             
@@ -136,7 +137,7 @@ struct IntroView: View {
                         try await profileChangeRequest.commitChanges()
                     }
                 } catch {
-                    print("Failed to login with Firebase. \(error)")
+                    Logger.main.error("Failed to login with Firebase. \(error.localizedDescription)")
                     return
                 }
                 
@@ -147,7 +148,7 @@ struct IntroView: View {
                     try await Notificare.shared.device().register(userId: user.uid, userName: user.displayName)
                     
                     if let programId = Preferences.standard.appConfiguration?.loyaltyProgramId {
-                        print("Creating loyalty program enrollment.")
+                        Logger.main.info("Creating loyalty program enrollment.")
                         let response = try await APIClient.createEnrollment(
                             programId: programId,
                             payload: APIClient.CreateEnrollmentPayload(
@@ -176,8 +177,7 @@ struct IntroView: View {
                 ContentRouter.main.route = .main
             }
         case .failure(let error):
-            print("Authorization failed")
-            print("\(error)")
+            Logger.main.error("Authorization failed. \(error.localizedDescription)")
         }
     }
 }

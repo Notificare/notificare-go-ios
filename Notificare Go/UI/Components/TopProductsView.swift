@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopProductsView: View {
+    @EnvironmentObject private var appState: AppState
     let products: [Product]
     
     var body: some View {
@@ -32,7 +33,7 @@ struct TopProductsView: View {
             HStack {
                 Spacer()
                 
-                NavigationLink {
+                NavigationLink(isActive: $appState.showProducts) {
                     ProductsListView()
                 } label: {
                     HStack {

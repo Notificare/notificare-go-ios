@@ -13,6 +13,7 @@ import NotificareGeoKit
 import NotificareInboxKit
 import NotificarePushKit
 import NotificareScannablesKit
+import OSLog
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -118,7 +119,7 @@ extension AppDelegate: NotificareGeoDelegate {
 extension AppDelegate: NotificareScannablesDelegate {
     func notificare(_ notificareScannables: NotificareScannables, didDetectScannable scannable: NotificareScannable) {
         guard let notification = scannable.notification else {
-            print("Cannot present a scannable without a notification.")
+            Logger.main.warning("Cannot present a scannable without a notification.")
             return
         }
         
@@ -126,6 +127,6 @@ extension AppDelegate: NotificareScannablesDelegate {
     }
     
     func notificare(_ notificareScannables: NotificareScannables, didInvalidateScannerSession error: Error) {
-        print("Scannable session invalidated: \(error)")
+        Logger.main.error("Scannable session invalidated: \(error.localizedDescription)")
     }
 }

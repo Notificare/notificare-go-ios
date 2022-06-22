@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NotificareKit
+import OSLog
 
 internal let PRIVACY_DETAILS_URL = URL(string: "https://ntc.re/0OMbJKeJ2m")!
 
@@ -14,14 +15,19 @@ internal let PRIVACY_DETAILS_URL = URL(string: "https://ntc.re/0OMbJKeJ2m")!
 struct NotificareGoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject private var appState = AppState()
     @StateObject private var alertController = AlertController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appState)
                 .environmentObject(alertController)
                 .alert(item: $alertController.info, content: { $0.alert })
-                .onOpenURL { handleConfigurationUniversalLink($0) }
+                .onOpenURL {
+                    handleConfigurationUniversalLink($0)
+                    handleDeepLink($0)
+                }
         }
     }
     
@@ -29,7 +35,7 @@ struct NotificareGoApp: App {
         guard let code = extractCodeParameter(from: url) else { return }
         
         guard Preferences.standard.appConfiguration == nil else {
-            print("Application already configured.")
+            Logger.main.warning("Application already configured.")
             alertController.info = AlertController.AlertInfo(
                 Alert(
                     title: Text(String(localized: "content_configured_dialog_title")),
@@ -62,6 +68,46 @@ struct NotificareGoApp: App {
                     )
                 )
             }
+        }
+    }
+    
+    private func handleDeepLink(_ url: URL) {
+        guard url.scheme == Bundle.main.bundleIdentifier else { return }
+        
+        guard url.pathComponents.count >= 2 else { return }
+        
+        guard Notificare.shared.isConfigured else {
+            Logger.main.warning("Notificare is not configured. Skipping deep link...")
+            return
+        }
+        
+        // Reset the navigation state before processing the new one.
+        appState.showProducts = false
+        appState.showEvents = false
+        appState.showInbox = false
+        appState.showUserProfile = false
+        
+        switch url.pathComponents[1] {
+        case "home":
+            appState.contentTab = .home
+        case "cart":
+            appState.contentTab = .cart
+        case "settings":
+            appState.contentTab = .settings
+        case "products":
+            appState.contentTab = .home
+            appState.showProducts = true
+        case "events":
+            appState.contentTab = .home
+            appState.showEvents = true
+        case "inbox":
+            appState.contentTab = .settings
+            appState.showInbox = true
+        case "profile":
+            appState.contentTab = .settings
+            appState.showUserProfile = true
+        default:
+            Logger.main.warning("Unprocessed deep link: \(url)")
         }
     }
 }

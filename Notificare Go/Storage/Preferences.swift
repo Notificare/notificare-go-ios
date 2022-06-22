@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import OSLog
 
 final class Preferences {
     static let standard = Preferences(userDefaults: .standard)
@@ -107,7 +108,7 @@ struct CodableUserDefault<Value : Codable> {
              
                 return defaultValue
             } catch {
-                print("Failed to decode value for '\(key)'.")
+                Logger.main.warning("Failed to decode value for '\(key)'.")
                 return defaultValue
             }
         }
@@ -121,7 +122,7 @@ struct CodableUserDefault<Value : Codable> {
                 container.set(encoded, forKey: key)
                 instance.preferencesChangedSubject.send(wrappedKeyPath)
             } catch {
-                print("Failed to encode value for '\(key)'.")
+                Logger.main.warning("Failed to encode value for '\(key)'.")
             }
         }
     }

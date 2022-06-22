@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import CoreLocation
 import NotificareKit
+import OSLog
 
 class LocationController: NSObject, CLLocationManagerDelegate {
     private(set) static var hasRequestedAlwaysPermission = false
@@ -84,7 +85,7 @@ class LocationController: NSObject, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
             guard Notificare.shared.geo().hasLocationServicesEnabled || requestPermissionsContinuation != nil else {
-                print("Received the initial authorization status. Skipping...")
+                Logger.main.info("Received the initial authorization status. Skipping...")
                 return
             }
         }

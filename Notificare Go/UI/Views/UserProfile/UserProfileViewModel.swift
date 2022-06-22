@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import NotificareKit
 import AuthenticationServices
+import OSLog
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
@@ -85,9 +86,9 @@ class UserProfileViewModel: ObservableObject {
                 Notificare.shared.device().updateUserData(userData) { result in
                     switch result {
                     case .success:
-                        print("Updated user data.")
+                        Logger.main.info("Updated user data.")
                     case .failure:
-                        print("Failed to update user data.")
+                        Logger.main.error("Failed to update user data.")
                     }
                 }
             }
@@ -120,7 +121,7 @@ extension UserProfileViewModel {
                   let idToken = appleCredential.identityToken,
                   let idTokenStr = String(data: idToken, encoding: .utf8)
             else {
-                print("Unable to acquire the ID token string.")
+                Logger.main.error("Unable to acquire the ID token string.")
                 continuation.resume(throwing: AuthenticationError.missingCredentials)
                 return
             }

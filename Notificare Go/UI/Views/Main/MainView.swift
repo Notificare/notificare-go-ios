@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var appState: AppState
+    
     @Preference(\.storeEnabled)
     private var storeEnabled: Bool
     
     var body: some View {
-        TabView {
+        TabView(selection: $appState.contentTab) {
             NavigationView {
                 HomeView()
             }
+            .navigationViewStyle(.stack)
+            .tag(AppState.ContentTab.home)
             .tabItem {
                 Label(String(localized: "main_navigation_home"), systemImage: "house.fill")
             }
@@ -24,6 +28,8 @@ struct MainView: View {
                 NavigationView {
                     CartView()
                 }
+                .navigationViewStyle(.stack)
+                .tag(AppState.ContentTab.cart)
                 .tabItem {
                     Label(String(localized: "main_navigation_cart"), systemImage: "cart.fill")
                 }
@@ -32,6 +38,8 @@ struct MainView: View {
             NavigationView {
                 SettingsView()
             }
+            .navigationViewStyle(.stack)
+            .tag(AppState.ContentTab.settings)
             .tabItem {
                 Label(String(localized: "main_navigation_settings"), systemImage: "gear")
             }

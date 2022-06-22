@@ -9,6 +9,7 @@ import SwiftUI
 import NotificareKit
 import PassKit
 import FirebaseAuth
+import OSLog
 
 struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
@@ -71,7 +72,7 @@ struct UserProfileView: View {
                             guard let controller = PKAddPassesViewController(pass: pass) else { return }
                             rootViewController.present(controller, animated: true)
                         } catch {
-                            print("Failed to fetch the PKPass.")
+                            Logger.main.error("Failed to fetch the PKPass.")
                         }
                     }
                 }

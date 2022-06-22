@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 import NotificareKit
 
 @MainActor
@@ -40,7 +41,7 @@ class ProductsListViewModel: ObservableObject {
                     return Product(id: id, name: asset.title, description: description, price: price, imageUrl: imageUrl, highlighted: highlighted)
                 }
             } catch {
-                print(error.localizedDescription)
+                Logger.main.error("Failed to fetch the products. \(error.localizedDescription)")
             }
         }
     }

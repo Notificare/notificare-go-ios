@@ -8,8 +8,10 @@
 import SwiftUI
 import NotificareKit
 import NotificareScannablesKit
+import OSLog
 
 struct HomeView: View {
+    @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel: HomeViewModel
     @Preference(\.storeEnabled) private var storeEnabled: Bool
     
@@ -133,7 +135,7 @@ struct HomeView: View {
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 8)
                         
-                        NavigationLink {
+                        NavigationLink(isActive: $appState.showEvents) {
                             EventsView()
                         } label: {
                             Text(String(localized: "home_events_button"))
@@ -161,6 +163,13 @@ struct HomeView: View {
                 .padding()
             }
         }
+        .overlay(
+            NavigationLink(isActive: $appState.showEvents) {
+                EventsView()
+            } label: {
+                EmptyView()
+            }
+        )
     }
 }
 

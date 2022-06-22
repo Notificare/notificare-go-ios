@@ -93,6 +93,8 @@
 		F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011227BFEE3100753D89 /* HomeView.swift */; };
 		F2F0011527BFEE3F00753D89 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011427BFEE3F00753D89 /* CartView.swift */; };
 		F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0011627BFEE5300753D89 /* SettingsView.swift */; };
+		F2F60A772861CE160034384A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F60A762861CE160034384A /* AppState.swift */; };
+		F2F60A79286221A10034384A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F60A78286221A10034384A /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +198,8 @@
 		F2F0011227BFEE3100753D89 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F2F0011427BFEE3F00753D89 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		F2F0011627BFEE5300753D89 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F2F60A762861CE160034384A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F2F60A78286221A10034384A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +453,7 @@
 				F2A3F39F2812F346004837C9 /* LocationController.swift */,
 				F2B984E32851396D005CD6D6 /* Crypto.swift */,
 				F2B984E128513963005CD6D6 /* Gravatar.swift */,
+				F2F60A78286221A10034384A /* Logger.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */,
 				F25E4EED27D2358600BEFCF5 /* AppDelegate.swift */,
 				F23B8ED827DA40D7003B93B8 /* ContentView.swift */,
+				F2F60A762861CE160034384A /* AppState.swift */,
 				F2F0010627BFE83E00753D89 /* Assets.xcassets */,
 				F245855F27C40C1E00AA93A2 /* Localizable.strings */,
 				F284C0BE27CF781400E6986B /* NotificareOptions.plist */,
@@ -745,6 +751,7 @@
 				F2F0011727BFEE5300753D89 /* SettingsView.swift in Sources */,
 				F2B984E6285139B7005CD6D6 /* UserInfo.swift in Sources */,
 				F29B872527C4F26F00460D85 /* MainView.swift in Sources */,
+				F2F60A79286221A10034384A /* Logger.swift in Sources */,
 				F2F0011327BFEE3100753D89 /* HomeView.swift in Sources */,
 				F2018F7927E0D553004908E7 /* Preferences.swift in Sources */,
 				F24D0D8C27FC91B600E4232A /* AppScannerViewModel.swift in Sources */,
@@ -789,6 +796,7 @@
 				F29B872827C4F31F00460D85 /* IntroView.swift in Sources */,
 				F2479BB42800529500C1F8BE /* EventsView.swift in Sources */,
 				F2B984E92852617D005CD6D6 /* APIClient+Payloads.swift in Sources */,
+				F2F60A772861CE160034384A /* AppState.swift in Sources */,
 				F25E4EEE27D2358600BEFCF5 /* AppDelegate.swift in Sources */,
 				F29B873727C4F4E900460D85 /* ButtonStyles.swift in Sources */,
 				F2018F7027DF99FA004908E7 /* ProductsListView.swift in Sources */,

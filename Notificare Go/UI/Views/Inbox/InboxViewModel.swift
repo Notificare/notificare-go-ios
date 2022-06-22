@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import NotificareKit
 import NotificareInboxKit
+import OSLog
 
 @MainActor
 class InboxViewModel: ObservableObject {
@@ -26,7 +27,7 @@ class InboxViewModel: ObservableObject {
                 guard let self = self else { return }
                 
                 guard let items = notification.userInfo?["items"] as? [NotificareInboxItem] else {
-                    print("Invalid notification payload.")
+                    Logger.main.error("Invalid notification payload.")
                     return
                 }
                 

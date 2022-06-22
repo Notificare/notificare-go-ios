@@ -7,6 +7,7 @@
 
 import Foundation
 import CodeScanner
+import OSLog
 
 @MainActor class AppScannerViewModel: ObservableObject {
     @Published var isScanning = false
@@ -39,12 +40,12 @@ import CodeScanner
                     
                     ContentRouter.main.route = .splash
                 } catch {
-                    print("Failed to fetch the remote configuration. \(error)")
+                    Logger.main.error("Failed to fetch the remote configuration. \(error.localizedDescription)")
                     processScanState = .failure
                 }
             }
         case let .failure(error):
-            print("Failed to scan the QR code. \(error)")
+            Logger.main.error("Failed to scan the QR code. \(error.localizedDescription)")
             processScanState = .failure
         }
     }

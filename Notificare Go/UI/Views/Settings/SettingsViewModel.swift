@@ -12,6 +12,7 @@ import NotificareKit
 import NotificareInboxKit
 import NotificarePushKit
 import SwiftUI
+import OSLog
 
 @MainActor
 class SettingsViewModel: ObservableObject {
@@ -61,7 +62,7 @@ class SettingsViewModel: ObservableObject {
             .publisher(for: .badgeUpdated, object: nil)
             .sink { [weak self] notification in
                 guard let badge = notification.userInfo?["badge"] as? Int else {
-                    print("Invalid notification payload.")
+                    Logger.main.error("Invalid notification payload.")
                     return
                 }
                 
@@ -79,7 +80,6 @@ class SettingsViewModel: ObservableObject {
         $notificationsEnabled
             .dropFirst()
             .sink { enabled in
-                NotificareLogger.warning("=== NOTIFICATIONS ENABLED CHANGED : \(enabled) ===")
                 if enabled {
                     Notificare.shared.push().enableRemoteNotifications { _ in }
                 } else {
@@ -91,7 +91,6 @@ class SettingsViewModel: ObservableObject {
         $doNotDisturbEnabled
             .dropFirst()
             .sink { [weak self] enabled in
-                NotificareLogger.warning("=== DND ENABLED CHANGED : \(enabled) ===")
                 guard let self = self else { return }
                 
                 if enabled {
@@ -180,7 +179,7 @@ class SettingsViewModel: ObservableObject {
             engineeringTagEnabled = tags.contains("topic_engineering")
             staffTagEnabled = tags.contains("topic_staff")
         } catch {
-            print("Failed to fetch device tags. \(error)")
+            Logger.main.error("Failed to fetch device tags. \(error.localizedDescription)")
         }
     }
     
