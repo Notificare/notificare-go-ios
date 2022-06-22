@@ -170,6 +170,15 @@ struct HomeView: View {
                 EmptyView()
             }
         )
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.home)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
 

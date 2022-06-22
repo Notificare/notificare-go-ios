@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import OSLog
+import NotificareKit
 
 struct EventsView: View {
     @StateObject private var viewModel: EventsViewModel
@@ -63,6 +65,15 @@ struct EventsView: View {
         }
         .customListStyle()
         .navigationTitle(String(localized: "events_title"))
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.events)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
 

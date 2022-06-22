@@ -51,6 +51,15 @@ struct InboxView: View {
         .customListStyle()
         .navigationTitle(String(localized: "inbox_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.inbox)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     private func getSectionHeader(_ section: InboxViewModel.InboxSection) -> String {

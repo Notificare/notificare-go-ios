@@ -15,6 +15,19 @@ extension NotificareInboxItem: Identifiable {}
 extension NotificareBeacon: Identifiable {}
 
 extension NotificareEventsModule {
+    
+    func logIntroFinished() async throws {
+        try await logCustom("intro_finished")
+    }
+    
+    // MARK: Page views
+    
+    func logPageView(_ page: PageView) async throws {
+        try await logCustom("paged_viewed.\(page.rawValue)")
+    }
+    
+    // MARK: Cart & Products
+    
     func logAddToCart(product: Product) async throws {
         let data: NotificareEventData = [
             "product": transformProduct(product),
@@ -78,4 +91,15 @@ extension NotificareEventsModule {
             "price_formatted": product.price.asCurrencyString(),
         ]
     }
+}
+
+enum PageView: String {
+    case home
+    case cart
+    case settings
+    case inbox
+    case userProfile = "user_profile"
+    case events
+    case products
+    case productDetails = "product_details"
 }

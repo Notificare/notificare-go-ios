@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import OSLog
+import NotificareKit
 
 struct ProductDetailsView: View {
     @StateObject private var viewModel: ProductDetailsViewModel
@@ -61,6 +63,15 @@ struct ProductDetailsView: View {
                     CartView()
                 } label: {
                     Image(systemName: "cart")
+                }
+            }
+        }
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.productDetails)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
                 }
             }
         }

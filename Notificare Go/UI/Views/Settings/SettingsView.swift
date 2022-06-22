@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import OSLog
+import NotificareKit
 
 struct SettingsView: View {
     @EnvironmentObject private var appState: AppState
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var viewModel: SettingsViewModel
     
     init() {
@@ -186,6 +189,15 @@ struct SettingsView: View {
                 }
                 .buttonStyle(PrimaryButton())
                 .padding()
+            }
+        }
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.settings)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
             }
         }
     }

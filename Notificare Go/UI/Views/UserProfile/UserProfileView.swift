@@ -137,6 +137,15 @@ struct UserProfileView: View {
         .customListStyle()
         .navigationTitle(String(localized: "user_profile_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            Task {
+                do {
+                    try await Notificare.shared.events().logPageView(.userProfile)
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     private func onDeleteAccountClicked() {

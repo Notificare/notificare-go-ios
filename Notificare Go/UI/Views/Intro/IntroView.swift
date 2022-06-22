@@ -173,6 +173,12 @@ struct IntroView: View {
                     // TODO: handle error scenario.
                 }
                 
+                do {
+                    try await Notificare.shared.events().logIntroFinished()
+                } catch {
+                    Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
+                }
+                
                 Preferences.standard.introFinished = true
                 ContentRouter.main.route = .main
             }
