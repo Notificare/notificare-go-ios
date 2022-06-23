@@ -142,6 +142,11 @@ struct NotificareGoApp: App {
     }
     
     private func updateShortcuts() {
+        guard Preferences.standard.introFinished else {
+            UIApplication.shared.shortcutItems = nil
+            return
+        }
+        
         var shortcuts: [UIApplicationShortcutItem] = []
         
         if Preferences.standard.storeEnabled {
