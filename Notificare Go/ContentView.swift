@@ -23,6 +23,7 @@ struct ContentView: View {
                 MainView()
             }
         }
+        .environmentObject(router)
     }
 }
 

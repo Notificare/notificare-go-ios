@@ -16,7 +16,6 @@ import OSLog
 
 @MainActor
 class SettingsViewModel: ObservableObject {
-    @Published private(set) var user: UserInfo
     @Published private(set) var badge: Int
     @Published var notificationsEnabled: Bool
     @Published var doNotDisturbEnabled: Bool
@@ -35,18 +34,6 @@ class SettingsViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.user = UserInfo(user: Auth.auth().currentUser!)
-
-//        if let user = Auth.auth().currentUser {
-//            self.user = UserInfo(user: user)
-//        } else {
-//            #if DEBUG
-//            self.user = UserInfo(id: "...", name: "John Doe", pictureUrl: nil)
-//            #else
-//            fatalError("Missing user information.")
-//            #endif
-//        }
-        
         let notificationsEnabled = Notificare.shared.push().hasRemoteNotificationsEnabled && Notificare.shared.push().allowedUI
         let dnd = Notificare.shared.device().currentDevice?.dnd
         

@@ -18,6 +18,7 @@ struct IntroView: View {
     @StateObject private var viewModel: IntroViewModel
     @State private var nonce = ""
     @EnvironmentObject private var alertController: AlertController
+    @EnvironmentObject private var router: ContentRouter
     
     init() {
         self._viewModel = StateObject(wrappedValue: IntroViewModel())
@@ -180,7 +181,10 @@ struct IntroView: View {
                 }
                 
                 Preferences.standard.introFinished = true
-                ContentRouter.main.route = .main
+                
+                withAnimation {
+                    router.route = .main
+                }
             }
         case .failure(let error):
             Logger.main.error("Authorization failed. \(error.localizedDescription)")

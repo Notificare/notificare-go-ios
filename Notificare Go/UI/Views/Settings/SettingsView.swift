@@ -20,31 +20,33 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Section {
-                NavigationLink(isActive: $appState.showUserProfile) {
-                    UserProfileView()
-                } label: {
-                    HStack(alignment: .center, spacing: 16) {
-                        AsyncImageCompat(url: viewModel.user.pictureUrl) { image in
-                            Image(uiImage: image)
-                                .resizable()
-                        } placeholder: {
-                            Color.clear
-                        }
-                        .frame(width: 64, height: 64)
-                        .clipShape(Circle())
-                        
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(verbatim: viewModel.user.name ?? String(localized: "shared_anonymous_user"))
-                                .font(.title2)
-                                .lineLimit(1)
+            if let user = appState.currentUser {
+                Section {
+                    NavigationLink(isActive: $appState.showUserProfile) {
+                        UserProfileView()
+                    } label: {
+                        HStack(alignment: .center, spacing: 16) {
+                            AsyncImageCompat(url: user.pictureUrl) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                            } placeholder: {
+                                Color.clear
+                            }
+                            .frame(width: 64, height: 64)
+                            .clipShape(Circle())
                             
-                            Text(verbatim: viewModel.user.id)
-                                .font(.subheadline)
-                                .lineLimit(1)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
+                                    .font(.title2)
+                                    .lineLimit(1)
+                                
+                                Text(verbatim: user.id)
+                                    .font(.subheadline)
+                                    .lineLimit(1)
+                            }
                         }
+                        .padding(.vertical, 8)
                     }
-                    .padding(.vertical, 8)
                 }
             }
             

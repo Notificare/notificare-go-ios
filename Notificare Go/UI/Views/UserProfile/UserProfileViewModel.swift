@@ -14,7 +14,6 @@ import OSLog
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
-    @Published private(set) var user: UserInfo?
     @Published private(set) var membershipCardUrl: String?
     @Published var profileInformation: [ProfileInformationItem] = []
     
@@ -22,10 +21,6 @@ class UserProfileViewModel: ObservableObject {
     private var appleSignInDelegate: AppleSignInDelegate?
     
     init() {
-        if let user = Auth.auth().currentUser {
-            self.user = UserInfo(user: user)
-        }
-        
         self.membershipCardUrl = Preferences.standard.membershipCardUrl
         
         Task {

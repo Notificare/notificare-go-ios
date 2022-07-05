@@ -12,6 +12,7 @@ import FirebaseAuth
 import OSLog
 
 struct UserProfileView: View {
+    @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel: UserProfileViewModel
     @State private var showDeleteAccountConfirmation = false
     
@@ -28,7 +29,7 @@ struct UserProfileView: View {
     
     var body: some View {
         List {
-            if let user = viewModel.user {
+            if let user = appState.currentUser {
                 VStack(alignment: .center, spacing: 0) {
                     AsyncImageCompat(url: user.pictureUrl) { image in
                         Image(uiImage: image)
