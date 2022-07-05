@@ -89,6 +89,11 @@
 "inbox_section_today" = "Today";
 "inbox_section_yesterday" = "Yesterday";
 "inbox_section_last_seven_days" = "Last 7 days";
+"inbox_empty_message" = "You have no notifications in your inbox.";
+"inbox_options_dialog_title" = "Select an option";
+"inbox_options_dialog_open" = "Open";
+"inbox_options_dialog_mark_as_read" = "Mark as read";
+"inbox_options_dialog_remove" = "Remove";
 
 "user_profile_title" = "Profile";
 "user_profile_copy_id" = "Copy user id";

@@ -14,43 +14,74 @@ import OSLog
 struct InboxView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: InboxViewModel
+    @State private var actionableItem: NotificareInboxItem?
     
     init() {
         self._viewModel = StateObject(wrappedValue: InboxViewModel())
     }
     
     var body: some View {
-        List {
-            ForEach(viewModel.sections, id: \.group) { section in
-                Section {
-                    ForEach(section.items) { item in
-                        InboxItemView(item: item)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                // Pop the inbox view from the back stack when presenting deep links.
-                                // This lets the deep link navigate correctly to places like the inbox itself, settings, profile, etc.
-                                if item.notification.type == NotificareNotification.NotificationType.urlScheme.rawValue {
-                                    presentationMode.wrappedValue.dismiss()
-                                    
-                                    // Trigger the deep link after a small delay, allowing the pop animation to complete.
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        presentInboxItem(item)
+        ZStack {
+            if viewModel.sections.isEmpty {
+                Text(String(localized: "inbox_empty_message"))
+                    .multilineTextAlignment(.center)
+                    .font(.callout)
+                    .padding(.all, 32)
+            } else {
+                List {
+                    ForEach(viewModel.sections, id: \.group) { section in
+                        Section {
+                            ForEach(section.items) { item in
+                                InboxItemView(item: item)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        handleOpenInboxItem(item)
                                     }
-                                    
-                                    return
-                                }
-                                
-                                presentInboxItem(item)
+                                    .onLongPressGesture {
+                                        actionableItem = item
+                                    }
                             }
+                        } header: {
+                            Text(verbatim: getSectionHeader(section))
+                        }
                     }
-                } header: {
-                    Text(verbatim: getSectionHeader(section))
+                }
+                .customListStyle()
+            }
+        }
+        .navigationTitle(String(localized: "inbox_title"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if !viewModel.sections.isEmpty {
+                    Button(action: handleMarkAllItemsAsRead) {
+                        Image(systemName: "envelope.open")
+                    }
+                    
+                    Button(action: handleClearItems) {
+                        Image(systemName: "trash")
+                    }
                 }
             }
         }
-        .customListStyle()
-        .navigationTitle(String(localized: "inbox_title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .actionSheet(item: $actionableItem) { item in
+            ActionSheet(
+                title: Text(String(localized: "inbox_options_dialog_title")),
+                message: Text(item.notification.message),
+                buttons: [
+                    .default(Text(String(localized: "inbox_options_dialog_open"))) {
+                        handleOpenInboxItem(item)
+                    },
+                    .default(Text(String(localized: "inbox_options_dialog_mark_as_read"))) {
+                        handleMarkItemAsRead(item)
+                    },
+                    .destructive(Text(String(localized: "inbox_options_dialog_remove"))) {
+                        handleRemoveItem(item)
+                    },
+                    .default(Text(String(localized: "shared_dialog_button_cancel"))) { }
+                ]
+            )
+        }
         .onAppear {
             Task {
                 do {
@@ -78,6 +109,63 @@ struct InboxView: View {
             }
             
             return "\(monthName) \(year)"
+        }
+    }
+    
+    private func handleOpenInboxItem(_ item: NotificareInboxItem) {
+        // Pop the inbox view from the back stack when presenting deep links.
+        // This lets the deep link navigate correctly to places like the inbox itself, settings, profile, etc.
+        if item.notification.type == NotificareNotification.NotificationType.urlScheme.rawValue {
+            presentationMode.wrappedValue.dismiss()
+            
+            // Trigger the deep link after a small delay, allowing the pop animation to complete.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                presentInboxItem(item)
+            }
+            
+            return
+        }
+        
+        presentInboxItem(item)
+    }
+    
+    private func handleMarkItemAsRead(_ item: NotificareInboxItem) {
+        Task {
+            do {
+                try await Notificare.shared.inbox().markAsRead(item)
+            } catch {
+                Logger.main.error("Failed to mark an item as read. \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleMarkAllItemsAsRead() {
+        Task {
+            do {
+                try await Notificare.shared.inbox().markAllAsRead()
+            } catch {
+                Logger.main.error("Failed to mark all item as read. \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleRemoveItem(_ item: NotificareInboxItem) {
+        Task {
+            do {
+                try await Notificare.shared.inbox().remove(item)
+            } catch {
+                Logger.main.error("Failed to remove an item. \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleClearItems() {
+        Task {
+            do {
+                try await Notificare.shared.inbox().clear()
+            } catch {
+                Logger.main.error("Failed to clear the inbox. \(error.localizedDescription)")
+            }
         }
     }
     
