@@ -173,6 +173,38 @@ struct SettingsView: View {
             } header: {
                 Text("Subscribe to topics")
             }
+            
+            if let application = Notificare.shared.application {
+                Section {
+                    VStack {
+                        Text(verbatim: application.name)
+                            .font(.headline)
+                            .foregroundColor(Color(UIColor.secondaryLabel))
+                            .multilineTextAlignment(.center)
+                        
+                        if #available(iOS 15.0, *) {
+                            Text(verbatim: application.id)
+                                .font(.caption)
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                                .multilineTextAlignment(.center)
+                                .textSelection(.enabled)
+                        } else {
+                            Text(verbatim: application.id)
+                                .font(.caption)
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                                .multilineTextAlignment(.center)
+                        }
+                        
+                        Text(verbatim: "v\(Bundle.main.applicationVersion)")
+                            .font(.caption)
+                            .foregroundColor(Color(UIColor.secondaryLabel))
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                }
+                .listRowBackground(Color.clear)
+            }
         }
         .customListStyle()
         .navigationTitle(String(localized: "settings_title"))

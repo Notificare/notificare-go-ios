@@ -84,6 +84,8 @@
 "settings_tags_product_updates_title" = "Product updates";
 "settings_tags_engineering_title" = "Engineering & technology";
 "settings_tags_staff_title" = "Staff & experiences";
+"settings_copy_application_id" = "Copy application id";
+"settings_copy_application_name" = "Copy application name";
 
 "inbox_title" = "Inbox";
 "inbox_section_today" = "Today";
