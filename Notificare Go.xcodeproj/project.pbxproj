@@ -77,6 +77,7 @@
 		F29F79DD28C0BB8C0097377A /* NotificarePushKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79DC28C0BB8C0097377A /* NotificarePushKit */; };
 		F29F79DF28C0BB8C0097377A /* NotificarePushUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79DE28C0BB8C0097377A /* NotificarePushUIKit */; };
 		F29F79E128C0BB8C0097377A /* NotificareScannablesKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79E028C0BB8C0097377A /* NotificareScannablesKit */; };
+		F29F79E328C0BDAE0097377A /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79E228C0BDAE0097377A /* NotificareNotificationServiceExtensionKit */; };
 		F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39C28118FE1004837C9 /* View+Theme.swift */; };
 		F2A3F3A02812F346004837C9 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39F2812F346004837C9 /* LocationController.swift */; };
 		F2A3F3A22812FAA3004837C9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F3A12812FAA3004837C9 /* WebView.swift */; };
@@ -211,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29F79E328C0BDAE0097377A /* NotificareNotificationServiceExtensionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +586,7 @@
 			);
 			name = NotificationService;
 			packageProductDependencies = (
+				F29F79E228C0BDAE0097377A /* NotificareNotificationServiceExtensionKit */,
 			);
 			productName = NotificationService;
 			productReference = F2716A792806FE60000CC7A5 /* NotificationService.appex */;
@@ -1235,6 +1238,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareScannablesKit;
+		};
+		F29F79E228C0BDAE0097377A /* NotificareNotificationServiceExtensionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareNotificationServiceExtensionKit;
 		};
 		F2B984CE2851089D005CD6D6 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
