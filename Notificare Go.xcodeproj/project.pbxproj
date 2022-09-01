@@ -17,7 +17,6 @@
 		F2018F7D27E0DE0C004908E7 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */; };
 		F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7E27E0E8D7004908E7 /* CartEntry.swift */; };
 		F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F8027E0EDF9004908E7 /* CartItemView.swift */; };
-		F2021D2528589AD600E4FDBC /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */; };
 		F23B8EB027D91574003B93B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */; };
 		F23B8ED927DA40D7003B93B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8ED827DA40D7003B93B8 /* ContentView.swift */; };
 		F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EDB27DA4563003B93B8 /* SplashView.swift */; };
@@ -55,15 +54,6 @@
 		F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C527CF850000E6986B /* SettingsViewModel.swift */; };
 		F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C927CF8A5600E6986B /* BadgeView.swift */; };
 		F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0CD27CF907600E6986B /* DetermineSize.swift */; };
-		F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081027D648FA00EE90CC /* NotificareAssetsKit */; };
-		F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081227D648FA00EE90CC /* NotificareGeoKit */; };
-		F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081427D648FA00EE90CC /* NotificareInboxKit */; };
-		F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081627D648FA00EE90CC /* NotificareKit */; };
-		F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */; };
-		F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */; };
-		F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081C27D648FA00EE90CC /* NotificarePushKit */; };
-		F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B081E27D648FA00EE90CC /* NotificarePushUIKit */; };
-		F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29B082027D648FA00EE90CC /* NotificareScannablesKit */; };
 		F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */; };
 		F29B871F27C4EC2B00460D85 /* AlertBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B871E27C4EC2B00460D85 /* AlertBlock.swift */; };
 		F29B872527C4F26F00460D85 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B872427C4F26F00460D85 /* MainView.swift */; };
@@ -77,6 +67,16 @@
 		F29B873E27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B873D27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift */; };
 		F29B874127C4FC4200460D85 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B874027C4FC4200460D85 /* String+Localization.swift */; };
 		F29F79CC28BF64260097377A /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29F79CB28BF64260097377A /* Bundle+Version.swift */; };
+		F29F79CF28C0BB8C0097377A /* NotificareAssetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79CE28C0BB8C0097377A /* NotificareAssetsKit */; };
+		F29F79D128C0BB8C0097377A /* NotificareGeoKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79D028C0BB8C0097377A /* NotificareGeoKit */; };
+		F29F79D328C0BB8C0097377A /* NotificareInAppMessagingKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79D228C0BB8C0097377A /* NotificareInAppMessagingKit */; };
+		F29F79D528C0BB8C0097377A /* NotificareInboxKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79D428C0BB8C0097377A /* NotificareInboxKit */; };
+		F29F79D728C0BB8C0097377A /* NotificareKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79D628C0BB8C0097377A /* NotificareKit */; };
+		F29F79D928C0BB8C0097377A /* NotificareLoyaltyKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79D828C0BB8C0097377A /* NotificareLoyaltyKit */; };
+		F29F79DB28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79DA28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit */; };
+		F29F79DD28C0BB8C0097377A /* NotificarePushKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79DC28C0BB8C0097377A /* NotificarePushKit */; };
+		F29F79DF28C0BB8C0097377A /* NotificarePushUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79DE28C0BB8C0097377A /* NotificarePushUIKit */; };
+		F29F79E128C0BB8C0097377A /* NotificareScannablesKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29F79E028C0BB8C0097377A /* NotificareScannablesKit */; };
 		F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39C28118FE1004837C9 /* View+Theme.swift */; };
 		F2A3F3A02812F346004837C9 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F39F2812F346004837C9 /* LocationController.swift */; };
 		F2A3F3A22812FAA3004837C9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3F3A12812FAA3004837C9 /* WebView.swift */; };
@@ -211,7 +211,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2021D2528589AD600E4FDBC /* NotificareNotificationServiceExtensionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,21 +219,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */,
-				F29B081D27D648FA00EE90CC /* NotificarePushKit in Frameworks */,
+				F29F79D728C0BB8C0097377A /* NotificareKit in Frameworks */,
+				F29F79DB28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit in Frameworks */,
 				F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */,
-				F29B081527D648FA00EE90CC /* NotificareInboxKit in Frameworks */,
-				F29B081927D648FA00EE90CC /* NotificareLoyaltyKit in Frameworks */,
-				F29B081727D648FA00EE90CC /* NotificareKit in Frameworks */,
+				F29F79D928C0BB8C0097377A /* NotificareLoyaltyKit in Frameworks */,
+				F29F79CF28C0BB8C0097377A /* NotificareAssetsKit in Frameworks */,
+				F29F79D128C0BB8C0097377A /* NotificareGeoKit in Frameworks */,
+				F29F79DD28C0BB8C0097377A /* NotificarePushKit in Frameworks */,
 				F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */,
 				F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				F29B082127D648FA00EE90CC /* NotificareScannablesKit in Frameworks */,
 				F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */,
-				F29B081127D648FA00EE90CC /* NotificareAssetsKit in Frameworks */,
-				F29B081F27D648FA00EE90CC /* NotificarePushUIKit in Frameworks */,
 				F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */,
 				F2B984D12851089D005CD6D6 /* FirebaseCrashlytics in Frameworks */,
-				F29B081B27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit in Frameworks */,
-				F29B081327D648FA00EE90CC /* NotificareGeoKit in Frameworks */,
+				F29F79E128C0BB8C0097377A /* NotificareScannablesKit in Frameworks */,
+				F29F79DF28C0BB8C0097377A /* NotificarePushUIKit in Frameworks */,
+				F29F79D328C0BB8C0097377A /* NotificareInAppMessagingKit in Frameworks */,
+				F29F79D528C0BB8C0097377A /* NotificareInboxKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +584,6 @@
 			);
 			name = NotificationService;
 			packageProductDependencies = (
-				F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */,
 			);
 			productName = NotificationService;
 			productReference = F2716A792806FE60000CC7A5 /* NotificationService.appex */;
@@ -608,15 +607,6 @@
 			);
 			name = "Notificare Go";
 			packageProductDependencies = (
-				F29B081027D648FA00EE90CC /* NotificareAssetsKit */,
-				F29B081227D648FA00EE90CC /* NotificareGeoKit */,
-				F29B081427D648FA00EE90CC /* NotificareInboxKit */,
-				F29B081627D648FA00EE90CC /* NotificareKit */,
-				F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */,
-				F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */,
-				F29B081C27D648FA00EE90CC /* NotificarePushKit */,
-				F29B081E27D648FA00EE90CC /* NotificarePushUIKit */,
-				F29B082027D648FA00EE90CC /* NotificareScannablesKit */,
 				F24AA6E727ECC37B00F981DF /* CodeScanner */,
 				F24AA6EA27EDD20800F981DF /* Lottie */,
 				F24D0D8927FC595A00E4232A /* Alamofire */,
@@ -624,6 +614,16 @@
 				F2B984CE2851089D005CD6D6 /* FirebaseAuth */,
 				F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */,
 				F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				F29F79CE28C0BB8C0097377A /* NotificareAssetsKit */,
+				F29F79D028C0BB8C0097377A /* NotificareGeoKit */,
+				F29F79D228C0BB8C0097377A /* NotificareInAppMessagingKit */,
+				F29F79D428C0BB8C0097377A /* NotificareInboxKit */,
+				F29F79D628C0BB8C0097377A /* NotificareKit */,
+				F29F79D828C0BB8C0097377A /* NotificareLoyaltyKit */,
+				F29F79DA28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit */,
+				F29F79DC28C0BB8C0097377A /* NotificarePushKit */,
+				F29F79DE28C0BB8C0097377A /* NotificarePushUIKit */,
+				F29F79E028C0BB8C0097377A /* NotificareScannablesKit */,
 			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
@@ -657,12 +657,12 @@
 			);
 			mainGroup = F2F000F627BFE83D00753D89;
 			packageReferences = (
-				F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */,
 				F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */,
 			);
 			productRefGroup = F2F0010027BFE83D00753D89 /* Products */;
 			projectDirPath = "";
@@ -834,7 +834,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
@@ -846,7 +846,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX).NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -860,7 +860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
@@ -872,7 +872,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX).NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1008,7 +1008,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go-Debug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Notificare Go/Preview Content\"";
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				ENABLE_PREVIEWS = YES;
@@ -1031,7 +1031,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1049,7 +1049,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Notificare Go/Notificare Go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Notificare Go/Preview Content\"";
 				DEVELOPMENT_TEAM = E3J9DDFVP4;
 				ENABLE_PREVIEWS = YES;
@@ -1072,7 +1072,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1147,12 +1147,12 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */ = {
+		F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.0;
+				minimumVersion = "3.4.0-beta.1";
 			};
 		};
 		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1166,11 +1166,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F2021D2428589AD600E4FDBC /* NotificareNotificationServiceExtensionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
-			productName = NotificareNotificationServiceExtensionKit;
-		};
 		F2479BA627FDC8F300C1F8BE /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
@@ -1191,49 +1186,54 @@
 			package = F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		F29B081027D648FA00EE90CC /* NotificareAssetsKit */ = {
+		F29F79CE28C0BB8C0097377A /* NotificareAssetsKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareAssetsKit;
 		};
-		F29B081227D648FA00EE90CC /* NotificareGeoKit */ = {
+		F29F79D028C0BB8C0097377A /* NotificareGeoKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareGeoKit;
 		};
-		F29B081427D648FA00EE90CC /* NotificareInboxKit */ = {
+		F29F79D228C0BB8C0097377A /* NotificareInAppMessagingKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			productName = NotificareInAppMessagingKit;
+		};
+		F29F79D428C0BB8C0097377A /* NotificareInboxKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareInboxKit;
 		};
-		F29B081627D648FA00EE90CC /* NotificareKit */ = {
+		F29F79D628C0BB8C0097377A /* NotificareKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareKit;
 		};
-		F29B081827D648FA00EE90CC /* NotificareLoyaltyKit */ = {
+		F29F79D828C0BB8C0097377A /* NotificareLoyaltyKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareLoyaltyKit;
 		};
-		F29B081A27D648FA00EE90CC /* NotificareNotificationServiceExtensionKit */ = {
+		F29F79DA28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareNotificationServiceExtensionKit;
 		};
-		F29B081C27D648FA00EE90CC /* NotificarePushKit */ = {
+		F29F79DC28C0BB8C0097377A /* NotificarePushKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificarePushKit;
 		};
-		F29B081E27D648FA00EE90CC /* NotificarePushUIKit */ = {
+		F29F79DE28C0BB8C0097377A /* NotificarePushUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificarePushUIKit;
 		};
-		F29B082027D648FA00EE90CC /* NotificareScannablesKit */ = {
+		F29F79E028C0BB8C0097377A /* NotificareScannablesKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F29B080F27D648FA00EE90CC /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
+			package = F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */;
 			productName = NotificareScannablesKit;
 		};
 		F2B984CE2851089D005CD6D6 /* FirebaseAuth */ = {
