@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 import NotificareKit
+import NotificareInAppMessagingKit
 
 struct SplashView: View {
     @EnvironmentObject private var appState: AppState
@@ -74,6 +75,8 @@ struct SplashView: View {
             guard authStateAvailable else { return }
             
             guard Preferences.standard.introFinished, appState.currentUser != nil else {
+                Notificare.shared.inAppMessaging().hasMessagesSuppressed = true
+
                 withAnimation {
                     router.route = .intro
                 }

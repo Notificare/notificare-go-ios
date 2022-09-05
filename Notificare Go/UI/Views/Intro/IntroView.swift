@@ -11,6 +11,7 @@ import SwiftUI
 import FirebaseAuth
 import Introspect
 import NotificareKit
+import NotificareInAppMessagingKit
 import OSLog
 
 struct IntroView: View {
@@ -181,7 +182,8 @@ struct IntroView: View {
                 }
                 
                 Preferences.standard.introFinished = true
-                
+                Notificare.shared.inAppMessaging().hasMessagesSuppressed = false
+
                 withAnimation {
                     router.route = .main
                 }
