@@ -11,24 +11,25 @@ import NotificareKit
 
 @MainActor
 class EventsViewModel: ObservableObject {
+    private var cancellables = Set<AnyCancellable>()
+
     @Published var name = ""
     @Published var attributes: [Attribute] = [Attribute(key: "", value: "")]
-    
+
     @Published var loading = false
     @Published var showingSuccessAlert = false
     @Published var showingErrorAlert = false
-    
-    
+
     func logEvent() {
         Task {
             do {
                 let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
                 guard !name.isEmpty else { return }
-                
+
                 self.loading = true
-                
+
                 var data: NotificareEventData = [:]
-                
+
                 attributes
                     .map {
                         Attribute(
@@ -38,32 +39,29 @@ class EventsViewModel: ObservableObject {
                     }
                     .filter { !$0.key.isEmpty }
                     .forEach { data[$0.key] = $0.value }
-                
+
                 try await Notificare.shared.events().logCustom(name, data: !data.isEmpty ? data : nil)
-                
+
                 self.name = ""
                 self.attributes = [Attribute(key: "", value: "")]
                 self.showingSuccessAlert = true
             } catch {
                 self.showingErrorAlert = true
             }
-            
+
             self.loading = false
         }
     }
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    struct Attribute: Identifiable {
+
+    class Attribute: ObservableObject, Identifiable {
         let id = UUID()
-        
-        var key: String
-        var value: String
-        
+
+        @Published var key: String
+        @Published var value: String
+
         init(key: String, value: String) {
             self.key = key
             self.value = value
         }
     }
 }
-

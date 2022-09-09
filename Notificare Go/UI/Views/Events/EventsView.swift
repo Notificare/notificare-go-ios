@@ -10,12 +10,8 @@ import OSLog
 import NotificareKit
 
 struct EventsView: View {
-    @StateObject private var viewModel: EventsViewModel
-    
-    init() {
-        self._viewModel = StateObject(wrappedValue: EventsViewModel())
-    }
-    
+    @StateObject private var viewModel = EventsViewModel()
+
     var body: some View {
         List {
             Section {
@@ -28,24 +24,8 @@ struct EventsView: View {
             }
             
             Section {
-                ForEach($viewModel.attributes) { attribute in
-                    HStack(spacing: 8) {
-                        TextField(
-                            String(localized: "events_attributes_attribute_name"),
-                            text: attribute.key
-                        )
-                        .keyboardType(.default)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        
-                        TextField(
-                            String(localized: "events_attributes_attribute_value"),
-                            text: attribute.value
-                        )
-                        .keyboardType(.default)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    }
+                ForEach(viewModel.attributes) { attribute in
+                    AttributeEditView(attribute: attribute)
                 }
             } header: {
                 Text(String(localized: "events_attributes_section"))
@@ -80,5 +60,29 @@ struct EventsView: View {
 struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
         EventsView()
+    }
+}
+
+private struct AttributeEditView: View {
+    @ObservedObject var attribute: EventsViewModel.Attribute
+
+    var body: some View {
+        HStack(spacing: 8) {
+            TextField(
+                String(localized: "events_attributes_attribute_name"),
+                text: $attribute.key
+            )
+            .keyboardType(.default)
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
+
+            TextField(
+                String(localized: "events_attributes_attribute_value"),
+                text: $attribute.value
+            )
+            .keyboardType(.default)
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
+        }
     }
 }
