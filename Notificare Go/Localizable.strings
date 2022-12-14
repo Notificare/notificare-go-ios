@@ -64,6 +64,13 @@
 "home_events_title" = "Log custom events";
 "home_events_message" = "Log events manually by setting up its name and attributes. Use your custom event to create event-based automations.";
 "home_events_button" = "Try it!";
+"home_coffee_brewer_title" = "Live Activities sandbox";
+"home_coffee_brewer_message" = "Experiment with Live Activities by leveraging Notificare's toolset.";
+"home_coffee_brewer_create_button" = "Brew a coffee";
+"home_coffee_brewer_brew_button" = "Start brewing";
+"home_coffee_brewer_serve_button" = "Serve the coffee!";
+"home_coffee_brewer_stop_button" = "Cancel";
+
 
 "settings_title" = "Settings";
 "settings_inbox_title" = "Inbox";

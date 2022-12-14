@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Notificare Go
+
+  Created by Helder Pinhal on 08/12/2022.
+  
+*/
+
+"coffee_headline_served_title" = "Coffee is served!";
+"coffee_headline_pick_up_title" = "Pick-up in";
+"coffee_headline_served_subtitle" = "That's a good cuppa coffee.";
+"coffee_headline_brewing_subtitle" = "Brewing the perfect cup of coffee.";
+"coffee_headline_grinding_subtitle" = "Grinding a few coffee beans!";

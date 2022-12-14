@@ -13,6 +13,8 @@ import NotificareAssetsKit
 import OSLog
 import NotificareGeoKit
 import NotificareScannablesKit
+import ActivityKit
+import SwiftUI
 
 @MainActor
 class HomeViewModel: ObservableObject {
@@ -23,11 +25,16 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var rangedBeacons = [NotificareBeacon]()
     @Published private(set) var hasLocationPermissions = false
     @Published var showingSettingsPermissionDialog = false
+    @Published private(set) var coffeeBrewerLiveActivityState: CoffeeBrewerActivityAttributes.BrewingState?
     
     init() {
         fetchProducts()
         observeRangedBeacons()
         checkLocationPermissions()
+
+        if #available(iOS 16.1, *) {
+            monitorLiveActivities()
+        }
     }
     
     private func fetchProducts() {
@@ -84,6 +91,45 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+
+    @available(iOS 16.1, *)
+    private func monitorLiveActivities() {
+        withAnimation {
+            // Load the initial state.
+            coffeeBrewerLiveActivityState = Activity<CoffeeBrewerActivityAttributes>.activities.first?.contentState.state
+        }
+
+        Task {
+            // Listen to on-going and new Live Activities.
+            for await activity in Activity<CoffeeBrewerActivityAttributes>.activityUpdates {
+                Task {
+                    // Listen to state changes of each activity.
+                    for await state in activity.activityStateUpdates {
+                        Logger.main.debug("Live activity '\(activity.id)' state = '\(String(describing: state))'")
+
+                        switch activity.activityState {
+                        case .active:
+                            Task {
+                                // Listen to content updates of each active activity.
+                                for await state in activity.contentStateUpdates {
+                                    withAnimation {
+                                        coffeeBrewerLiveActivityState = state.state
+                                    }
+                                }
+                            }
+
+                        case .dismissed, .ended:
+                            // Reset the UI controls.
+                            coffeeBrewerLiveActivityState = nil
+
+                        @unknown default:
+                            Logger.main.warning("Live activity '\(activity.id)' unknown state '\(String(describing: state))'.")
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     func enableLocationUpdates() {
         Task {
@@ -102,6 +148,76 @@ class HomeViewModel: ObservableObject {
             
             // Prevent automatic upgrades afterwards.
             locationController.requestAlwaysAuthorization = true
+        }
+    }
+
+    @available(iOS 16.1, *)
+    func createCoffeeBrewerLiveActivity() {
+        do {
+            let activity = try Activity.request(
+                attributes: CoffeeBrewerActivityAttributes(),
+                contentState: CoffeeBrewerActivityAttributes.ContentState(
+                    state: .grinding,
+                    remaining: 5
+                ),
+                pushType: .token
+            )
+
+            Task {
+                do {
+                    try await Notificare.shared.events().logCustom(
+                        "live_activity_started",
+                        data: [
+                            "activity": "coffee-brewer",
+                            "activityId": activity.id,
+                        ]
+                    )
+                } catch {
+                    Logger.main.error("Failed to track live activity custom event: \(error)")
+                }
+            }
+
+            Logger.main.debug("Requested a coffee brewer Live Activity '\(activity.id)'.")
+        } catch {
+            Logger.main.error("Error requesting coffee brewer Live Activity \(error).")
+        }
+    }
+
+    @available(iOS 16.1, *)
+    func continueCoffeeBrewerLiveActivity() {
+        Task {
+            for activity in Activity<CoffeeBrewerActivityAttributes>.activities {
+                switch activity.contentState.state {
+                case .grinding:
+                    await activity.update(
+                        using: CoffeeBrewerActivityAttributes.ContentState(
+                            state: .brewing,
+                            remaining: 4
+                        )
+                    )
+
+                case .brewing:
+                    await activity.end(
+                        using: CoffeeBrewerActivityAttributes.ContentState(
+                            state: .served,
+                            remaining: 0
+                        ),
+                        dismissalPolicy: .default
+                    )
+
+                case .served:
+                    break
+                }
+            }
+        }
+    }
+
+    @available(iOS 16.1, *)
+    func cancelCoffeeBrewerLiveActivity() {
+        Task {
+            for activity in Activity<CoffeeBrewerActivityAttributes>.activities {
+                await activity.end(dismissalPolicy: .immediate)
+            }
         }
     }
 }

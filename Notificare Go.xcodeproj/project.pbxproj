@@ -46,6 +46,14 @@
 		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
 		F2716A7C2806FE60000CC7A5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2716A7B2806FE60000CC7A5 /* NotificationService.swift */; };
 		F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F2716A792806FE60000CC7A5 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F272B2CA2940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */; };
+		F272B2CB2940EB810051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */; };
+		F272B2CE2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2CD2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift */; };
+		F272B2D22942056E0051C8A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F272B2D12942056E0051C8A9 /* Localizable.strings */; };
+		F272B2D429420C2E0051C8A9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = F272B2D329420C2E0051C8A9 /* Localizable.stringsdict */; };
+		F272B2D6294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2D5294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift */; };
+		F272B2DB294357A50051C8A9 /* CoffeeBrewer+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2DA294357A50051C8A9 /* CoffeeBrewer+Utilities.swift */; };
+		F272B2DD294359310051C8A9 /* CoffeeBrewerHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2DC294359310051C8A9 /* CoffeeBrewerHeadlineView.swift */; };
 		F273D88D2805B5B9007E4BDE /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273D88C2805B5B9007E4BDE /* Globals.swift */; };
 		F273D88F2805C9D1007E4BDE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273D88E2805C9D1007E4BDE /* AlertController.swift */; };
 		F284C0BF27CF781400E6986B /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F284C0BE27CF781400E6986B /* NotificareOptions.plist */; };
@@ -54,6 +62,14 @@
 		F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C527CF850000E6986B /* SettingsViewModel.swift */; };
 		F284C0CA27CF8A5600E6986B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0C927CF8A5600E6986B /* BadgeView.swift */; };
 		F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284C0CD27CF907600E6986B /* DetermineSize.swift */; };
+		F29284F628E5EA7800B7264A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29284F528E5EA7800B7264A /* WidgetKit.framework */; };
+		F29284F828E5EA7800B7264A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29284F728E5EA7800B7264A /* SwiftUI.framework */; };
+		F29284FB28E5EA7800B7264A /* WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29284FA28E5EA7800B7264A /* WidgetExtension.swift */; };
+		F29284FE28E5EA7900B7264A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29284FD28E5EA7900B7264A /* Assets.xcassets */; };
+		F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F29284F428E5EA7800B7264A /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F292850A28E5EDD500B7264A /* OrderActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */; };
+		F292850B28E5EE3900B7264A /* OrderActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */; };
+		F292850C28E5EF7A00B7264A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29284F528E5EA7800B7264A /* WidgetKit.framework */; };
 		F29B082327D64CB000EE90CC /* UIApplication+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */; };
 		F29B871F27C4EC2B00460D85 /* AlertBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B871E27C4EC2B00460D85 /* AlertBlock.swift */; };
 		F29B872527C4F26F00460D85 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B872427C4F26F00460D85 /* MainView.swift */; };
@@ -88,6 +104,8 @@
 		F2B984E6285139B7005CD6D6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E5285139B7005CD6D6 /* UserInfo.swift */; };
 		F2B984E92852617D005CD6D6 /* APIClient+Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */; };
 		F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F2EA06E9291D587F009DB7A0 /* OrderStatusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA06E7291D08EA009DB7A0 /* OrderStatusLiveActivity.swift */; };
+		F2EB435A2937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EB43592937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift */; };
 		F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */; };
 		F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010627BFE83E00753D89 /* Assets.xcassets */; };
 		F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F0010927BFE83E00753D89 /* Preview Assets.xcassets */; };
@@ -108,6 +126,13 @@
 			remoteGlobalIDString = F2716A782806FE60000CC7A5;
 			remoteInfo = NotificationService;
 		};
+		F292850228E5EA7900B7264A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2F000F727BFE83D00753D89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F29284F328E5EA7800B7264A;
+			remoteInfo = WidgetExtensionExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,6 +142,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed App Extensions */,
 				F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -163,6 +189,13 @@
 		F2716A792806FE60000CC7A5 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2716A7B2806FE60000CC7A5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F2716A7D2806FE60000CC7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewerActivityAttributes.swift; sourceTree = "<group>"; };
+		F272B2CD2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewerLockScreenView.swift; sourceTree = "<group>"; };
+		F272B2D12942056E0051C8A9 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F272B2D329420C2E0051C8A9 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		F272B2D5294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewerStatusTrackerView.swift; sourceTree = "<group>"; };
+		F272B2DA294357A50051C8A9 /* CoffeeBrewer+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoffeeBrewer+Utilities.swift"; sourceTree = "<group>"; };
+		F272B2DC294359310051C8A9 /* CoffeeBrewerHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewerHeadlineView.swift; sourceTree = "<group>"; };
 		F273D88C2805B5B9007E4BDE /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		F273D88E2805C9D1007E4BDE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		F273D8902805DC5B007E4BDE /* Notificare Go-Debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Notificare Go-Debug.entitlements"; sourceTree = "<group>"; };
@@ -172,6 +205,13 @@
 		F284C0C527CF850000E6986B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F284C0C927CF8A5600E6986B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		F284C0CD27CF907600E6986B /* DetermineSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetermineSize.swift; sourceTree = "<group>"; };
+		F29284F428E5EA7800B7264A /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29284F528E5EA7800B7264A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F29284F728E5EA7800B7264A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F29284FA28E5EA7800B7264A /* WidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtension.swift; sourceTree = "<group>"; };
+		F29284FD28E5EA7900B7264A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F29284FF28E5EA7900B7264A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderActivityAttributes.swift; sourceTree = "<group>"; };
 		F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Notifications.swift"; sourceTree = "<group>"; };
 		F29B871E27C4EC2B00460D85 /* AlertBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBlock.swift; sourceTree = "<group>"; };
 		F29B872427C4F26F00460D85 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -194,6 +234,8 @@
 		F2B984E32851396D005CD6D6 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		F2B984E5285139B7005CD6D6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F2B984E82852617D005CD6D6 /* APIClient+Payloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payloads.swift"; sourceTree = "<group>"; };
+		F2EA06E7291D08EA009DB7A0 /* OrderStatusLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusLiveActivity.swift; sourceTree = "<group>"; };
+		F2EB43592937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewerLiveActivity.swift; sourceTree = "<group>"; };
 		F2F000FF27BFE83D00753D89 /* Notificare Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notificare Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F0010227BFE83D00753D89 /* NotificareGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificareGoApp.swift; sourceTree = "<group>"; };
 		F2F0010627BFE83E00753D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,6 +258,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F29284F128E5EA7800B7264A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29284F828E5EA7800B7264A /* SwiftUI.framework in Frameworks */,
+				F29284F628E5EA7800B7264A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2F000FC27BFE83D00753D89 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,6 +282,7 @@
 				F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */,
 				F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */,
+				F292850C28E5EF7A00B7264A /* WidgetKit.framework in Frameworks */,
 				F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */,
 				F2B984D12851089D005CD6D6 /* FirebaseCrashlytics in Frameworks */,
 				F29F79E128C0BB8C0097377A /* NotificareScannablesKit in Frameworks */,
@@ -345,6 +397,32 @@
 			path = NotificationService;
 			sourceTree = "<group>";
 		};
+		F272B2C82940EA5C0051C8A9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2CC2940EC8A0051C8A9 /* Coffee Brewer */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F272B2CC2940EC8A0051C8A9 /* Coffee Brewer */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2CD2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift */,
+				F272B2D5294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift */,
+				F272B2DC294359310051C8A9 /* CoffeeBrewerHeadlineView.swift */,
+			);
+			path = "Coffee Brewer";
+			sourceTree = "<group>";
+		};
+		F272B2D9294357940051C8A9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2DA294357A50051C8A9 /* CoffeeBrewer+Utilities.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F273D88B2805B598007E4BDE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +446,31 @@
 				F284C0C327CF7F6F00E6986B /* InboxViewModel.swift */,
 			);
 			path = Inbox;
+			sourceTree = "<group>";
+		};
+		F29284F928E5EA7800B7264A /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2D9294357940051C8A9 /* Extensions */,
+				F272B2C82940EA5C0051C8A9 /* Views */,
+				F29284FA28E5EA7800B7264A /* WidgetExtension.swift */,
+				F2EA06E7291D08EA009DB7A0 /* OrderStatusLiveActivity.swift */,
+				F2EB43592937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift */,
+				F29284FD28E5EA7900B7264A /* Assets.xcassets */,
+				F29284FF28E5EA7900B7264A /* Info.plist */,
+				F272B2D12942056E0051C8A9 /* Localizable.strings */,
+				F272B2D329420C2E0051C8A9 /* Localizable.stringsdict */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		F292850828E5EDAA00B7264A /* Live Activities */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */,
+				F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */,
+			);
+			path = "Live Activities";
 			sourceTree = "<group>";
 		};
 		F29B872027C4F12000460D85 /* Cart */ = {
@@ -454,6 +557,7 @@
 		F29B873F27C4FC3700460D85 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F292850828E5EDAA00B7264A /* Live Activities */,
 				F273D88B2805B598007E4BDE /* Extensions */,
 				F273D88C2805B5B9007E4BDE /* Globals.swift */,
 				F2A3F39F2812F346004837C9 /* LocationController.swift */,
@@ -493,6 +597,8 @@
 		F2B984F0285772A0005CD6D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F29284F528E5EA7800B7264A /* WidgetKit.framework */,
+				F29284F728E5EA7800B7264A /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -502,6 +608,7 @@
 			children = (
 				F2F0010127BFE83D00753D89 /* Notificare Go */,
 				F2716A7A2806FE60000CC7A5 /* NotificationService */,
+				F29284F928E5EA7800B7264A /* WidgetExtension */,
 				F2F0010027BFE83D00753D89 /* Products */,
 				F2B984F0285772A0005CD6D6 /* Frameworks */,
 			);
@@ -512,6 +619,7 @@
 			children = (
 				F2F000FF27BFE83D00753D89 /* Notificare Go.app */,
 				F2716A792806FE60000CC7A5 /* NotificationService.appex */,
+				F29284F428E5EA7800B7264A /* WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,6 +700,23 @@
 			productReference = F2716A792806FE60000CC7A5 /* NotificationService.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F29284F328E5EA7800B7264A /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F292850728E5EA7900B7264A /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				F29284F028E5EA7800B7264A /* Sources */,
+				F29284F128E5EA7800B7264A /* Frameworks */,
+				F29284F228E5EA7800B7264A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtension;
+			productName = WidgetExtensionExtension;
+			productReference = F29284F428E5EA7800B7264A /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F2F000FE27BFE83D00753D89 /* Notificare Go */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2F0010D27BFE83E00753D89 /* Build configuration list for PBXNativeTarget "Notificare Go" */;
@@ -607,6 +732,7 @@
 			);
 			dependencies = (
 				F2716A7F2806FE60000CC7A5 /* PBXTargetDependency */,
+				F292850328E5EA7900B7264A /* PBXTargetDependency */,
 			);
 			name = "Notificare Go";
 			packageProductDependencies = (
@@ -639,11 +765,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					F2716A782806FE60000CC7A5 = {
 						CreatedOnToolsVersion = 13.3.1;
+					};
+					F29284F328E5EA7800B7264A = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 					F2F000FE27BFE83D00753D89 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -673,6 +802,7 @@
 			targets = (
 				F2F000FE27BFE83D00753D89 /* Notificare Go */,
 				F2716A782806FE60000CC7A5 /* NotificationService */,
+				F29284F328E5EA7800B7264A /* WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -682,6 +812,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F29284F228E5EA7800B7264A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29284FE28E5EA7900B7264A /* Assets.xcassets in Resources */,
+				F272B2D22942056E0051C8A9 /* Localizable.strings in Resources */,
+				F272B2D429420C2E0051C8A9 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +889,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F29284F028E5EA7800B7264A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F292850B28E5EE3900B7264A /* OrderActivityAttributes.swift in Sources */,
+				F272B2D6294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift in Sources */,
+				F2EB435A2937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift in Sources */,
+				F272B2DB294357A50051C8A9 /* CoffeeBrewer+Utilities.swift in Sources */,
+				F272B2CE2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift in Sources */,
+				F2EA06E9291D587F009DB7A0 /* OrderStatusLiveActivity.swift in Sources */,
+				F272B2DD294359310051C8A9 /* CoffeeBrewerHeadlineView.swift in Sources */,
+				F29284FB28E5EA7800B7264A /* WidgetExtension.swift in Sources */,
+				F272B2CB2940EB810051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2F000FB27BFE83D00753D89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -777,6 +933,7 @@
 				F2479BAD27FF354600C1F8BE /* BeaconRow.swift in Sources */,
 				F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */,
 				F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */,
+				F292850A28E5EDD500B7264A /* OrderActivityAttributes.swift in Sources */,
 				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
 				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
 				F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */,
@@ -790,6 +947,7 @@
 				F29B873427C4F3B900460D85 /* ProductDetailsView.swift in Sources */,
 				F29B872B27C4F34F00460D85 /* AppScannerView.swift in Sources */,
 				F23B8EB027D91574003B93B8 /* HomeViewModel.swift in Sources */,
+				F272B2CA2940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */,
 				F29B871F27C4EC2B00460D85 /* AlertBlock.swift in Sources */,
 				F29B872E27C4F37D00460D85 /* UserProfileView.swift in Sources */,
 				F2018F6D27DF935F004908E7 /* ProductDetailsViewModel.swift in Sources */,
@@ -829,6 +987,11 @@
 			isa = PBXTargetDependency;
 			target = F2716A782806FE60000CC7A5 /* NotificationService */;
 			targetProxy = F2716A7E2806FE60000CC7A5 /* PBXContainerItemProxy */;
+		};
+		F292850328E5EA7900B7264A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F29284F328E5EA7800B7264A /* WidgetExtension */;
+			targetProxy = F292850228E5EA7900B7264A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -877,6 +1040,65 @@
 				);
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.go$(APP_BUNDLE_IDENTIFIER_SUFFIX).NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F292850528E5EA7900B7264A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E3J9DDFVP4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.go.dev.WidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F292850628E5EA7900B7264A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = E3J9DDFVP4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.go.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1103,6 +1325,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F292850728E5EA7900B7264A /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F292850528E5EA7900B7264A /* Debug */,
+				F292850628E5EA7900B7264A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F2F000FA27BFE83D00753D89 /* Build configuration list for PBXProject "Notificare Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1161,7 +1392,7 @@
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "3.4.0-beta.2";
+				minimumVersion = "3.5.0-beta.1";
 			};
 		};
 		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

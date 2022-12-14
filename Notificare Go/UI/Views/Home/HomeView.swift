@@ -12,12 +12,8 @@ import OSLog
 
 struct HomeView: View {
     @EnvironmentObject private var appState: AppState
-    @StateObject private var viewModel: HomeViewModel
+    @StateObject private var viewModel = HomeViewModel()
     @Preference(\.storeEnabled) private var storeEnabled: Bool
-    
-    init() {
-        self._viewModel = StateObject(wrappedValue: HomeViewModel())
-    }
     
     var body: some View {
         ScrollView {
@@ -64,7 +60,7 @@ struct HomeView: View {
                                 .padding(.top, 12)
                             }
                         } else {
-                            Button(String(localized: "home_scan_nfc_button")) {
+                            Button(String(localized: "home_scan_qr_button")) {
                                 guard let rootViewController = UIApplication.shared.rootViewController else {
                                     return
                                 }
@@ -142,6 +138,28 @@ struct HomeView: View {
                         }
                     }
                 }
+
+                if #available(iOS 16.1, *) {
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Label(String(localized: "home_coffee_brewer_title"), systemImage: "bolt.badge.clock")
+                                .font(.headline)
+
+                            Text(String(localized: "home_coffee_brewer_message"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 8)
+
+                            CoffeeBrewerActionsView(state: viewModel.coffeeBrewerLiveActivityState) {
+                                viewModel.createCoffeeBrewerLiveActivity()
+                            } onNextStep: {
+                                viewModel.continueCoffeeBrewerLiveActivity()
+                            } onCancel: {
+                                viewModel.cancelCoffeeBrewerLiveActivity()
+                            }
+                        }
+                    }
+                }
             }
             .padding()
         }
@@ -178,6 +196,46 @@ struct HomeView: View {
                     Logger.main.error("Failed to log a custom event. \(error.localizedDescription)")
                 }
             }
+        }
+    }
+}
+
+private struct CoffeeBrewerActionsView: View {
+    var state: CoffeeBrewerActivityAttributes.BrewingState?
+    var onCreate: () -> Void
+    var onNextStep: () -> Void
+    var onCancel: () -> Void
+
+    var body: some View {
+        if let state {
+            VStack(spacing: 16) {
+                switch state {
+                case .grinding:
+                    Button(String(localized: "home_coffee_brewer_brew_button")) {
+                        onNextStep()
+                    }
+                    .buttonStyle(PrimaryButton())
+
+                case .brewing:
+                    Button(String(localized: "home_coffee_brewer_serve_button")) {
+                        onNextStep()
+                    }
+                    .buttonStyle(PrimaryButton())
+
+                case .served:
+                    EmptyView()
+                }
+
+                Button(String(localized: "home_coffee_brewer_stop_button")) {
+                    onCancel()
+                }
+                .foregroundColor(.red)
+            }
+        } else {
+            Button(String(localized: "home_coffee_brewer_create_button")) {
+                onCreate()
+            }
+            .buttonStyle(PrimaryButton())
         }
     }
 }
