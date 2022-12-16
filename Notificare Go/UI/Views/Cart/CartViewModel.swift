@@ -39,10 +39,16 @@ class CartViewModel: ObservableObject {
             
             do {
                 let entries = Preferences.standard.cart
-                try await Notificare.shared.events().logPurchase(products: entries.map { $0.product })
+                let products = entries.map { $0.product }
+
+                try await Notificare.shared.events().logPurchase(products: products)
                 
                 Preferences.standard.cart.removeAll()
                 try await Notificare.shared.events().logCartCleared()
+
+                if #available(iOS 16.1, *), LiveActivitiesController.shared.hasLiveActivityCapabilities {
+                    LiveActivitiesController.shared.createOrderStatusLiveActivity(products: products)
+                }
                 
                 purchaseCommand = .success
             } catch {

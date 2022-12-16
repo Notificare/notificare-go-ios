@@ -17,6 +17,14 @@
 		F2018F7D27E0DE0C004908E7 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */; };
 		F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F7E27E0E8D7004908E7 /* CartEntry.swift */; };
 		F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F8027E0EDF9004908E7 /* CartItemView.swift */; };
+		F20D5A3F2949F96400B33CAD /* OrderStatusLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A3E2949F96400B33CAD /* OrderStatusLockScreenView.swift */; };
+		F20D5A412949FFA700B33CAD /* OrderStatusHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A402949FFA700B33CAD /* OrderStatusHeadlineView.swift */; };
+		F20D5A43294A029700B33CAD /* OrderStatusTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A42294A029700B33CAD /* OrderStatusTrackerView.swift */; };
+		F20D5A45294A35A500B33CAD /* OrderStatusProductsShowcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A44294A35A500B33CAD /* OrderStatusProductsShowcaseView.swift */; };
+		F20D5A47294B446B00B33CAD /* LiveActivitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A46294B446B00B33CAD /* LiveActivitiesController.swift */; };
+		F20D5A4A294B85F000B33CAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6A27DB6D8D004908E7 /* Product.swift */; };
+		F20D5A4C294B888400B33CAD /* LiveActivitiesImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A4B294B888400B33CAD /* LiveActivitiesImageDownloader.swift */; };
+		F20D5A4D294B892D00B33CAD /* LiveActivitiesImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D5A4B294B888400B33CAD /* LiveActivitiesImageDownloader.swift */; };
 		F23B8EB027D91574003B93B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */; };
 		F23B8ED927DA40D7003B93B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8ED827DA40D7003B93B8 /* ContentView.swift */; };
 		F23B8EDC27DA4563003B93B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23B8EDB27DA4563003B93B8 /* SplashView.swift */; };
@@ -45,7 +53,7 @@
 		F25E4EF227D237CC00BEFCF5 /* Notificare+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF127D237CC00BEFCF5 /* Notificare+Utilities.swift */; };
 		F25E4EF527D2394700BEFCF5 /* Notification.Name+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */; };
 		F2716A7C2806FE60000CC7A5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2716A7B2806FE60000CC7A5 /* NotificationService.swift */; };
-		F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F2716A792806FE60000CC7A5 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F2716A792806FE60000CC7A5 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F272B2CA2940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */; };
 		F272B2CB2940EB810051C8A9 /* CoffeeBrewerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */; };
 		F272B2CE2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272B2CD2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift */; };
@@ -66,7 +74,7 @@
 		F29284F828E5EA7800B7264A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29284F728E5EA7800B7264A /* SwiftUI.framework */; };
 		F29284FB28E5EA7800B7264A /* WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29284FA28E5EA7800B7264A /* WidgetExtension.swift */; };
 		F29284FE28E5EA7900B7264A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29284FD28E5EA7900B7264A /* Assets.xcassets */; };
-		F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F29284F428E5EA7800B7264A /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F29284F428E5EA7800B7264A /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F292850A28E5EDD500B7264A /* OrderActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */; };
 		F292850B28E5EE3900B7264A /* OrderActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */; };
 		F292850C28E5EF7A00B7264A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29284F528E5EA7800B7264A /* WidgetKit.framework */; };
@@ -136,16 +144,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F2716A842806FE60000CC7A5 /* Embed App Extensions */ = {
+		F2716A842806FE60000CC7A5 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed App Extensions */,
-				F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed App Extensions */,
+				F292850428E5EA7900B7264A /* WidgetExtension.appex in Embed Foundation Extensions */,
+				F2716A802806FE60000CC7A5 /* NotificationService.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -161,6 +169,13 @@
 		F2018F7C27E0DE0C004908E7 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
 		F2018F7E27E0E8D7004908E7 /* CartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
 		F2018F8027E0EDF9004908E7 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
+		F20D5A3E2949F96400B33CAD /* OrderStatusLockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusLockScreenView.swift; sourceTree = "<group>"; };
+		F20D5A402949FFA700B33CAD /* OrderStatusHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusHeadlineView.swift; sourceTree = "<group>"; };
+		F20D5A42294A029700B33CAD /* OrderStatusTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusTrackerView.swift; sourceTree = "<group>"; };
+		F20D5A44294A35A500B33CAD /* OrderStatusProductsShowcaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusProductsShowcaseView.swift; sourceTree = "<group>"; };
+		F20D5A46294B446B00B33CAD /* LiveActivitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesController.swift; sourceTree = "<group>"; };
+		F20D5A4B294B888400B33CAD /* LiveActivitiesImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesImageDownloader.swift; sourceTree = "<group>"; };
+		F20D5A4E294B8A9900B33CAD /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		F23B8EAF27D91574003B93B8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F23B8ED827DA40D7003B93B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F23B8EDB27DA4563003B93B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -313,6 +328,26 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		F20D5A3D2949F95000B33CAD /* Order Status */ = {
+			isa = PBXGroup;
+			children = (
+				F20D5A3E2949F96400B33CAD /* OrderStatusLockScreenView.swift */,
+				F20D5A402949FFA700B33CAD /* OrderStatusHeadlineView.swift */,
+				F20D5A44294A35A500B33CAD /* OrderStatusProductsShowcaseView.swift */,
+				F20D5A42294A029700B33CAD /* OrderStatusTrackerView.swift */,
+			);
+			path = "Order Status";
+			sourceTree = "<group>";
+		};
+		F20D5A48294B44E400B33CAD /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */,
+				F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
 		F23B8EDA27DA4558003B93B8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				F272B2CC2940EC8A0051C8A9 /* Coffee Brewer */,
+				F20D5A3D2949F95000B33CAD /* Order Status */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,11 +487,12 @@
 		F29284F928E5EA7800B7264A /* WidgetExtension */ = {
 			isa = PBXGroup;
 			children = (
+				F20D5A4E294B8A9900B33CAD /* WidgetExtension.entitlements */,
 				F272B2D9294357940051C8A9 /* Extensions */,
 				F272B2C82940EA5C0051C8A9 /* Views */,
 				F29284FA28E5EA7800B7264A /* WidgetExtension.swift */,
-				F2EA06E7291D08EA009DB7A0 /* OrderStatusLiveActivity.swift */,
 				F2EB43592937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift */,
+				F2EA06E7291D08EA009DB7A0 /* OrderStatusLiveActivity.swift */,
 				F29284FD28E5EA7900B7264A /* Assets.xcassets */,
 				F29284FF28E5EA7900B7264A /* Info.plist */,
 				F272B2D12942056E0051C8A9 /* Localizable.strings */,
@@ -467,8 +504,9 @@
 		F292850828E5EDAA00B7264A /* Live Activities */ = {
 			isa = PBXGroup;
 			children = (
-				F272B2C92940EAF50051C8A9 /* CoffeeBrewerActivityAttributes.swift */,
-				F292850928E5EDD500B7264A /* OrderActivityAttributes.swift */,
+				F20D5A48294B44E400B33CAD /* Attributes */,
+				F20D5A46294B446B00B33CAD /* LiveActivitiesController.swift */,
+				F20D5A4B294B888400B33CAD /* LiveActivitiesImageDownloader.swift */,
 			);
 			path = "Live Activities";
 			sourceTree = "<group>";
@@ -725,7 +763,7 @@
 				F2F000FB27BFE83D00753D89 /* Sources */,
 				F2F000FC27BFE83D00753D89 /* Frameworks */,
 				F2F000FD27BFE83D00753D89 /* Resources */,
-				F2716A842806FE60000CC7A5 /* Embed App Extensions */,
+				F2716A842806FE60000CC7A5 /* Embed Foundation Extensions */,
 				F2B984DF28512EAF005CD6D6 /* Crashlytics: Upload dSYM files */,
 			);
 			buildRules = (
@@ -766,7 +804,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					F2716A782806FE60000CC7A5 = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -893,11 +931,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20D5A4D294B892D00B33CAD /* LiveActivitiesImageDownloader.swift in Sources */,
 				F292850B28E5EE3900B7264A /* OrderActivityAttributes.swift in Sources */,
 				F272B2D6294353970051C8A9 /* CoffeeBrewerStatusTrackerView.swift in Sources */,
+				F20D5A4A294B85F000B33CAD /* Product.swift in Sources */,
+				F20D5A43294A029700B33CAD /* OrderStatusTrackerView.swift in Sources */,
 				F2EB435A2937D57700AFDBD3 /* CoffeeBrewerLiveActivity.swift in Sources */,
 				F272B2DB294357A50051C8A9 /* CoffeeBrewer+Utilities.swift in Sources */,
+				F20D5A45294A35A500B33CAD /* OrderStatusProductsShowcaseView.swift in Sources */,
+				F20D5A3F2949F96400B33CAD /* OrderStatusLockScreenView.swift in Sources */,
 				F272B2CE2940ECA40051C8A9 /* CoffeeBrewerLockScreenView.swift in Sources */,
+				F20D5A412949FFA700B33CAD /* OrderStatusHeadlineView.swift in Sources */,
 				F2EA06E9291D587F009DB7A0 /* OrderStatusLiveActivity.swift in Sources */,
 				F272B2DD294359310051C8A9 /* CoffeeBrewerHeadlineView.swift in Sources */,
 				F29284FB28E5EA7800B7264A /* WidgetExtension.swift in Sources */,
@@ -924,6 +968,7 @@
 				F29B873E27C4F5B500460D85 /* AsyncImageCompat+ImageCache.swift in Sources */,
 				F2B984E228513963005CD6D6 /* Gravatar.swift in Sources */,
 				F24D0D8727FC4D4F00E4232A /* APIClient.swift in Sources */,
+				F20D5A4C294B888400B33CAD /* LiveActivitiesImageDownloader.swift in Sources */,
 				F29B873C27C4F59000460D85 /* AsyncImageCompat+ImageLoader.swift in Sources */,
 				F245855E27C40B8600AA93A2 /* TopProductsView.swift in Sources */,
 				F2479BA427FC9ED900C1F8BE /* APIClient+Responses.swift in Sources */,
@@ -971,6 +1016,7 @@
 				F284C0CE27CF907600E6986B /* DetermineSize.swift in Sources */,
 				F2018F7427E0AF33004908E7 /* CartViewModel.swift in Sources */,
 				F2018F7227DF9A52004908E7 /* ProductsListViewModel.swift in Sources */,
+				F20D5A47294B446B00B33CAD /* LiveActivitiesController.swift in Sources */,
 				F2F60A7D286323ED0034384A /* SceneDelegate.swift in Sources */,
 				F24AA6F227EDDF3700F981DF /* AppConfiguration.swift in Sources */,
 				F2F0010327BFE83D00753D89 /* NotificareGoApp.swift in Sources */,
@@ -1054,6 +1100,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1084,6 +1131,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = E3J9DDFVP4;

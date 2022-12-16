@@ -18,5 +18,21 @@
 			<string>%d mins</string>
 		</dict>
 	</dict>
+	<key>order_status_remaining_products</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@remaining@</string>
+		<key>remaining</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>and %d other</string>
+			<key>other</key>
+			<string>and %d others</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

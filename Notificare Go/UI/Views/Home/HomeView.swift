@@ -139,7 +139,7 @@ struct HomeView: View {
                     }
                 }
 
-                if #available(iOS 16.1, *) {
+                if #available(iOS 16.1, *), LiveActivitiesController.shared.hasLiveActivityCapabilities {
                     GroupBox {
                         VStack(alignment: .leading, spacing: 8) {
                             Label(String(localized: "home_coffee_brewer_title"), systemImage: "bolt.badge.clock")
@@ -151,11 +151,11 @@ struct HomeView: View {
                                 .padding(.bottom, 8)
 
                             CoffeeBrewerActionsView(state: viewModel.coffeeBrewerLiveActivityState) {
-                                viewModel.createCoffeeBrewerLiveActivity()
+                                LiveActivitiesController.shared.createCoffeeBrewerLiveActivity()
                             } onNextStep: {
-                                viewModel.continueCoffeeBrewerLiveActivity()
+                                LiveActivitiesController.shared.continueCoffeeBrewerLiveActivity()
                             } onCancel: {
-                                viewModel.cancelCoffeeBrewerLiveActivity()
+                                LiveActivitiesController.shared.cancelCoffeeBrewerLiveActivity()
                             }
                         }
                     }

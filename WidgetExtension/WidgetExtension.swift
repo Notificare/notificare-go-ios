@@ -13,8 +13,7 @@ struct NotificareGoWidgets: WidgetBundle {
     var body: some Widget {
         if #available(iOS 16.1, *) {
             CoffeeBrewerLiveActivity()
-
-//            OrderStatusActivityWidget()
+            OrderStatusLiveActivity()
         }
     }
 }

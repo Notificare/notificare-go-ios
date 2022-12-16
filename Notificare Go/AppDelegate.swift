@@ -14,7 +14,6 @@ import NotificareInboxKit
 import NotificarePushKit
 import NotificareScannablesKit
 import OSLog
-import ActivityKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -46,7 +45,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
 
         if #available(iOS 16.1, *) {
-            monitorLiveActivities()
+            LiveActivitiesController.shared.startMonitoring()
         }
 
         return true
@@ -68,52 +67,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {}
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {}
-
-    @available(iOS 16.1, *)
-    private func monitorLiveActivities() {
-        Task {
-            // Listen to on-going and new Live Activities.
-            for await activity in Activity<CoffeeBrewerActivityAttributes>.activityUpdates {
-                Task {
-                    // Listen to state changes of each activity.
-                    for await state in activity.activityStateUpdates {
-                        Logger.main.debug("Live activity '\(activity.id)' state = '\(String(describing: state))'")
-
-                        switch activity.activityState {
-                        case .active:
-                            Task {
-                                // Listen to push token updates of each active activity.
-                                for await token in activity.pushTokenUpdates {
-                                    do {
-                                        try await Notificare.shared.push().registerLiveActivity(
-                                            "coffee-brewer",
-                                            token: token,
-                                            topics: [activity.id]
-                                        )
-
-                                        Logger.main.debug("Live activity '\(activity.id)' registered with token '\(token.toHexString())'.")
-                                    } catch {
-                                        Logger.main.error("Failed to register live activity '\(activity.id)': \(error)")
-                                    }
-                                }
-                            }
-
-                        case .dismissed, .ended:
-                            do {
-                                try await Notificare.shared.push().endLiveActivity("coffee-brewer")
-                                Logger.main.debug("Live activity '\(activity.id)' ended.")
-                            } catch {
-                                Logger.main.error("Failed to end live activity '\(activity.id)': \(error)")
-                            }
-
-                        @unknown default:
-                            Logger.main.warning("Live activity '\(activity.id)' unknown state '\(String(describing: state))'.")
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 extension AppDelegate: NotificareDelegate {

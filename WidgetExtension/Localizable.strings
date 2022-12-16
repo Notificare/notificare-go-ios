@@ -11,3 +11,10 @@
 "coffee_headline_served_subtitle" = "That's a good cuppa coffee.";
 "coffee_headline_brewing_subtitle" = "Brewing the perfect cup of coffee.";
 "coffee_headline_grinding_subtitle" = "Grinding a few coffee beans!";
+
+"order_headline_preparing_title" = "Order in progress";
+"order_headline_shipped_title" = "On it's way";
+"order_headline_delivered_title" = "Arrived!";
+"order_headline_preparing_subtitle" = "Preparing your goodies";
+"order_headline_shipped_subtitle" = "At the speed of light";
+"order_headline_delivered_subtitle" = "On your doorstep";
