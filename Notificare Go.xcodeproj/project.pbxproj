@@ -1440,7 +1440,7 @@
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "3.5.0-beta.1";
+				minimumVersion = 3.5.0;
 			};
 		};
 		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
