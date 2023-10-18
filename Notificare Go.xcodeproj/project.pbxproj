@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5A3442A2AE012E8002EE51B /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = E5A344292AE012E8002EE51B /* SwiftUIIntrospect */; };
 		F2018F6B27DB6D8D004908E7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6A27DB6D8D004908E7 /* Product.swift */; };
 		F2018F6D27DF935F004908E7 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6C27DF935F004908E7 /* ProductDetailsViewModel.swift */; };
 		F2018F7027DF99FA004908E7 /* ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6F27DF99FA004908E7 /* ProductsListView.swift */; };
@@ -33,8 +34,6 @@
 		F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F245855F27C40C1E00AA93A2 /* Localizable.strings */; };
 		F245856327C40CAA00AA93A2 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F245856227C40CAA00AA93A2 /* ProductCardView.swift */; };
 		F2479BA427FC9ED900C1F8BE /* APIClient+Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */; };
-		F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = F2479BA627FDC8F300C1F8BE /* Introspect */; };
-		F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */; };
 		F2479BAB27FF15ED00C1F8BE /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */; };
 		F2479BAD27FF354600C1F8BE /* BeaconRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BAC27FF354600C1F8BE /* BeaconRow.swift */; };
 		F2479BB22800528B00C1F8BE /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2479BB12800528B00C1F8BE /* EventsViewModel.swift */; };
@@ -184,7 +183,6 @@
 		F245855F27C40C1E00AA93A2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F245856227C40CAA00AA93A2 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		F2479BA327FC9ED900C1F8BE /* APIClient+Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Responses.swift"; sourceTree = "<group>"; };
-		F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Introspect.swift"; sourceTree = "<group>"; };
 		F2479BAA27FF15ED00C1F8BE /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		F2479BAC27FF354600C1F8BE /* BeaconRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRow.swift; sourceTree = "<group>"; };
 		F2479BB12800528B00C1F8BE /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
@@ -289,13 +287,13 @@
 				F2B984CF2851089D005CD6D6 /* FirebaseAuth in Frameworks */,
 				F29F79D728C0BB8C0097377A /* NotificareKit in Frameworks */,
 				F29F79DB28C0BB8C0097377A /* NotificareNotificationServiceExtensionKit in Frameworks */,
-				F2479BA727FDC8F300C1F8BE /* Introspect in Frameworks */,
 				F29F79D928C0BB8C0097377A /* NotificareLoyaltyKit in Frameworks */,
 				F29F79CF28C0BB8C0097377A /* NotificareAssetsKit in Frameworks */,
 				F29F79D128C0BB8C0097377A /* NotificareGeoKit in Frameworks */,
 				F29F79DD28C0BB8C0097377A /* NotificarePushKit in Frameworks */,
 				F24AA6E827ECC37B00F981DF /* CodeScanner in Frameworks */,
 				F2B984F2285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				E5A3442A2AE012E8002EE51B /* SwiftUIIntrospect in Frameworks */,
 				F24AA6EB27EDD20800F981DF /* Lottie in Frameworks */,
 				F292850C28E5EF7A00B7264A /* WidgetKit.framework in Frameworks */,
 				F24D0D8A27FC595A00E4232A /* Alamofire in Frameworks */,
@@ -469,7 +467,6 @@
 				F25E4EF427D2394700BEFCF5 /* Notification.Name+Custom.swift */,
 				F29B874027C4FC4200460D85 /* String+Localization.swift */,
 				F29B082227D64CB000EE90CC /* UIApplication+Notifications.swift */,
-				F2479BA827FDC97B00C1F8BE /* View+Introspect.swift */,
 				F2A3F39C28118FE1004837C9 /* View+Theme.swift */,
 			);
 			path = Extensions;
@@ -777,7 +774,6 @@
 				F24AA6E727ECC37B00F981DF /* CodeScanner */,
 				F24AA6EA27EDD20800F981DF /* Lottie */,
 				F24D0D8927FC595A00E4232A /* Alamofire */,
-				F2479BA627FDC8F300C1F8BE /* Introspect */,
 				F2B984CE2851089D005CD6D6 /* FirebaseAuth */,
 				F2B984D02851089D005CD6D6 /* FirebaseCrashlytics */,
 				F2B984F1285772A0005CD6D6 /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -791,6 +787,7 @@
 				F29F79DC28C0BB8C0097377A /* NotificarePushKit */,
 				F29F79DE28C0BB8C0097377A /* NotificarePushUIKit */,
 				F29F79E028C0BB8C0097377A /* NotificareScannablesKit */,
+				E5A344292AE012E8002EE51B /* SwiftUIIntrospect */,
 			);
 			productName = "Notificare Go";
 			productReference = F2F000FF27BFE83D00753D89 /* Notificare Go.app */;
@@ -830,9 +827,9 @@
 				F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F24D0D8827FC595A00E4232A /* XCRemoteSwiftPackageReference "Alamofire" */,
-				F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */,
+				E5A344282AE012E8002EE51B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = F2F0010027BFE83D00753D89 /* Products */;
 			projectDirPath = "";
@@ -981,7 +978,6 @@
 				F292850A28E5EDD500B7264A /* OrderActivityAttributes.swift in Sources */,
 				F25E4EEC27D21E8F00BEFCF5 /* InboxItemView.swift in Sources */,
 				F284C0C227CF7F5400E6986B /* InboxView.swift in Sources */,
-				F2479BA927FDC97B00C1F8BE /* View+Introspect.swift in Sources */,
 				F284C0C427CF7F6F00E6986B /* InboxViewModel.swift in Sources */,
 				F2018F7F27E0E8D7004908E7 /* CartEntry.swift in Sources */,
 				F2479BB22800528B00C1F8BE /* EventsViewModel.swift in Sources */,
@@ -1403,12 +1399,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+		E5A344282AE012E8002EE51B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.1.0;
 			};
 		};
 		F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1454,10 +1450,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F2479BA627FDC8F300C1F8BE /* Introspect */ = {
+		E5A344292AE012E8002EE51B /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F2479BA527FDC8F300C1F8BE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
+			package = E5A344282AE012E8002EE51B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 		F24AA6E727ECC37B00F981DF /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
