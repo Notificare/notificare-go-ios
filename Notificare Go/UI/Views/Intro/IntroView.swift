@@ -74,7 +74,7 @@ struct IntroView: View {
                     .tag(3)
                 }
                 .tabViewStyle(.page)
-                .introspect(.scrollView, on: .iOS(.v13, .v14, .v15, .v16, .v17)) { scrollView in
+                .introspect(.scrollView, on: .iOS(.v14, .v15, .v16, .v17)) { scrollView in
                     scrollView.bounces = false
                     scrollView.isScrollEnabled = false
                 }
