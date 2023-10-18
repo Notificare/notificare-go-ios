@@ -1416,7 +1416,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.3.3;
 			};
 		};
 		F24AA6E927EDD20800F981DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
