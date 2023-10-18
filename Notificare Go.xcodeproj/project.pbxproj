@@ -1432,7 +1432,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.8.0;
 			};
 		};
 		F29F79CD28C0BB8C0097377A /* XCRemoteSwiftPackageReference "notificare-sdk-ios" */ = {
