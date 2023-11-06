@@ -25,6 +25,7 @@ class SettingsViewModel: ObservableObject {
     @Published var showingSettingsPermissionDialog = false
     // Tags section
     @Published var announcementsTagEnabled = false
+    @Published var marketingTagEnabled = false
     @Published var bestPracticesTagEnabled = false
     @Published var productUpdatesTagEnabled = false
     @Published var engineeringTagEnabled = false
@@ -161,6 +162,7 @@ class SettingsViewModel: ObservableObject {
             let tags = try await Notificare.shared.device().fetchTags()
             
             announcementsTagEnabled = tags.contains("topic_announcements")
+            marketingTagEnabled = tags.contains("topic_marketing")
             bestPracticesTagEnabled = tags.contains("topic_best_practices")
             productUpdatesTagEnabled = tags.contains("topic_product_updates")
             engineeringTagEnabled = tags.contains("topic_engineering")
@@ -190,7 +192,27 @@ class SettingsViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
-        
+
+        $marketingTagEnabled
+            .dropFirst()
+            .sink { enabled in
+                Task {
+                    do {
+                        if enabled {
+                            try await Notificare.shared.device().addTag("topic_marketing")
+                        } else {
+                            try await Notificare.shared.device().removeTag("topic_marketing")
+                        }
+                    } catch {
+                        withAnimation { [weak self] in
+                            // Revert the change if the request failed.
+                            self?.marketingTagEnabled = !enabled
+                        }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+
         $bestPracticesTagEnabled
             .dropFirst()
             .sink { enabled in
