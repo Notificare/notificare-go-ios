@@ -154,7 +154,11 @@ struct SettingsView: View {
                 Toggle(isOn: $viewModel.announcementsTagEnabled) {
                     Text(String(localized: "settings_tags_announcements_title"))
                 }
-                
+
+                Toggle(isOn: $viewModel.marketingTagEnabled) {
+                    Text(String(localized: "settings_tags_marketing_title"))
+                }
+
                 Toggle(isOn: $viewModel.bestPracticesTagEnabled) {
                     Text(String(localized: "settings_tags_best_practices_title"))
                 }

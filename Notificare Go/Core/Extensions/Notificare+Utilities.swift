@@ -10,10 +10,6 @@ import NotificareKit
 import NotificareGeoKit
 import NotificareInboxKit
 
-extension NotificareInboxItem: Identifiable {}
-
-extension NotificareBeacon: Identifiable {}
-
 extension NotificareEventsModule {
     
     func logIntroFinished() async throws {

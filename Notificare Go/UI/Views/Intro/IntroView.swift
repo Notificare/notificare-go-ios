@@ -9,7 +9,7 @@ import AuthenticationServices
 import CoreLocation
 import SwiftUI
 import FirebaseAuth
-import Introspect
+import SwiftUIIntrospect
 import NotificareKit
 import NotificareInAppMessagingKit
 import OSLog
@@ -74,7 +74,7 @@ struct IntroView: View {
                     .tag(3)
                 }
                 .tabViewStyle(.page)
-                .introspectPagedTabView { collectionView, scrollView in
+                .introspect(.scrollView, on: .iOS(.v14, .v15, .v16, .v17)) { scrollView in
                     scrollView.bounces = false
                     scrollView.isScrollEnabled = false
                 }
