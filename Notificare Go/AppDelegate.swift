@@ -72,14 +72,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 extension AppDelegate: NotificareDelegate {
     func notificare(_ notificare: Notificare, onReady application: NotificareApplication) {
         NotificationCenter.default.post(name: .notificareLaunched, object: nil)
-        
-        if Notificare.shared.push().hasRemoteNotificationsEnabled {
-            Notificare.shared.push().enableRemoteNotifications { _ in }
-        }
-        
-        if Notificare.shared.geo().hasLocationServicesEnabled {
-            Notificare.shared.geo().enableLocationUpdates()
-        }
     }
 }
 
