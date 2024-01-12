@@ -61,7 +61,9 @@ class SettingsViewModel: ObservableObject {
         NotificationCenter.default
             .publisher(for: .notificationSettingsChanged, object: nil)
             .sink { [weak self] _ in
-                self?.notificationsEnabled = Notificare.shared.push().hasRemoteNotificationsEnabled && Notificare.shared.push().allowedUI
+                let enabled = Notificare.shared.push().hasRemoteNotificationsEnabled && Notificare.shared.push().allowedUI
+
+                if self?.notificationsEnabled != enabled { self?.notificationsEnabled = enabled }
             }
             .store(in: &cancellables)
         
