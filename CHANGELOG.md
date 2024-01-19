@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.4.2
+
+- Update Notificare to 3.7.0
+
 ## 1.4.1
 
 - Update Notificare to 3.7.0-beta.1
