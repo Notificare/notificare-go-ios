@@ -27,14 +27,14 @@ struct SplashView: View {
     var body: some View {
         ZStack(alignment: .center) {
             if isShowingContent {
-            Image("artwork_logo_badge")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 128)
-                .overlay(DetermineSize())
-                .onPreferenceChange(SizePreferenceKey.self) { size in
-                    contentHeight = size.height
-                }
+                Image("artwork_logo_lettering")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 192)
+                    .overlay(DetermineSize())
+                    .onPreferenceChange(SizePreferenceKey.self) { size in
+                        contentHeight = size.height
+                    }
             
                 if isShowingProgress {
                     ProgressView()
