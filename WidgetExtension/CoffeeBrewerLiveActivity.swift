@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 import ActivityKit
 
-@available(iOSApplicationExtension 16.1, *)
+@available(iOS 16.1, iOSApplicationExtension 16.1, *)
 struct CoffeeBrewerLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: CoffeeBrewerActivityAttributes.self) { context in

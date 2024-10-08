@@ -9,7 +9,7 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-@available(iOSApplicationExtension 16.1, *)
+@available(iOS 16.1, iOSApplicationExtension 16.1, *)
 struct OrderStatusLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: OrderActivityAttributes.self) { context in

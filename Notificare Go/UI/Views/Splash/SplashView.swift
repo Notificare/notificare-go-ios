@@ -69,7 +69,7 @@ struct SplashView: View {
                 )
             }
 
-            Notificare.shared.launch()
+            Notificare.shared.launch() { _ in }
         }
         .onReceive(readinessStatePublisher) { (_, authStateAvailable) in
             guard authStateAvailable else { return }

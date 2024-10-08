@@ -73,7 +73,7 @@ class SettingsViewModel: ObservableObject {
                 if enabled {
                     Notificare.shared.push().enableRemoteNotifications { _ in }
                 } else {
-                    Notificare.shared.push().disableRemoteNotifications()
+                    Notificare.shared.push().disableRemoteNotifications() { _ in }
                 }
             }
             .store(in: &cancellables)
