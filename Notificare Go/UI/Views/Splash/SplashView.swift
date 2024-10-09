@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import OSLog
 import NotificareKit
 import NotificareInAppMessagingKit
 
@@ -69,7 +70,13 @@ struct SplashView: View {
                 )
             }
 
-            Notificare.shared.launch() { _ in }
+            Task {
+                do {
+                    try await Notificare.shared.launch()
+                } catch {
+                    Logger.main.error("Failed to launch Notificare. \(error)")
+                }
+            }
         }
         .onReceive(readinessStatePublisher) { (_, authStateAvailable) in
             guard authStateAvailable else { return }
