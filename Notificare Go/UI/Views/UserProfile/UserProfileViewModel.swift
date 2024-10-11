@@ -49,7 +49,7 @@ class UserProfileViewModel: ObservableObject {
         try await Auth.auth().currentUser!.delete()
         
         // Register the device as anonymous.
-        try await Notificare.shared.device().register(userId: nil, userName: nil)
+        try await Notificare.shared.device().updateUser(userId: nil, userName: nil)
     }
     
     func reauthenticate() async throws {
@@ -122,7 +122,7 @@ extension UserProfileViewModel {
             }
             
             let credential = OAuthProvider.credential(
-                withProviderID: "apple.com",
+                providerID: AuthProviderID.apple,
                 idToken: idTokenStr,
                 rawNonce: self.nonce
             )

@@ -123,7 +123,7 @@ struct IntroView: View {
             }
             
             let credential = OAuthProvider.credential(
-                withProviderID: "apple.com",
+                providerID: AuthProviderID.apple,
                 idToken: idTokenStr,
                 rawNonce: self.nonce
             )
@@ -147,8 +147,8 @@ struct IntroView: View {
                 
                 do {
                     let user = Auth.auth().currentUser!
-                    try await Notificare.shared.device().register(userId: user.uid, userName: user.displayName)
-                    
+                    try await Notificare.shared.device().updateUser(userId: user.uid, userName: user.displayName)
+
                     if let programId = Preferences.standard.appConfiguration?.loyaltyProgramId {
                         Logger.main.info("Creating loyalty program enrollment.")
                         let response = try await APIClient.createEnrollment(

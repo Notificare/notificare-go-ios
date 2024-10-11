@@ -158,8 +158,8 @@ struct UserProfileView: View {
                     ContentRouter.main.route = .intro
                 }
             } catch {
-                let authError = AuthErrorCode(_nsError: error as NSError)
-                if authError.code == AuthErrorCode.requiresRecentLogin {
+                let authError = AuthErrorCode(_bridgedNSError: error as NSError)
+                if authError?.code == AuthErrorCode.requiresRecentLogin {
                     Task {
                         do {
                             try await viewModel.reauthenticate()

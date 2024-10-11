@@ -70,10 +70,20 @@ class SettingsViewModel: ObservableObject {
         $notificationsEnabled
             .dropFirst()
             .sink { enabled in
-                if enabled {
-                    Notificare.shared.push().enableRemoteNotifications { _ in }
-                } else {
-                    Notificare.shared.push().disableRemoteNotifications()
+                Task {
+                    if enabled {
+                        do {
+                            _ = try await Notificare.shared.push().enableRemoteNotifications()
+                        } catch {
+                            Logger.main.error("Failed to enable remote notifications.")
+                        }
+                    } else {
+                        do {
+                            try await Notificare.shared.push().disableRemoteNotifications()
+                        } catch {
+                            Logger.main.error("Failed to disable remote notifications.")
+                        }
+                    }
                 }
             }
             .store(in: &cancellables)

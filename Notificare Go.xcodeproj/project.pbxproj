@@ -1406,7 +1406,7 @@
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.1.3;
+				minimumVersion = 1.3.0;
 			};
 		};
 		F24AA6E627ECC37A00F981DF /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1438,7 +1438,7 @@
 			repositoryURL = "https://github.com/Notificare/notificare-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.8.0;
+				minimumVersion = 4.0.0;
 			};
 		};
 		F2B984CB2851089D005CD6D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1446,7 +1446,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.22.1;
+				minimumVersion = 11.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

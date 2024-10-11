@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import SwiftUI
+import OSLog
 import NotificareKit
 
 @MainActor
@@ -18,12 +19,14 @@ class IntroViewModel: NSObject, ObservableObject {
     @Published var showingSettingsPermissionDialog = false
     
     func enableRemoteNotifications() {
-        Notificare.shared.push().enableRemoteNotifications { _ in
-            // TODO: handle error scenario.
-            DispatchQueue.main.async {
+        Task {
+            do {
+                let result = try await Notificare.shared.push().enableRemoteNotifications()
                 withAnimation {
                     self.currentTab += 1
                 }
+            } catch {
+                Logger.main.error("Failed to enable remote notifications: \(error)")
             }
         }
     }
