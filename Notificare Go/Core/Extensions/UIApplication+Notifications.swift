@@ -25,7 +25,8 @@ extension UIApplication {
     var rootViewController: UIViewController? {
         currentKeyWindow?.rootViewController
     }
-    
+
+    @MainActor
     func present(_ notification: NotificareNotification) {
         guard let rootViewController = rootViewController else {
             return
@@ -43,7 +44,8 @@ extension UIApplication {
             Notificare.shared.pushUI().presentNotification(notification, in: navigationController)
         }
     }
-    
+
+    @MainActor
     func present(_ action: NotificareNotification.Action, for notification: NotificareNotification) {
         guard let rootViewController = rootViewController else {
             return
