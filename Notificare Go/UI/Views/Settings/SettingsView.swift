@@ -55,12 +55,14 @@ struct SettingsView: View {
                     InboxView()
                 } label: {
                     Label {
-                        Text(verbatim: String(localized: "settings_inbox_title"))
-                        
-                        Spacer(minLength: 16)
-                        
-                        if viewModel.badge > 0 {
-                            BadgeView(badge: viewModel.badge)
+                        HStack {
+                            Text(verbatim: String(localized: "settings_inbox_title"))
+
+                            Spacer(minLength: 16)
+
+                            if viewModel.badge > 0 {
+                                BadgeView(badge: viewModel.badge)
+                            }
                         }
                     } icon: {
                         Image(systemName: "tray.and.arrow.down.fill")

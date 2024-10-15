@@ -11,6 +11,7 @@ import NotificareKit
 import NotificarePushUIKit
 
 extension UIApplication {
+    @MainActor
     var currentKeyWindow: UIWindow? {
         UIApplication.shared.connectedScenes
             //.filter { $0.activationState == .foregroundActive }
@@ -19,11 +20,13 @@ extension UIApplication {
             .filter { $0.isKeyWindow }
             .first
     }
-    
+
+    @MainActor
     var rootViewController: UIViewController? {
         currentKeyWindow?.rootViewController
     }
-    
+
+    @MainActor
     func present(_ notification: NotificareNotification) {
         guard let rootViewController = rootViewController else {
             return
@@ -41,7 +44,8 @@ extension UIApplication {
             Notificare.shared.pushUI().presentNotification(notification, in: navigationController)
         }
     }
-    
+
+    @MainActor
     func present(_ action: NotificareNotification.Action, for notification: NotificareNotification) {
         guard let rootViewController = rootViewController else {
             return
