@@ -11,6 +11,7 @@ import NotificareKit
 import NotificarePushUIKit
 
 extension UIApplication {
+    @MainActor
     var currentKeyWindow: UIWindow? {
         UIApplication.shared.connectedScenes
             //.filter { $0.activationState == .foregroundActive }
@@ -19,7 +20,8 @@ extension UIApplication {
             .filter { $0.isKeyWindow }
             .first
     }
-    
+
+    @MainActor
     var rootViewController: UIViewController? {
         currentKeyWindow?.rootViewController
     }

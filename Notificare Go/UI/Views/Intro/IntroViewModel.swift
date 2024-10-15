@@ -21,7 +21,7 @@ class IntroViewModel: NSObject, ObservableObject {
     func enableRemoteNotifications() {
         Task {
             do {
-                let result = try await Notificare.shared.push().enableRemoteNotifications()
+                _ = try await Notificare.shared.push().enableRemoteNotifications()
                 withAnimation {
                     self.currentTab += 1
                 }
