@@ -170,11 +170,11 @@ struct InboxView: View {
     }
     
     private func presentInboxItem(_ item: NotificareInboxItem) {
-        Notificare.shared.inbox().open(item) { result in
-            switch result {
-            case let .success(notification):
+        Task {
+            do {
+                let notification = try await Notificare.shared.inbox().open(item)
                 UIApplication.shared.present(notification)
-            case let .failure(error):
+            } catch {
                 Logger.main.error("Failed to open an inbox item. \(error.localizedDescription)")
             }
         }
