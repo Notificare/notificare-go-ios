@@ -15,18 +15,18 @@ struct UserProfileView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel: UserProfileViewModel
     @State private var showDeleteAccountConfirmation = false
-    
+
     private let dateFormatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
-        
+
         return formatter
     }()
-    
+
     init() {
         self._viewModel = StateObject(wrappedValue: UserProfileViewModel())
     }
-    
+
     var body: some View {
         List {
             if let user = appState.currentUser {
@@ -39,12 +39,12 @@ struct UserProfileView: View {
                     }
                     .frame(width: 128, height: 128)
                     .clipShape(Circle())
-                    
+
                     Text(verbatim: user.name ?? String(localized: "shared_anonymous_user"))
                         .font(.title2)
                         .lineLimit(1)
                         .padding(.top)
-                    
+
                     Text(verbatim: user.id)
                         .font(.subheadline)
                         .lineLimit(1)
@@ -59,17 +59,17 @@ struct UserProfileView: View {
                 .frame(maxWidth: .infinity)
                 .listRowBackground(Color.clear)
             }
-            
+
             if let membershipCardUrl = viewModel.membershipCardUrl {
                 Section {
                     Button(String(localized: "user_profile_membership_card")) {
                         guard let url = URL(string: membershipCardUrl) else { return }
                         guard let rootViewController = UIApplication.shared.rootViewController else { return }
-                        
+
                         do {
                             let data = try Data(contentsOf: url)
                             let pass = try PKPass(data: data)
-                            
+
                             guard let controller = PKAddPassesViewController(pass: pass) else { return }
                             rootViewController.present(controller, animated: true)
                         } catch {
@@ -78,7 +78,7 @@ struct UserProfileView: View {
                     }
                 }
             }
-            
+
             if !viewModel.profileInformation.isEmpty {
                 Section {
                     ForEach($viewModel.profileInformation) { $item in
@@ -117,7 +117,7 @@ struct UserProfileView: View {
                     Text(verbatim: String(localized: "user_profile_personal_information"))
                 }
             }
-            
+
             Section {
                 Button {
                     showDeleteAccountConfirmation = true
@@ -148,35 +148,34 @@ struct UserProfileView: View {
             }
         }
     }
-    
+
     private func onDeleteAccountClicked() {
         Task {
             do {
                 try await viewModel.deleteAccount()
-                
+
                 withAnimation {
                     ContentRouter.main.route = .intro
                 }
             } catch {
-                let authError = AuthErrorCode(_bridgedNSError: error as NSError)
-                if authError?.code == AuthErrorCode.requiresRecentLogin {
-                    Task {
-                        do {
-                            try await viewModel.reauthenticate()
-                            try await viewModel.deleteAccount()
-                            
-                            withAnimation {
-                                ContentRouter.main.route = .intro
-                            }
-                        } catch {
-                            //
-                        }
-                    }
-                    
+                guard let authErrorCode = AuthErrorCode(rawValue: (error as NSError).code),
+                      authErrorCode == AuthErrorCode.requiresRecentLogin
+                else {
+                    Logger.main.error("Failed to delete account. \(error.localizedDescription)")
+
                     return
                 }
-                
-                // TODO: Handle other errors.
+
+                do {
+                    try await viewModel.reauthenticate()
+                    try await viewModel.deleteAccount()
+
+                    withAnimation {
+                        ContentRouter.main.route = .intro
+                    }
+                } catch {
+                    Logger.main.error("Reauthenticate and delete account failed. \(error.localizedDescription)")
+                }
             }
         }
     }
