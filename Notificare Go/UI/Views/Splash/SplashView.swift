@@ -80,8 +80,8 @@ struct SplashView: View {
         }
         .onReceive(readinessStatePublisher) { (_, authStateAvailable) in
             guard authStateAvailable else { return }
-            
-            guard Preferences.standard.introFinished, appState.currentUser != nil else {
+
+            guard Preferences.standard.introFinished, let currentUser = appState.currentUser else {
                 Notificare.shared.inAppMessaging().hasMessagesSuppressed = true
 
                 withAnimation {
@@ -90,10 +90,16 @@ struct SplashView: View {
                 
                 return
             }
-            
+
             Task {
                 await loadRemoteConfig()
-                
+
+                do {
+                    try await Notificare.shared.device().updateUser(userId: currentUser.id, userName: currentUser.name)
+                } catch {
+                    Logger.main.error("Failed to update user. \(error.localizedDescription)")
+                }
+
                 withAnimation {
                     router.route = .main
                 }
