@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.6.1
+
+- Ensure user is updated
+- Fix delete account flow when re-authentication is required
+
 ## 1.6.0
 
 - Update Notificare to 4.0.0
