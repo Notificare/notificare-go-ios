@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
-        "version" : "5.9.1"
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/twostraws/CodeScanner",
       "state" : {
-        "revision" : "9fa582f4b36c69c2a55bff5fb3377eb170ae273c",
-        "version" : "2.5.1"
+        "revision" : "5e886430238944c7200fc9e10dbf2d9550dba865",
+        "version" : "2.5.2"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "f909f901bfba9e27e4e9da83242a4915d6dd64bb",
-        "version" : "11.3.0"
+        "revision" : "2e02253fd1ce99145bcbf1bb367ccf61bd0ca46b",
+        "version" : "11.6.0"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "93406fd21b85e66e2d6dbf50b472161fd75c3f1f",
-        "version" : "11.3.0"
+        "revision" : "4f234bcbdae841d7015258fbbf8e7743a39b8200",
+        "version" : "11.4.0"
       }
     },
     {
@@ -132,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Notificare/notificare-sdk-ios",
       "state" : {
-        "revision" : "bb402ce540e2a713ec604afd963e64470f8042f1",
-        "version" : "4.0.0"
+        "revision" : "adce311e2be5c5e49278026a5dfa9f7678ee665e",
+        "version" : "4.0.1"
       }
     },
     {

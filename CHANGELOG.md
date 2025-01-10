@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Upcoming Release
+
+- Update Notificare to 4.0.1
+- Update dependencies
+
 ## 1.6.1
 
 - Ensure user is updated
