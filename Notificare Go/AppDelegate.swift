@@ -12,29 +12,31 @@ import NotificareKit
 import NotificareGeoKit
 import NotificareInboxKit
 import NotificarePushKit
+import NotificarePushUIKit
 import NotificareScannablesKit
 import OSLog
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        
-        #if DEBUG
+
+#if DEBUG
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
-        #else
+#else
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
-        #endif
-        
+#endif
+
         // Configure Notificare.
         Notificare.shared.push().presentationOptions = [.banner, .badge, .sound]
-        
+
         // Setup the delegates.
         Notificare.shared.delegate = self
         Notificare.shared.push().delegate = self
+        Notificare.shared.pushUI().delegate = self
         Notificare.shared.inbox().delegate = self
         Notificare.shared.geo().delegate = self
         Notificare.shared.scannables().delegate = self
-        
+
         if let configuration = Preferences.standard.appConfiguration {
             Notificare.shared.configure(
                 servicesInfo: NotificareServicesInfo(
@@ -50,22 +52,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         return true
     }
-    
+
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         if let shortcutItem = options.shortcutItem {
             ShortcutsService.shared.action = ShortcutAction(shortcutItem: shortcutItem)
         }
-        
+
         let configuration = UISceneConfiguration(name: connectingSceneSession.configuration.name, sessionRole: connectingSceneSession.role)
         configuration.delegateClass = SceneDelegate.self
-        
+
         return configuration
     }
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {}
-    
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {}
-    
+
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {}
 }
 
@@ -79,16 +81,26 @@ extension AppDelegate: NotificarePushDelegate {
     func notificare(_ notificarePush: NotificarePush, didOpenNotification notification: NotificareNotification) {
         UIApplication.shared.present(notification)
     }
-    
+
     func notificare(_ notificarePush: NotificarePush, didOpenAction action: NotificareNotification.Action, for notification: NotificareNotification) {
         UIApplication.shared.present(action, for: notification)
     }
-    
+
     func notificare(_ notificarePush: NotificarePush, didChangeNotificationSettings granted: Bool) {
         NotificationCenter.default.post(
             name: .notificationSettingsChanged,
             object: nil
         )
+    }
+}
+
+extension AppDelegate: NotificarePushUIDelegate {
+    func notificare(_ notificarePushUI: NotificarePushUI, didReceiveCustomAction url: URL, in action: NotificareNotification.Action, for notification: NotificareNotification) {
+        UIApplication.shared.open(url, options: [:]) { opened in
+            if !opened {
+                Logger.main.warning("Cannot open custom action link that's not supported by the application.")
+            }
+        }
     }
 }
 
@@ -100,7 +112,7 @@ extension AppDelegate: NotificareInboxDelegate {
             userInfo: ["badge": badge]
         )
     }
-    
+
     func notificare(_ notificareInbox: NotificareInbox, didUpdateInbox items: [NotificareInboxItem]) {
         NotificationCenter.default.post(
             name: .inboxUpdated,
@@ -129,10 +141,10 @@ extension AppDelegate: NotificareScannablesDelegate {
             Logger.main.warning("Cannot present a scannable without a notification.")
             return
         }
-        
+
         UIApplication.shared.present(notification)
     }
-    
+
     func notificare(_ notificareScannables: NotificareScannables, didInvalidateScannerSession error: Error) {
         Logger.main.error("Scannable session invalidated: \(error.localizedDescription)")
     }
