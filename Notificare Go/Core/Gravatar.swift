@@ -8,6 +8,6 @@
 import Foundation
 
 internal func getGravatarUrl(email: String) -> URL {
-    let hash = md5(email.lowercased())
+    let hash = sha256(email.lowercased())
     return URL(string: "https://gravatar.com/avatar/\(hash)?s=400&d=retro")!
 }
