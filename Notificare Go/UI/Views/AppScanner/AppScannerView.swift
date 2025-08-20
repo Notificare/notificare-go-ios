@@ -32,13 +32,12 @@ struct AppScannerView: View {
                         .multilineTextAlignment(.center)
                         .font(.body)
                         .padding(.top)
-                    
-                    Button(String(localized: "app_scanner_scan_button")) {
+
+                    StyledButton(String(localized: "app_scanner_scan_button")) {
                         viewModel.isScanning = true
                         viewModel.processScanState = .idle
                     }
                     .disabled(viewModel.isScanning || viewModel.processScanState == .processing)
-                    .buttonStyle(PrimaryButton())
                     .padding(.top, 32)
                     
                     if viewModel.processScanState == .failure {

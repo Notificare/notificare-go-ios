@@ -42,14 +42,13 @@ struct ProductDetailsView: View {
                     
                     Text(verbatim: viewModel.product.description)
                         .font(.subheadline)
-                    
-                    Button {
+
+                    StyledButton {
                         viewModel.addToCart()
                     } label: {
                         Label(String(localized: "product_details_add_to_cart"), systemImage: "cart.badge.plus")
                     }
                     .disabled(viewModel.cartCommand == .loading)
-                    .buttonStyle(PrimaryButton())
                     .padding(.top, 16)
                 }
                 .padding()

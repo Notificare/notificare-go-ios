@@ -33,28 +33,25 @@ struct IntroView: View {
             ZStack(alignment: .bottom) {
                 TabView(selection: $viewModel.currentTab) {
                     IntroSlideView(slide: .intro) {
-                        Button(String(localized: "intro_welcome_button")) {
+                        StyledButton(String(localized: "intro_welcome_button")) {
                             withAnimation {
                                 viewModel.currentTab += 1
                             }
                         }
-                        .buttonStyle(PrimaryButton())
                     }
                     .tag(0)
                     
                     IntroSlideView(slide: .notifications) {
-                        Button(String(localized: "intro_notifications_button")) {
+                        StyledButton(String(localized: "intro_notifications_button")) {
                             viewModel.enableRemoteNotifications()
                         }
-                        .buttonStyle(PrimaryButton())
                     }
                     .tag(1)
                     
                     IntroSlideView(slide: .location) {
-                        Button(String(localized: "intro_location_button")) {
+                        StyledButton(String(localized: "intro_location_button")) {
                             viewModel.enableLocationUpdates()
                         }
-                        .buttonStyle(PrimaryButton())
                     }
                     .tag(2)
                     

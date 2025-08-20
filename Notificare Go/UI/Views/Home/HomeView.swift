@@ -38,36 +38,33 @@ struct HomeView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Label(String(localized: "home_scan_title"), systemImage: "barcode.viewfinder")
                             .font(.headline)
-                        
+
                         Text(String(localized: "home_scan_message"))
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 8)
-                        
+
                         if Notificare.shared.scannables().canStartNfcScannableSession {
-                            VStack(spacing: 0) {
-                                Button(String(localized: "home_scan_nfc_button")) {
+                            VStack(spacing: 16) {
+                                StyledButton(String(localized: "home_scan_nfc_button")) {
                                     Notificare.shared.scannables().startNfcScannableSession()
                                 }
-                                .buttonStyle(PrimaryButton())
-                                
+
                                 Button(String(localized: "home_scan_qr_button")) {
                                     guard let rootViewController = UIApplication.shared.rootViewController else {
                                         return
                                     }
-                                    
+
                                     Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                                 }
-                                .padding(.top, 12)
                             }
                         } else {
-                            Button(String(localized: "home_scan_qr_button")) {
+                            StyledButton(String(localized: "home_scan_qr_button")) {
                                 guard let rootViewController = UIApplication.shared.rootViewController else {
                                     return
                                 }
-                                
+
                                 Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                             }
-                            .buttonStyle(PrimaryButton())
                         }
                     }
                 }
@@ -167,17 +164,16 @@ struct HomeView: View {
         .sheet(isPresented: $viewModel.showingSettingsPermissionDialog) {
             VStack(spacing: 0) {
                 WebView(url: PRIVACY_DETAILS_URL)
-                
-                Button(String(localized: "shared_continue_to_settings")) {
+
+                StyledButton(String(localized: "shared_continue_to_settings")) {
                     guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
                         viewModel.showingSettingsPermissionDialog = false
                         return
                     }
-                    
+
                     UIApplication.shared.open(url)
                     viewModel.showingSettingsPermissionDialog = false
                 }
-                .buttonStyle(PrimaryButton())
                 .padding()
             }
         }
@@ -207,35 +203,36 @@ private struct CoffeeBrewerActionsView: View {
     var onCancel: () -> Void
 
     var body: some View {
-        if let state {
-            VStack(spacing: 16) {
+        VStack(spacing: 16) {
+            if let state {
                 switch state {
                 case .grinding:
-                    Button(String(localized: "home_coffee_brewer_brew_button")) {
+                    StyledButton(String(localized: "home_coffee_brewer_brew_button")) {
                         onNextStep()
                     }
-                    .buttonStyle(PrimaryButton())
 
                 case .brewing:
-                    Button(String(localized: "home_coffee_brewer_serve_button")) {
+                    StyledButton(String(localized: "home_coffee_brewer_serve_button")) {
                         onNextStep()
                     }
-                    .buttonStyle(PrimaryButton())
 
                 case .served:
                     EmptyView()
                 }
 
-                Button(String(localized: "home_coffee_brewer_stop_button")) {
+                Button {
                     onCancel()
+                } label: {
+                    Text(String(localized: "home_coffee_brewer_stop_button"))
+                        .frame(maxWidth: .infinity)
                 }
                 .foregroundColor(.red)
+
+            } else {
+                StyledButton(String(localized: "home_coffee_brewer_create_button")) {
+                    onCreate()
+                }
             }
-        } else {
-            Button(String(localized: "home_coffee_brewer_create_button")) {
-                onCreate()
-            }
-            .buttonStyle(PrimaryButton())
         }
     }
 }
