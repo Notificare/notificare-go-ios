@@ -39,20 +39,6 @@ struct CartView: View {
                 CartEmptyView()
             } else {
                 List {
-                    if #available(iOS 15.0, *) {
-                        Section {
-                            Text(String(localized: "cart_disclaimer_message"))
-                                .font(.subheadline)
-                        }
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
-                    } else {
-                        Section {
-                            Text(String(localized: "cart_disclaimer_message"))
-                                .font(.subheadline)
-                        }
-                    }
-                    
                     Section {
                         ForEach(cart.sorted(by: { $0.time < $1.time })) { entry in
                             CartItemView(item: entry)
@@ -72,6 +58,12 @@ struct CartView: View {
                                     }
                                 }
                         }
+                    } header: {
+                        Text(String(localized: "cart_disclaimer_message"))
+                            .font(.subheadline)
+                            .foregroundColor(.primary)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
+                            .textCase(.none)
                     } footer: {
                         Text(verbatim: String(localized: "cart_last_modified", lastModifiedStr))
                     }
