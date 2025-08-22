@@ -33,10 +33,15 @@ struct AppScannerView: View {
                         .font(.body)
                         .padding(.top)
 
-                    StyledButton(String(localized: "app_scanner_scan_button")) {
+                    Button {
                         viewModel.isScanning = true
                         viewModel.processScanState = .idle
+                    } label: {
+                        Text(String(localized: "app_scanner_scan_button"))
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
+                    .adaptivePrimaryButton()
                     .disabled(viewModel.isScanning || viewModel.processScanState == .processing)
                     .padding(.top, 32)
                     

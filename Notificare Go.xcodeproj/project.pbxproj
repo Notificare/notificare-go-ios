@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1ADFEECA2E54D2AF002F7C8A /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFEEC92E54D29A002F7C8A /* StyledButton.swift */; };
 		E5A3442A2AE012E8002EE51B /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = E5A344292AE012E8002EE51B /* SwiftUIIntrospect */; };
 		F2018F6B27DB6D8D004908E7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6A27DB6D8D004908E7 /* Product.swift */; };
 		F2018F6D27DF935F004908E7 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2018F6C27DF935F004908E7 /* ProductDetailsViewModel.swift */; };
@@ -159,7 +158,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1ADFEEC92E54D29A002F7C8A /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		F2018F6A27DB6D8D004908E7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F2018F6C27DF935F004908E7 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		F2018F6F27DF99FA004908E7 /* ProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListView.swift; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 				F25E4EEB27D21E8F00BEFCF5 /* InboxItemView.swift */,
 				F24AA6EC27EDD91A00F981DF /* LottieView.swift */,
 				F245856227C40CAA00AA93A2 /* ProductCardView.swift */,
-				1ADFEEC92E54D29A002F7C8A /* StyledButton.swift */,
 				F245855D27C40B8600AA93A2 /* TopProductsView.swift */,
 				F2A3F3A12812FAA3004837C9 /* WebView.swift */,
 			);
@@ -976,7 +973,6 @@
 				F2018F8127E0EDF9004908E7 /* CartItemView.swift in Sources */,
 				F29B873A27C4F56A00460D85 /* AsyncImageCompat.swift in Sources */,
 				F2479BAD27FF354600C1F8BE /* BeaconRow.swift in Sources */,
-				1ADFEECA2E54D2AF002F7C8A /* StyledButton.swift in Sources */,
 				F284C0C627CF850000E6986B /* SettingsViewModel.swift in Sources */,
 				F2A3F39D28118FE1004837C9 /* View+Theme.swift in Sources */,
 				F292850A28E5EDD500B7264A /* OrderActivityAttributes.swift in Sources */,

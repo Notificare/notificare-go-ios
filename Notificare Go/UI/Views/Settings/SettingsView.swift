@@ -218,7 +218,7 @@ struct SettingsView: View {
             VStack(spacing: 0) {
                 WebView(url: PRIVACY_DETAILS_URL)
 
-                StyledButton(String(localized: "shared_continue_to_settings")) {
+                Button {
                     guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
                         viewModel.showingSettingsPermissionDialog = false
                         return
@@ -226,7 +226,12 @@ struct SettingsView: View {
 
                     UIApplication.shared.open(url)
                     viewModel.showingSettingsPermissionDialog = false
+                } label: {
+                    Text(String(localized: "shared_continue_to_settings"))
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
                 }
+                .adaptivePrimaryButton()
                 .padding()
             }
         }

@@ -44,10 +44,15 @@ struct HomeView: View {
                             .padding(.bottom, 8)
 
                         if Notificare.shared.scannables().canStartNfcScannableSession {
-                            VStack(spacing: 16) {
-                                StyledButton(String(localized: "home_scan_nfc_button")) {
+                            VStack(spacing: 0) {
+                                Button {
                                     Notificare.shared.scannables().startNfcScannableSession()
+                                } label: {
+                                    Text(String(localized: "home_scan_nfc_button"))
+                                        .padding()
+                                        .frame(minWidth: 0, maxWidth: .infinity)
                                 }
+                                .adaptivePrimaryButton()
 
                                 Button(String(localized: "home_scan_qr_button")) {
                                     guard let rootViewController = UIApplication.shared.rootViewController else {
@@ -56,15 +61,21 @@ struct HomeView: View {
 
                                     Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                                 }
+                                .padding(.top, 12)
                             }
                         } else {
-                            StyledButton(String(localized: "home_scan_qr_button")) {
+                            Button {
                                 guard let rootViewController = UIApplication.shared.rootViewController else {
                                     return
                                 }
 
                                 Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
+                            } label: {
+                                Text(String(localized: "home_scan_qr_button"))
+                                    .padding()
+                                    .frame(minWidth: 0, maxWidth: .infinity)
                             }
+                            .adaptivePrimaryButton()
                         }
                     }
                 }
@@ -165,7 +176,7 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 WebView(url: PRIVACY_DETAILS_URL)
 
-                StyledButton(String(localized: "shared_continue_to_settings")) {
+                Button {
                     guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
                         viewModel.showingSettingsPermissionDialog = false
                         return
@@ -173,7 +184,12 @@ struct HomeView: View {
 
                     UIApplication.shared.open(url)
                     viewModel.showingSettingsPermissionDialog = false
+                } label: {
+                    Text(String(localized: "shared_continue_to_settings"))
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
                 }
+                .adaptivePrimaryButton()
                 .padding()
             }
         }
@@ -207,14 +223,24 @@ private struct CoffeeBrewerActionsView: View {
             if let state {
                 switch state {
                 case .grinding:
-                    StyledButton(String(localized: "home_coffee_brewer_brew_button")) {
+                    Button {
                         onNextStep()
+                    } label: {
+                        Text(String(localized: "home_coffee_brewer_brew_button"))
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
+                    .adaptivePrimaryButton()
 
                 case .brewing:
-                    StyledButton(String(localized: "home_coffee_brewer_serve_button")) {
+                    Button {
                         onNextStep()
+                    } label: {
+                        Text(String(localized: "home_coffee_brewer_serve_button"))
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
+                    .adaptivePrimaryButton()
 
                 case .served:
                     EmptyView()
@@ -229,9 +255,14 @@ private struct CoffeeBrewerActionsView: View {
                 .foregroundColor(.red)
 
             } else {
-                StyledButton(String(localized: "home_coffee_brewer_create_button")) {
+                Button {
                     onCreate()
+                } label: {
+                    Text(String(localized: "home_coffee_brewer_create_button"))
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
                 }
+                .adaptivePrimaryButton()
             }
         }
     }

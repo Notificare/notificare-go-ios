@@ -33,25 +33,40 @@ struct IntroView: View {
             ZStack(alignment: .bottom) {
                 TabView(selection: $viewModel.currentTab) {
                     IntroSlideView(slide: .intro) {
-                        StyledButton(String(localized: "intro_welcome_button")) {
+                        Button() {
                             withAnimation {
                                 viewModel.currentTab += 1
                             }
+                        } label: {
+                            Text(String(localized: "intro_welcome_button"))
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
                         }
+                        .adaptivePrimaryButton()
                     }
                     .tag(0)
                     
                     IntroSlideView(slide: .notifications) {
-                        StyledButton(String(localized: "intro_notifications_button")) {
+                        Button() {
                             viewModel.enableRemoteNotifications()
+                        } label: {
+                            Text(String(localized: "intro_notifications_button"))
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
                         }
+                        .adaptivePrimaryButton()
                     }
                     .tag(1)
                     
                     IntroSlideView(slide: .location) {
-                        StyledButton(String(localized: "intro_location_button")) {
+                        Button() {
                             viewModel.enableLocationUpdates()
+                        } label: {
+                            Text(String(localized: "intro_location_button"))
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
                         }
+                        .adaptivePrimaryButton()
                     }
                     .tag(2)
                     
