@@ -17,3 +17,14 @@ extension List {
         }
     }
 }
+
+extension View {
+    @ViewBuilder
+    func adaptivePrimaryButton() -> some View {
+        if #available(iOS 26, *) {
+            buttonStyle(.glassProminent)
+        } else {
+            buttonStyle(PrimaryButton())
+        }
+    }
+}
