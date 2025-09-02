@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Upcoming release
+## 1.7.1
 
 - Update Notificare to 4.2.2
 - Update dependencies
