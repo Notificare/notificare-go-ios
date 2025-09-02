@@ -19,8 +19,6 @@ struct PrimaryButton: ButtonStyle {
         
         var body: some View {
             configuration.label
-                .padding()
-                .frame(minWidth: 0, maxWidth: .infinity)
                 .background(isEnabled ? Color("color_primary") : Color.gray)
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 8))

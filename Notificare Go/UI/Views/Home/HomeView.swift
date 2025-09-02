@@ -38,36 +38,44 @@ struct HomeView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Label(String(localized: "home_scan_title"), systemImage: "barcode.viewfinder")
                             .font(.headline)
-                        
+
                         Text(String(localized: "home_scan_message"))
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 8)
-                        
+
                         if Notificare.shared.scannables().canStartNfcScannableSession {
                             VStack(spacing: 0) {
-                                Button(String(localized: "home_scan_nfc_button")) {
+                                Button {
                                     Notificare.shared.scannables().startNfcScannableSession()
+                                } label: {
+                                    Text(String(localized: "home_scan_nfc_button"))
+                                        .padding()
+                                        .frame(minWidth: 0, maxWidth: .infinity)
                                 }
-                                .buttonStyle(PrimaryButton())
-                                
+                                .adaptivePrimaryButton()
+
                                 Button(String(localized: "home_scan_qr_button")) {
                                     guard let rootViewController = UIApplication.shared.rootViewController else {
                                         return
                                     }
-                                    
+
                                     Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
                                 }
                                 .padding(.top, 12)
                             }
                         } else {
-                            Button(String(localized: "home_scan_qr_button")) {
+                            Button {
                                 guard let rootViewController = UIApplication.shared.rootViewController else {
                                     return
                                 }
-                                
+
                                 Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
+                            } label: {
+                                Text(String(localized: "home_scan_qr_button"))
+                                    .padding()
+                                    .frame(minWidth: 0, maxWidth: .infinity)
                             }
-                            .buttonStyle(PrimaryButton())
+                            .adaptivePrimaryButton()
                         }
                     }
                 }
@@ -167,17 +175,21 @@ struct HomeView: View {
         .sheet(isPresented: $viewModel.showingSettingsPermissionDialog) {
             VStack(spacing: 0) {
                 WebView(url: PRIVACY_DETAILS_URL)
-                
-                Button(String(localized: "shared_continue_to_settings")) {
+
+                Button {
                     guard let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) else {
                         viewModel.showingSettingsPermissionDialog = false
                         return
                     }
-                    
+
                     UIApplication.shared.open(url)
                     viewModel.showingSettingsPermissionDialog = false
+                } label: {
+                    Text(String(localized: "shared_continue_to_settings"))
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
                 }
-                .buttonStyle(PrimaryButton())
+                .adaptivePrimaryButton()
                 .padding()
             }
         }
@@ -207,35 +219,51 @@ private struct CoffeeBrewerActionsView: View {
     var onCancel: () -> Void
 
     var body: some View {
-        if let state {
-            VStack(spacing: 16) {
+        VStack(spacing: 16) {
+            if let state {
                 switch state {
                 case .grinding:
-                    Button(String(localized: "home_coffee_brewer_brew_button")) {
+                    Button {
                         onNextStep()
+                    } label: {
+                        Text(String(localized: "home_coffee_brewer_brew_button"))
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    .buttonStyle(PrimaryButton())
+                    .adaptivePrimaryButton()
 
                 case .brewing:
-                    Button(String(localized: "home_coffee_brewer_serve_button")) {
+                    Button {
                         onNextStep()
+                    } label: {
+                        Text(String(localized: "home_coffee_brewer_serve_button"))
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    .buttonStyle(PrimaryButton())
+                    .adaptivePrimaryButton()
 
                 case .served:
                     EmptyView()
                 }
 
-                Button(String(localized: "home_coffee_brewer_stop_button")) {
+                Button {
                     onCancel()
+                } label: {
+                    Text(String(localized: "home_coffee_brewer_stop_button"))
+                        .frame(maxWidth: .infinity)
                 }
                 .foregroundColor(.red)
+
+            } else {
+                Button {
+                    onCreate()
+                } label: {
+                    Text(String(localized: "home_coffee_brewer_create_button"))
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                }
+                .adaptivePrimaryButton()
             }
-        } else {
-            Button(String(localized: "home_coffee_brewer_create_button")) {
-                onCreate()
-            }
-            .buttonStyle(PrimaryButton())
         }
     }
 }
