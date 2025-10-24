@@ -16,7 +16,6 @@
 		1A42BFA32EAA171F00172959 /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A42BFA22EAA171F00172959 /* ActitoNotificationServiceExtensionKit */; };
 		1A42BFA52EAA171F00172959 /* ActitoPushKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A42BFA42EAA171F00172959 /* ActitoPushKit */; };
 		1A42BFA72EAA171F00172959 /* ActitoPushUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A42BFA62EAA171F00172959 /* ActitoPushUIKit */; };
-		1A42BFA92EAA7C0300172959 /* Actito Go Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1A42BFA82EAA7C0300172959 /* Actito Go Icon.icon */; };
 		1A42BFAE2EAA814D00172959 /* AppIconDev.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1A42BFAD2EAA814D00172959 /* AppIconDev.icon */; };
 		1A42BFB02EAA853B00172959 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1A42BFAF2EAA853B00172959 /* FirebaseAnalyticsCore */; };
 		E5A3442A2AE012E8002EE51B /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = E5A344292AE012E8002EE51B /* SwiftUIIntrospect */; };
@@ -618,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				F2B984DB28512CB9005CD6D6 /* GoogleService-Info.plist */,
+				1A42BFAD2EAA814D00172959 /* AppIconDev.icon */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -626,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				F2B984DD28512CD0005CD6D6 /* GoogleService-Info.plist */,
+				1A42BFAC2EAA7D7500172959 /* AppIcon.icon */,
 			);
 			path = Release;
 			sourceTree = "<group>";
@@ -642,8 +643,6 @@
 		F2F000F627BFE83D00753D89 = {
 			isa = PBXGroup;
 			children = (
-				1A42BFAD2EAA814D00172959 /* AppIconDev.icon */,
-				1A42BFAC2EAA7D7500172959 /* AppIcon.icon */,
 				F2F0010127BFE83D00753D89 /* Actito Go */,
 				F2716A7A2806FE60000CC7A5 /* NotificationService */,
 				F29284F928E5EA7800B7264A /* WidgetExtension */,
@@ -867,7 +866,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F0010A27BFE83E00753D89 /* Preview Assets.xcassets in Resources */,
-				1A42BFA92EAA7C0300172959 /* Actito Go Icon.icon in Resources */,
 				F245856027C40C1E00AA93A2 /* Localizable.strings in Resources */,
 				F2F0010727BFE83E00753D89 /* Assets.xcassets in Resources */,
 				F284C0BF27CF781400E6986B /* ActitoOptions.plist in Resources */,
