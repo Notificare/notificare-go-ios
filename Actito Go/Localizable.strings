@@ -1,0 +1,140 @@
+/* 
+  Localizable.strings
+ Actito Go
+
+  Created by Helder Pinhal on 21/02/2022.
+  
+*/
+
+"shared_anonymous_user" = "Notificarista";
+"shared_dialog_button_yes" = "Yes";
+"shared_dialog_button_ok" = "OK";
+"shared_dialog_button_cancel" = "Cancel";
+"shared_dialog_button_skip" = "Skip";
+"shared_continue_to_settings" = "Continue to Settings";
+
+"shortcut_cart" = "Cart";
+"shortcut_settings" = "Settings";
+"shortcut_events" = "Create an event";
+
+"content_configured_dialog_title" = "Already configured";
+"content_configured_dialog_message" = "You cannot change the configuration once it has been set. Please reinstall the app to reconfigure it.";
+"content_configuration_error_dialog_title" = "Configuration failed";
+"content_configuration_error_dialog_message" = "Something went wrong while configuring the app. Check your internet connection and try again.";
+
+"app_scanner_title" = "Configure your app";
+"app_scanner_message" = "Either scan a QR code to automatically configure your app or click the magic link in the invitation email sent by your administrator.";
+"app_scanner_scan_button" = "Open scanner";
+"app_scanner_scan_error_title" = "Invalid QR code";
+"app_scanner_scan_error_message" = "The scanned QR code is not valid. Scan the QR code sent to your email.";
+
+"intro_title" = "Welcome";
+"intro_welcome_title" = "Welcome";
+"intro_welcome_message" = "Welcome to the Actito Go app.\nHere you can play around with all the functionalities provided by the Actito platform.";
+"intro_welcome_button" = "Get started";
+"intro_notifications_title" = "Notifications";
+"intro_notifications_message" = "By enabling remote notifications, you can harness the power of highly relevant and contextual messages.";
+"intro_notifications_button" = "Continue";
+"intro_location_title" = "Location";
+"intro_location_message" = "Granting the privilege to access your location enables the Actito Geo functionality, providing you with a way to segment and geo-target your users.\nYou can also configure beacons to show relevant content to nearby users.";
+"intro_location_button" = "Continue";
+"intro_location_alert_denied_title" = "Missing permission";
+"intro_location_alert_denied_message" = "Please go to Settings and enable the location permission.";
+"intro_login_title" = "Login";
+"intro_login_message" = "Sign in with your Apple ID to quickly find and target your user in the Actito Dashboard.";
+
+"main_navigation_home" = "Home";
+"main_navigation_cart" = "Cart";
+"main_navigation_settings" = "Settings";
+
+"home_title" = "Home";
+"home_welcome_title" = "Welcome to the Actito Go app";
+"home_welcome_message" = "Here you can play around with all the functionalities provided by the Actito platform.";
+"home_top_products" = "Top products";
+"home_top_products_browse_more_button" = "Browse more";
+"home_scan_title" = "Scan for a product";
+"home_scan_message" = "Create scannables and attach them to products to easily unlock relevant informational content.";
+"home_scan_nfc_button" = "Scan NFC tag";
+"home_scan_qr_button" = "Scan QR code";
+"home_nearby_title" = "Nearby beacons";
+"home_nearby_no_beacons" = "There are no beacons in your vicinity.";
+"home_nearby_alert_permissions_title" = "Missing permissions";
+"home_nearby_alert_permissions_message" = "In order to show your nearby beacons we need access to your precise location.";
+"home_nearby_alert_permissions_button" = "Request access";
+"home_events_title" = "Log custom events";
+"home_events_message" = "Log events manually by setting up its name and attributes. Use your custom event to create event-based automations.";
+"home_events_button" = "Try it!";
+"home_coffee_brewer_title" = "Live Activities sandbox";
+"home_coffee_brewer_message" = "Experiment with Live Activities by leveraging Actito's toolset.";
+"home_coffee_brewer_create_button" = "Brew a coffee";
+"home_coffee_brewer_brew_button" = "Start brewing";
+"home_coffee_brewer_serve_button" = "Serve the coffee!";
+"home_coffee_brewer_stop_button" = "Cancel";
+
+
+"settings_title" = "Settings";
+"settings_inbox_title" = "Inbox";
+"settings_notifications_title" = "Notifications";
+"settings_notifications_helper_text" = "Allow us to send notifications whenever your apps generate alarms or important notifications.";
+"settings_dnd_title" = "Do not disturb";
+"settings_dnd_helper_text" = "Configure a period of time when notifications shouldn't generate alerts in the notification center.";
+"settings_dnd_start" = "From";
+"settings_dnd_end" = "To";
+"settings_location_title" = "Location";
+"settings_location_helper_text" = "Allow us to tap into your location to show you content when it's most relevant.";
+"settings_about_feedback" = "Leave your feedback";
+"settings_about_feedback_mail_subject" = "Write a subject";
+"settings_about_feedback_mail_body" = "Write a message";
+"settings_about_version" = "Version %@";
+"settings_tags_announcements_title" = "Announcements & events";
+"settings_tags_marketing_title" = "Marketing";
+"settings_tags_best_practices_title" = "Best practices";
+"settings_tags_product_updates_title" = "Product updates";
+"settings_tags_engineering_title" = "Engineering & technology";
+"settings_tags_staff_title" = "Staff & experiences";
+"settings_copy_application_id" = "Copy application id";
+"settings_copy_application_name" = "Copy application name";
+
+"inbox_title" = "Inbox";
+"inbox_section_today" = "Today";
+"inbox_section_yesterday" = "Yesterday";
+"inbox_section_last_seven_days" = "Last 7 days";
+"inbox_empty_message" = "You have no notifications in your inbox.";
+"inbox_options_dialog_title" = "Select an option";
+"inbox_options_dialog_open" = "Open";
+"inbox_options_dialog_mark_as_read" = "Mark as read";
+"inbox_options_dialog_remove" = "Remove";
+
+"user_profile_title" = "Profile";
+"user_profile_copy_id" = "Copy user id";
+"user_profile_membership_card" = "Membership card";
+"user_profile_personal_information" = "Tell us about you";
+"user_profile_sign_out" = "Sign out";
+"user_profile_unsupported_user_data_type" = "Unsupported field";
+"user_profile_delete_account_button" = "Delete account";
+"user_profile_delete_account_confirmation_title" = "Are you certain?";
+"user_profile_delete_account_confirmation_message" = "This action is permanent and will delete your user account. Proceed with caution.";
+"user_profile_delete_account_failure" = "Couldn't delete your account.";
+
+"products_list_title" = "Products";
+
+"product_details_product_info" = "Product info";
+"product_details_add_to_cart" = "Add to card";
+"product_details_view_cart" = "View cart";
+
+"cart_title" = "Cart";
+"cart_disclaimer_message" = "The cart functionality is merely illustrative.\nYou are not acquiring any products, nor will you be charged.\nTest your automations with peace of mind.";
+"cart_last_modified" = "Last modified: %@";
+"cart_total_amount" = "Total amount: %@";
+"cart_purchase_button" = "Purchase";
+"cart_remove_item_button" = "Remove this item";
+"cart_empty_message" = "There are no products in your cart.";
+"cart_shop_button" = "Shop for some products";
+
+"events_title" = "Events";
+"events_name_section" = "Name";
+"events_attributes_section" = "Attributes";
+"events_attributes_attribute_name" = "Name";
+"events_attributes_attribute_value" = "Value";
+"events_attributes_add_button" = "Create an attribute";
+"events_submit_button" = "Log custom event";
