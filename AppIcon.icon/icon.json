@@ -1,0 +1,38 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "extended-gray:1.00000,1.00000",
+      "extended-gray:1.00000,1.00000"
+    ]
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "ic_foreground.svg",
+          "name" : "ic_foreground",
+          "position" : {
+            "scale" : 14.5,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : "shared"
+  }
+}

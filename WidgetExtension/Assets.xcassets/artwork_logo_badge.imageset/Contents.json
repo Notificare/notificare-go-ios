@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "logo-notificare-badge-light.svg",
+      "filename" : "ic_foreground.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "logo-notificare-badge-dark.svg",
       "idiom" : "universal"
     }
   ],
