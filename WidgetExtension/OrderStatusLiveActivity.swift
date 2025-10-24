@@ -1,6 +1,6 @@
 //
 //  OrderStatusLiveActivity.swift
-//  Notificare Go
+//  Actito Go
 //
 //  Created by Helder Pinhal on 30/09/2022.
 //

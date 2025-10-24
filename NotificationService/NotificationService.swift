@@ -6,7 +6,7 @@
 //
 
 import UserNotifications
-import NotificareNotificationServiceExtensionKit
+import ActitoNotificationServiceExtensionKit
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -17,7 +17,7 @@ class NotificationService: UNNotificationServiceExtension {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
-        NotificareNotificationServiceExtension.handleNotificationRequest(request) { result in
+        ActitoNotificationServiceExtension.handleNotificationRequest(request) { result in
             switch result {
             case let .success(content):
                 contentHandler(content)
